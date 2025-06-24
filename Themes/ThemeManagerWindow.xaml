@@ -7,6 +7,25 @@
         Height="750" Width="1100"
         WindowStartupLocation="CenterOwner"
         Background="{DynamicResource MainBackground}">
+    <Window.Resources>
+        <!-- Placeholder resources so dynamic bindings attach to this window -->
+        <SolidColorBrush x:Key="MainBackground" Color="Transparent"/>
+        <SolidColorBrush x:Key="TitleBarBackground" Color="Transparent"/>
+        <SolidColorBrush x:Key="TextForeground" Color="Black"/>
+        <SolidColorBrush x:Key="LabelForeground" Color="Black"/>
+        <SolidColorBrush x:Key="GroupBoxBorder" Color="Transparent"/>
+        <SolidColorBrush x:Key="ButtonBackground" Color="Transparent"/>
+        <SolidColorBrush x:Key="ButtonHoverBackground" Color="Transparent"/>
+        <SolidColorBrush x:Key="ButtonPressedBackground" Color="Transparent"/>
+        <SolidColorBrush x:Key="ButtonForeground" Color="Black"/>
+        <SolidColorBrush x:Key="MsgBoxWindowBackground" Color="Transparent"/>
+        <SolidColorBrush x:Key="MsgBoxTitleBackground" Color="Transparent"/>
+        <SolidColorBrush x:Key="MsgBoxBorderBrush" Color="Transparent"/>
+        <SolidColorBrush x:Key="MsgBoxButtonBackground" Color="Transparent"/>
+        <SolidColorBrush x:Key="MsgBoxButtonHoverBackground" Color="Transparent"/>
+        <SolidColorBrush x:Key="MsgBoxButtonPressedBackground" Color="Transparent"/>
+        <SolidColorBrush x:Key="MsgBoxButtonForeground" Color="Black"/>
+    </Window.Resources>
     <Grid Margin="20">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
