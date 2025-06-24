@@ -76,6 +76,15 @@ namespace ThemeForge.Themes
 
         /// <summary>Foreground color for labels</summary>
         public string LabelForeground { get; set; } = "#1E5A9C";
+
+        /// <summary>Background color for combo box items</summary>
+        public string ComboBoxItemBackground { get; set; } = "#F0F5FF";
+
+        /// <summary>Background color for combo box items when hovered</summary>
+        public string ComboBoxItemHoverBackground { get; set; } = "#E0E5EF";
+
+        /// <summary>Background color for combo box items when selected</summary>
+        public string ComboBoxItemSelectedBackground { get; set; } = "#3E85C6";
     }
 
     /// <summary>

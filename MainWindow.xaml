@@ -60,9 +60,11 @@
                 <StackPanel>
                     <TextBlock Text="Select a theme:" Margin="0,0,0,10" Foreground="{DynamicResource TextForeground}"/>
 
-                    <ComboBox x:Name="ThemeSelector" 
-                              Margin="0,0,0,20" 
+                    <ComboBox x:Name="ThemeSelector"
+                              Margin="0,0,0,20"
                               Height="30"
+                              Style="{StaticResource CustomComboBox}"
+                              ItemContainerStyle="{StaticResource CustomComboBoxItem}"
                               SelectionChanged="ThemeSelector_SelectionChanged">
                         <ComboBox.ItemTemplate>
                             <DataTemplate>
@@ -117,13 +119,12 @@
                                          Foreground="{DynamicResource TextForeground}"
                                          BorderBrush="{DynamicResource ControlBorderBrush}"/>
 
-                                <ComboBox Margin="5" Width="150" 
-                                          Background="{DynamicResource ControlBackground}"
-                                          Foreground="{DynamicResource TextForeground}"
-                                          BorderBrush="{DynamicResource ControlBorderBrush}">
-                                    <ComboBoxItem Content="ComboBox Item 1" Foreground="{DynamicResource TextForeground}"/>
-                                    <ComboBoxItem Content="ComboBox Item 2" Foreground="{DynamicResource TextForeground}"/>
-                                    <ComboBoxItem Content="ComboBox Item 3" Foreground="{DynamicResource TextForeground}"/>
+                                <ComboBox Margin="5" Width="150"
+                                          Style="{StaticResource CustomComboBox}"
+                                          ItemContainerStyle="{StaticResource CustomComboBoxItem}">
+                                    <ComboBoxItem Content="ComboBox Item 1" />
+                                    <ComboBoxItem Content="ComboBox Item 2" />
+                                    <ComboBoxItem Content="ComboBox Item 3" />
                                 </ComboBox>
                             </WrapPanel>
                         </GroupBox>
