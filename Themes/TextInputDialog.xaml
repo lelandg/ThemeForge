@@ -1,0 +1,46 @@
+<Window x:Class="ThemeForge.Themes.TextInputDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Input" 
+        Height="150" Width="400"
+        WindowStartupLocation="CenterOwner"
+        ResizeMode="NoResize"
+        Background="{DynamicResource MainBackground}">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock x:Name="PromptText" 
+                   Grid.Row="0" 
+                   Text="Enter a value:" 
+                   Margin="0,0,0,10" 
+                   TextWrapping="Wrap"
+                   Foreground="{DynamicResource TextForeground}"/>
+
+        <TextBox x:Name="InputTextBox" 
+                 Grid.Row="1" 
+                 Margin="0,0,0,10" 
+                 VerticalContentAlignment="Center" 
+                 Height="25"/>
+
+        <StackPanel Grid.Row="2" 
+                    Orientation="Horizontal" 
+                    HorizontalAlignment="Right" 
+                    VerticalAlignment="Bottom">
+            <Button Content="OK" 
+                    Style="{StaticResource CustomButton}" 
+                    Width="80" Height="25" 
+                    Margin="0,0,10,0"
+                    Click="OkButton_Click"
+                    IsDefault="True"/>
+            <Button Content="Cancel" 
+                    Style="{StaticResource CustomButton}" 
+                    Width="80" Height="25"
+                    Click="CancelButton_Click"
+                    IsCancel="True"/>
+        </StackPanel>
+    </Grid>
+</Window>

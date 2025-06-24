@@ -1,0 +1,33 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+    <UseWindowsForms>true</UseWindowsForms> <!-- Add this line -->
+  </PropertyGroup>
+  <ItemGroup>
+    <Folder Include="Utilities\" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json.Bson" Version="1.0.3" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Resources\Error.png" />
+    <Resource Include="Resources\Error.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <None Remove="Resources\Info.png" />
+    <Resource Include="Resources\Info.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <None Remove="Resources\Question.png" />
+    <Resource Include="Resources\Question.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <None Remove="Resources\Warning.png" />
+    <Resource Include="Resources\Warning.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+</Project>

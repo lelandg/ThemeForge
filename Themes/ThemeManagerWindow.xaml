@@ -1,0 +1,502 @@
+<Window x:Class="ThemeForge.Themes.ThemeManagerWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:ThemeForge.Themes" xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d"
+        Title="Theme Manager" 
+        Height="750" Width="1100"
+        WindowStartupLocation="CenterOwner"
+        Background="{DynamicResource MainBackground}">
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <StackPanel Grid.Row="0" Margin="0,0,0,10">
+            <TextBlock Text="Theme Manager" FontSize="20" FontWeight="Bold" Margin="0,0,0,10" Foreground="{DynamicResource LabelForeground}"/>
+            <TextBlock Text="Select a theme from the list or create your own custom theme" 
+                       TextWrapping="Wrap" Margin="0,0,0,5" Foreground="{DynamicResource TextForeground}"/>
+        </StackPanel>
+
+        <!-- Theme Selection -->
+        <Grid Grid.Row="1" Margin="0,0,0,10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <ComboBox x:Name="ThemeSelector" 
+                      Grid.Column="0"
+                      Margin="0,0,10,0" 
+                      Height="30"
+                      SelectedIndex="0"
+                      SelectionChanged="ThemeSelector_SelectionChanged">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <Border Width="16" Height="16" Margin="0,0,5,0" 
+                                    Background="{Binding WindowTheme.TitleBarBackground}" 
+                                    BorderBrush="#555555" BorderThickness="1"/>
+                            <TextBlock Text="{Binding Name}" d:DataContext="{d:DesignInstance }" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+
+            <StackPanel Grid.Column="1" Orientation="Horizontal">
+                <Button x:Name="NewThemeButton" 
+                        Content="New Theme" 
+                        Style="{DynamicResource CustomButton}" 
+                        Width="100" Height="30"
+                        Click="NewThemeButton_Click"/>
+
+                <Button x:Name="DeleteThemeButton" 
+                        Content="Delete Theme" 
+                        Style="{DynamicResource CustomButton}" 
+                        Width="100" Height="30" Margin="5,0,0,0"
+                        Click="DeleteThemeButton_Click"/>
+            </StackPanel>
+        </Grid>
+
+        <!-- Theme Editor -->
+        <TabControl Grid.Row="2" Margin="0,0,0,10" Background="{DynamicResource MainBackground}">
+            <!-- Preview Tab -->
+            <TabItem Header="Preview">
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <StackPanel>
+                        <GroupBox Header="Window Preview" Style="{DynamicResource CustomGroupBox}" Margin="5,10">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+
+                                <!-- Title Bar -->
+                                <Border Grid.Row="0" Background="{Binding CurrentTheme.WindowTheme.TitleBarBackground}" Height="30">
+                                    <Grid>
+                                        <TextBlock Text="Window Title" 
+                                                   VerticalAlignment="Center" 
+                                                   Margin="10,0" 
+                                                   Foreground="White"/>
+                                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                            <Button Content="_" Width="30" Margin="2,0"/>
+                                            <Button Content="□" Width="30" Margin="2,0"/>
+                                            <Button Content="✕" Width="30" Margin="2,0"/>
+                                        </StackPanel>
+                                    </Grid>
+                                </Border>
+
+                                <!-- Main Content -->
+                                <Grid Grid.Row="1" Margin="10">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="250"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <!-- Left Panel -->
+                                    <StackPanel Grid.Column="0" Margin="0,0,10,0">
+                                        <GroupBox Header="Controls" Style="{DynamicResource CustomGroupBox}">
+                                            <StackPanel>
+                                                <Button Content="Standard Button" Margin="5" Style="{DynamicResource CustomButton}"/>
+
+                                                <CheckBox Content="Check Box" Margin="5" 
+                                                          Foreground="{Binding CurrentTheme.WindowTheme.TextForeground}"/>
+
+                                                <RadioButton Content="Radio Button 1" Margin="5" 
+                                                             Foreground="{Binding CurrentTheme.WindowTheme.TextForeground}"/>
+
+                                                <RadioButton Content="Radio Button 2" Margin="5" 
+                                                             Foreground="{Binding CurrentTheme.WindowTheme.TextForeground}"/>
+
+                                                <ComboBox Margin="5" SelectedIndex="0">
+                                                    <ComboBoxItem Content="ComboBox Item 1"/>
+                                                    <ComboBoxItem Content="ComboBox Item 2"/>
+                                                    <ComboBoxItem Content="ComboBox Item 3"/>
+                                                </ComboBox>
+
+                                                <TextBox Text="Text Box" Margin="5"/>
+
+                                                <Slider Minimum="0" Maximum="100" Value="50" Margin="5"/>
+                                            </StackPanel>
+                                        </GroupBox>
+                                    </StackPanel>
+
+                                    <!-- Right Panel -->
+                                    <TabControl Grid.Column="1">
+                                        <TabItem Header="Tab 1">
+                                            <StackPanel>
+                                                <TextBlock Text="Sample Content Area" 
+                                                           Margin="10" 
+                                                           Foreground="{Binding CurrentTheme.WindowTheme.TextForeground}"/>
+
+                                                <ListBox Height="100" Margin="10">
+                                                    <ListBoxItem Content="ListBox Item 1"/>
+                                                    <ListBoxItem Content="ListBox Item 2"/>
+                                                    <ListBoxItem Content="ListBox Item 3"/>
+                                                </ListBox>
+                                            </StackPanel>
+                                        </TabItem>
+                                        <TabItem Header="Tab 2">
+                                            <TextBlock Text="Additional content would go here" 
+                                                       Margin="10" 
+                                                       Foreground="{Binding CurrentTheme.WindowTheme.TextForeground}"/>
+                                        </TabItem>
+                                    </TabControl>
+                                </Grid>
+                            </Grid>
+                        </GroupBox>
+
+                        <!-- Message Box Preview -->
+                        <GroupBox Header="Message Box Preview" Style="{DynamicResource CustomGroupBox}" Margin="5,10">
+                            <Grid Height="160">
+                                <Border BorderThickness="1" BorderBrush="{Binding CurrentTheme.MessageBoxTheme.BorderBrush}">
+                                    <Grid Background="{Binding CurrentTheme.MessageBoxTheme.WindowBackground}">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="Auto"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="80"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <!-- Message Title -->
+                                        <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
+                                                   Text="Sample Message"
+                                                   Background="{Binding CurrentTheme.MessageBoxTheme.TitleBackground}" 
+                                                   Foreground="{Binding CurrentTheme.MessageBoxTheme.TitleForeground}" 
+                                                   Padding="10,5"/>
+
+                                        <!-- Icon (placeholder) -->
+                                        <Border Grid.Row="1" Grid.Column="0" Width="32" Height="32" 
+                                                Margin="10,0" VerticalAlignment="Center">
+                                            <TextBlock Text="ℹ" FontSize="24" HorizontalAlignment="Center"
+                                                       Foreground="{DynamicResource ButtonBackground}"/>
+                                        </Border>
+
+                                        <!-- Message Text -->
+                                        <TextBlock Grid.Row="1" Grid.Column="1" 
+                                                   Text="This is a sample message box. Theme changes will be reflected here."
+                                                   VerticalAlignment="Center" TextWrapping="Wrap" 
+                                                   Foreground="{DynamicResource TextForeground}"/>
+
+                                        <!-- Buttons -->
+                                        <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal" 
+                                                    HorizontalAlignment="Center" Margin="0,0,0,10">
+                                            <Button Content="OK" Width="80" Height="28" Margin="5,0"
+                                                    Background="{Binding CurrentTheme.MessageBoxTheme.ButtonBackground}"
+                                                    Foreground="{Binding CurrentTheme.MessageBoxTheme.ButtonForeground}"
+                                                    BorderBrush="{Binding CurrentTheme.MessageBoxTheme.ButtonOutline}"/>
+                                            <Button Content="Cancel" Width="80" Height="28" Margin="5,0"
+                                                    Background="{Binding CurrentTheme.MessageBoxTheme.ButtonBackground}"
+                                                    Foreground="{Binding CurrentTheme.MessageBoxTheme.ButtonForeground}"
+                                                    BorderBrush="{Binding CurrentTheme.MessageBoxTheme.ButtonOutline}"/>
+                                        </StackPanel>
+                                    </Grid>
+                                </Border>
+                            </Grid>
+                        </GroupBox>
+                    </StackPanel>
+                </ScrollViewer>
+            </TabItem>
+
+            <!-- Window Theme Tab -->
+            <TabItem Header="Window Theme">
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <StackPanel>
+                        <GroupBox Header="Main Colors" Style="{DynamicResource CustomGroupBox}" Margin="5,10">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+
+                                <!-- Main Background -->
+                                <TextBlock Grid.Row="0" Grid.Column="0" Text="Main Background:" 
+                                           Margin="5" VerticalAlignment="Center"
+                                           Foreground="{DynamicResource TextForeground}"/>
+                                <Border Grid.Row="0" Grid.Column="1" 
+                                        Background="{Binding CurrentTheme.WindowTheme.MainBackground}" 
+                                        Height="25" Margin="5" BorderBrush="{DynamicResource GroupBoxBorder}" BorderThickness="1"/>
+                                <Button Grid.Row="0" Grid.Column="2" Content="Change..." 
+                                        Style="{DynamicResource CustomButton}" Width="80" Height="25" Margin="5"
+                                        Click="EditMainBackground_Click"/>
+
+                                <!-- Title Bar Background -->
+                                <TextBlock Grid.Row="1" Grid.Column="0" Text="Title Bar Background:" 
+                                           Margin="5" VerticalAlignment="Center"
+                                           Foreground="{DynamicResource TextForeground}"/>
+                                <Border Grid.Row="1" Grid.Column="1" 
+                                        Background="{Binding CurrentTheme.WindowTheme.TitleBarBackground}" 
+                                        Height="25" Margin="5" BorderBrush="{DynamicResource GroupBoxBorder}" BorderThickness="1"/>
+                                <Button Grid.Row="1" Grid.Column="2" Content="Change..." 
+                                        Style="{DynamicResource CustomButton}" Width="80" Height="25" Margin="5"
+                                        Click="EditTitleBarBackground_Click"/>
+
+                                <!-- Text Foreground -->
+                                <TextBlock Grid.Row="2" Grid.Column="0" Text="Text Foreground:" 
+                                           Margin="5" VerticalAlignment="Center"
+                                           Foreground="{DynamicResource TextForeground}"/>
+                                <Border Grid.Row="2" Grid.Column="1" 
+                                        Background="{Binding CurrentTheme.WindowTheme.TextForeground}" 
+                                        Height="25" Margin="5" BorderBrush="{DynamicResource GroupBoxBorder}" BorderThickness="1"/>
+                                <Button Grid.Row="2" Grid.Column="2" Content="Change..." 
+                                        Style="{DynamicResource CustomButton}" Width="80" Height="25" Margin="5"
+                                        Click="EditTextForeground_Click"/>
+
+                                <!-- Label Foreground -->
+                                <TextBlock Grid.Row="3" Grid.Column="0" Text="Label Foreground:" 
+                                           Margin="5" VerticalAlignment="Center"
+                                           Foreground="{DynamicResource TextForeground}"/>
+                                <Border Grid.Row="3" Grid.Column="1" 
+                                        Background="{Binding CurrentTheme.WindowTheme.LabelForeground}" 
+                                        Height="25" Margin="5" BorderBrush="{DynamicResource GroupBoxBorder}" BorderThickness="1"/>
+                                <Button Grid.Row="3" Grid.Column="2" Content="Change..." 
+                                        Style="{DynamicResource CustomButton}" Width="80" Height="25" Margin="5"
+                                        Click="EditLabelForeground_Click"/>
+
+                                <!-- GroupBox Border -->
+                                <TextBlock Grid.Row="4" Grid.Column="0" Text="GroupBox Border:" 
+                                           Margin="5" VerticalAlignment="Center"
+                                           Foreground="{DynamicResource TextForeground}"/>
+                                <Border Grid.Row="4" Grid.Column="1" 
+                                        Background="{Binding CurrentTheme.WindowTheme.GroupBoxBorder}" 
+                                        Height="25" Margin="5" BorderBrush="{DynamicResource GroupBoxBorder}" BorderThickness="1"/>
+                                <Button Grid.Row="4" Grid.Column="2" Content="Change..." 
+                                        Style="{DynamicResource CustomButton}" Width="80" Height="25" Margin="5"
+                                        Click="EditGroupBoxBorder_Click"/>
+                            </Grid>
+                        </GroupBox>
+
+                        <GroupBox Header="Button Colors" Style="{DynamicResource CustomGroupBox}" Margin="5,10">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+
+                                <!-- Button Background -->
+                                <TextBlock Grid.Row="0" Grid.Column="0" Text="Button Background:" 
+                                           Margin="5" VerticalAlignment="Center"
+                                           Foreground="{DynamicResource TextForeground}"/>
+                                <Border Grid.Row="0" Grid.Column="1" 
+                                        Background="{Binding CurrentTheme.WindowTheme.ButtonBackground}" 
+                                        Height="25" Margin="5" BorderBrush="{DynamicResource GroupBoxBorder}" BorderThickness="1"/>
+                                <Button Grid.Row="0" Grid.Column="2" Content="Change..." 
+                                        Style="{DynamicResource CustomButton}" Width="80" Height="25" Margin="5"
+                                        Click="EditButtonBackground_Click"/>
+
+                                <!-- Button Hover Background -->
+                                <TextBlock Grid.Row="1" Grid.Column="0" Text="Button Hover:" 
+                                           Margin="5" VerticalAlignment="Center"
+                                           Foreground="{DynamicResource TextForeground}"/>
+                                <Border Grid.Row="1" Grid.Column="1" 
+                                        Background="{Binding CurrentTheme.WindowTheme.ButtonHoverBackground}" 
+                                        Height="25" Margin="5" BorderBrush="#555" BorderThickness="1"/>
+                                <Button Grid.Row="1" Grid.Column="2" Content="Change..." 
+                                        Style="{DynamicResource CustomButton}" Width="80" Height="25" Margin="5"
+                                        Click="EditButtonHoverBackground_Click"/>
+
+                                <!-- Button Pressed Background -->
+                                <TextBlock Grid.Row="2" Grid.Column="0" Text="Button Pressed:" 
+                                           Margin="5" VerticalAlignment="Center"
+                                           Foreground="{DynamicResource TextForeground}"/>
+                                <Border Grid.Row="2" Grid.Column="1" 
+                                        Background="{Binding CurrentTheme.WindowTheme.ButtonPressedBackground}" 
+                                        Height="25" Margin="5" BorderBrush="#555" BorderThickness="1"/>
+                                <Button Grid.Row="2" Grid.Column="2" Content="Change..." 
+                                        Style="{DynamicResource CustomButton}" Width="80" Height="25" Margin="5"
+                                        Click="EditButtonPressedBackground_Click"/>
+
+                                <!-- Button Foreground -->
+                                <TextBlock Grid.Row="3" Grid.Column="0" Text="Button Foreground:" 
+                                           Margin="5" VerticalAlignment="Center"
+                                           Foreground="{DynamicResource TextForeground}"/>
+                                <Border Grid.Row="3" Grid.Column="1" 
+                                        Background="{Binding CurrentTheme.WindowTheme.ButtonForeground}" 
+                                        Height="25" Margin="5" BorderBrush="#555" BorderThickness="1"/>
+                                <Button Grid.Row="3" Grid.Column="2" Content="Change..." 
+                                        Style="{DynamicResource CustomButton}" Width="80" Height="25" Margin="5"
+                                        Click="EditButtonForeground_Click"/>
+                            </Grid>
+                        </GroupBox>
+                    </StackPanel>
+                </ScrollViewer>
+            </TabItem>
+
+            <!-- Message Box Theme Tab -->
+            <TabItem Header="Message Box Theme">
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <StackPanel>
+                        <GroupBox Header="Main Colors" Style="{DynamicResource CustomGroupBox}" Margin="5,10">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+
+                                <!-- Window Background -->
+                                <TextBlock Grid.Row="0" Grid.Column="0" Text="Window Background:" 
+                                           Margin="5" VerticalAlignment="Center"
+                                           Foreground="{DynamicResource TextForeground}"/>
+                                <Border Grid.Row="0" Grid.Column="1" 
+                                        Background="{Binding CurrentTheme.MessageBoxTheme.WindowBackground}" 
+                                        Height="25" Margin="5" BorderBrush="#555" BorderThickness="1"/>
+                                <Button Grid.Row="0" Grid.Column="2" Content="Change..." 
+                                        Style="{DynamicResource CustomButton}" Width="80" Height="25" Margin="5"
+                                        Click="EditMsgBoxWindowBackground_Click"/>
+
+                                <!-- Title Background -->
+                                <TextBlock Grid.Row="1" Grid.Column="0" Text="Title Background:" 
+                                           Margin="5" VerticalAlignment="Center"
+                                           Foreground="{DynamicResource TextForeground}"/>
+                                <Border Grid.Row="1" Grid.Column="1" 
+                                        Background="{Binding CurrentTheme.MessageBoxTheme.TitleBackground}" 
+                                        Height="25" Margin="5" BorderBrush="#555" BorderThickness="1"/>
+                                <Button Grid.Row="1" Grid.Column="2" Content="Change..." 
+                                        Style="{DynamicResource CustomButton}" Width="80" Height="25" Margin="5"
+                                        Click="EditMsgBoxTitleBackground_Click"/>
+
+                                <!-- Border Brush -->
+                                <TextBlock Grid.Row="2" Grid.Column="0" Text="Border Brush:" 
+                                           Margin="5" VerticalAlignment="Center"
+                                           Foreground="{DynamicResource TextForeground}"/>
+                                <Border Grid.Row="2" Grid.Column="1" 
+                                        Background="{Binding CurrentTheme.MessageBoxTheme.BorderBrush}" 
+                                        Height="25" Margin="5" BorderBrush="#555" BorderThickness="1"/>
+                                <Button Grid.Row="2" Grid.Column="2" Content="Change..." 
+                                        Style="{DynamicResource CustomButton}" Width="80" Height="25" Margin="5"
+                                        Click="EditMsgBoxBorderBrush_Click"/>
+                            </Grid>
+                        </GroupBox>
+
+                        <GroupBox Header="Button Colors" Style="{DynamicResource CustomGroupBox}" Margin="5,10">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+
+                                <!-- Button Background -->
+                                <TextBlock Grid.Row="0" Grid.Column="0" Text="Button Background:" 
+                                           Margin="5" VerticalAlignment="Center"
+                                           Foreground="{DynamicResource TextForeground}"/>
+                                <Border Grid.Row="0" Grid.Column="1" 
+                                        Background="{Binding CurrentTheme.MessageBoxTheme.ButtonBackground}" 
+                                        Height="25" Margin="5" BorderBrush="#555" BorderThickness="1"/>
+                                <Button Grid.Row="0" Grid.Column="2" Content="Change..." 
+                                        Style="{DynamicResource CustomButton}" Width="80" Height="25" Margin="5"
+                                        Click="EditMsgBoxButtonBackground_Click"/>
+
+                                <!-- Button Hover Background -->
+                                <TextBlock Grid.Row="1" Grid.Column="0" Text="Button Hover:" 
+                                           Margin="5" VerticalAlignment="Center"
+                                           Foreground="{DynamicResource TextForeground}"/>
+                                <Border Grid.Row="1" Grid.Column="1" 
+                                        Background="{Binding CurrentTheme.MessageBoxTheme.ButtonHoverBackground}" 
+                                        Height="25" Margin="5" BorderBrush="#555" BorderThickness="1"/>
+                                <Button Grid.Row="1" Grid.Column="2" Content="Change..." 
+                                        Style="{DynamicResource CustomButton}" Width="80" Height="25" Margin="5"
+                                        Click="EditMsgBoxButtonHoverBackground_Click"/>
+
+                                <!-- Button Pressed Background -->
+                                <TextBlock Grid.Row="2" Grid.Column="0" Text="Button Pressed:" 
+                                           Margin="5" VerticalAlignment="Center"
+                                           Foreground="{DynamicResource TextForeground}"/>
+                                <Border Grid.Row="2" Grid.Column="1" 
+                                        Background="{Binding CurrentTheme.MessageBoxTheme.ButtonPressedBackground}" 
+                                        Height="25" Margin="5" BorderBrush="#555" BorderThickness="1"/>
+                                <Button Grid.Row="2" Grid.Column="2" Content="Change..." 
+                                        Style="{DynamicResource CustomButton}" Width="80" Height="25" Margin="5"
+                                        Click="EditMsgBoxButtonPressedBackground_Click"/>
+
+                                <!-- Button Foreground -->
+                                <TextBlock Grid.Row="4" Grid.Column="0" Text="Button Foreground:" 
+                                           Margin="5" VerticalAlignment="Center"
+                                           Foreground="{DynamicResource TextForeground}"/>
+                                <Border Grid.Row="4" Grid.Column="1" 
+                                        Background="{Binding CurrentTheme.MessageBoxTheme.ButtonForeground}" 
+                                        Height="25" Margin="5" BorderBrush="#555" BorderThickness="1"/>
+                                <Button Grid.Row="4" Grid.Column="2" Content="Change..." 
+                                        Style="{DynamicResource CustomButton}" Width="80" Height="25" Margin="5"
+                                        Click="EditMsgBoxButtonForeground_Click"/>
+                            </Grid>
+                        </GroupBox>
+                    </StackPanel>
+                </ScrollViewer>
+            </TabItem>
+        </TabControl>
+
+        <!-- Footer Buttons -->
+        <Grid Grid.Row="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Grid.Column="0" Orientation="Horizontal">
+                <Button x:Name="ExportThemeButton" 
+                        Content="Export Theme..." 
+                        Style="{DynamicResource CustomButton}" 
+                        Width="120" Height="30" Margin="0,0,10,0"
+                        Click="ExportThemeButton_Click"/>
+
+                <Button x:Name="ImportThemeButton" 
+                        Content="Import Theme..." 
+                        Style="{DynamicResource CustomButton}" 
+                        Width="120" Height="30"
+                        Click="ImportThemeButton_Click"/>
+            </StackPanel>
+
+            <StackPanel Grid.Column="1" Orientation="Horizontal">
+                <Button x:Name="ApplyThemeButton" 
+                        Content="Apply Theme" 
+                        Style="{DynamicResource CustomButton}" 
+                        Width="100" Height="30" Margin="0,0,10,0"
+                        Click="ApplyThemeButton_Click"/>
+
+                <Button x:Name="CloseButton" 
+                        Content="Close" 
+                        Style="{DynamicResource CustomButton}" 
+                        Width="100" Height="30"
+                        Click="CloseButton_Click"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>
