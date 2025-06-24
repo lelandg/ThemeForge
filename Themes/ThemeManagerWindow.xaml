@@ -5,7 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d"
         Title="Theme Manager" 
         Height="750" Width="1100"
-        WindowStartupLocation="CenterOwner"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        ResizeMode="CanResizeWithGrip"
         Background="{DynamicResource MainBackground}">
     <Window.Resources>
         <!-- Placeholder resources so dynamic bindings attach to this window -->
@@ -13,6 +15,7 @@
         <SolidColorBrush x:Key="TitleBarBackground" Color="Transparent"/>
         <SolidColorBrush x:Key="TextForeground" Color="Black"/>
         <SolidColorBrush x:Key="LabelForeground" Color="Black"/>
+        <SolidColorBrush x:Key="MenuForeground" Color="White"/>
         <SolidColorBrush x:Key="GroupBoxBorder" Color="Transparent"/>
         <SolidColorBrush x:Key="ButtonBackground" Color="Transparent"/>
         <SolidColorBrush x:Key="ButtonHoverBackground" Color="Transparent"/>
@@ -26,20 +29,47 @@
         <SolidColorBrush x:Key="MsgBoxButtonPressedBackground" Color="Transparent"/>
         <SolidColorBrush x:Key="MsgBoxButtonForeground" Color="Black"/>
     </Window.Resources>
-    <Grid Margin="20">
+            <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="32"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
+        <!-- Custom Title Bar -->
+        <Grid Grid.Row="0" Background="{DynamicResource TitleBarBackground}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Text="Theme Manager" VerticalAlignment="Center" Margin="15,0,0,0"
+                       Foreground="{DynamicResource MenuForeground}" FontWeight="SemiBold"/>
+
+            <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button x:Name="MinimizeButton" Content="_" Width="45" Height="32" BorderThickness="0"
+                        Background="Transparent" Foreground="{DynamicResource MenuForeground}"
+                        Click="MinimizeButton_Click"/>
+                <Button x:Name="MaximizeButton" Content="□" Width="45" Height="32" BorderThickness="0"
+                        Background="Transparent" Foreground="{DynamicResource MenuForeground}"
+                        Click="MaximizeButton_Click"/>
+                <Button x:Name="CloseWindowButton" Content="✕" Width="45" Height="32" BorderThickness="0"
+                        Background="Transparent" Foreground="{DynamicResource MenuForeground}"
+                        Click="CloseWindowButton_Click"/>
+            </StackPanel>
+        </Grid>
+
+        <!-- Main Content -->
+        <Grid Grid.Row="1" Margin="20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
         <!-- Header -->
-        <StackPanel Grid.Row="0" Margin="0,0,0,10">
-            <TextBlock Text="Theme Manager" FontSize="20" FontWeight="Bold" Margin="0,0,0,10" Foreground="{DynamicResource LabelForeground}"/>
-            <TextBlock Text="Select a theme from the list or create your own custom theme" 
-                       TextWrapping="Wrap" Margin="0,0,0,5" Foreground="{DynamicResource TextForeground}"/>
-        </StackPanel>
+        <TextBlock Grid.Row="0" Text="Select a theme from the list or create your own custom theme" 
+                   TextWrapping="Wrap" Margin="0,0,0,10" Foreground="{DynamicResource TextForeground}"/>
 
         <!-- Theme Selection -->
         <Grid Grid.Row="1" Margin="0,0,0,10">
@@ -518,4 +548,5 @@
             </StackPanel>
         </Grid>
     </Grid>
+        </Grid>
 </Window>

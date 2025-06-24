@@ -7,8 +7,10 @@
         mc:Ignorable="d"
         Title="Theme Demo" Height="500" Width="800"
         Background="{DynamicResource MainBackground}"
-        WindowStyle="None" ResizeMode="CanResize"
-        BorderBrush="{DynamicResource TitleBarBackground}" BorderThickness="1">
+        WindowStyle="None"
+        AllowsTransparency="True"
+        ResizeMode="CanResizeWithGrip"
+        BorderBrush="{DynamicResource TitleBarBackground}" BorderThickness="0">
     <Grid>
     <!-- Custom Title Bar -->
         <Grid.RowDefinitions>

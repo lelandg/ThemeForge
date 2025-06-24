@@ -19,6 +19,13 @@ namespace ThemeForge.Themes
             DataContext = ThemeManager.Current;
             PreviewKeyDown += Window_PreviewKeyDown;
 
+            // Enable window dragging by clicking on the title bar
+            this.MouseLeftButtonDown += (s, e) =>
+            {
+                if (e.ChangedButton == System.Windows.Input.MouseButton.Left)
+                    this.DragMove();
+            };
+
             // Create a working copy of the current theme
             _workingTheme = ThemeManager.Current.CurrentTheme;
 
@@ -205,6 +212,7 @@ namespace ThemeForge.Themes
             Resources["TitleBarBackground"] = _workingTheme.WindowTheme.TitleBarBackground;
             Resources["TextForeground"] = _workingTheme.WindowTheme.TextForeground;
             Resources["LabelForeground"] = _workingTheme.WindowTheme.LabelForeground;
+            Resources["MenuForeground"] = _workingTheme.WindowTheme.LabelForeground; // Use label foreground for menu text
             Resources["GroupBoxBorder"] = _workingTheme.WindowTheme.GroupBoxBorder;
             Resources["ButtonBackground"] = _workingTheme.WindowTheme.ButtonBackground;
             Resources["ButtonHoverBackground"] = _workingTheme.WindowTheme.ButtonHoverBackground;
@@ -325,6 +333,24 @@ namespace ThemeForge.Themes
             {
                 Close();
             }
+        }
+
+        private void MinimizeButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.WindowState = WindowState.Minimized;
+        }
+
+        private void MaximizeButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (this.WindowState == WindowState.Maximized)
+                this.WindowState = WindowState.Normal;
+            else
+                this.WindowState = WindowState.Maximized;
+        }
+
+        private void CloseWindowButton_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
         }
     }
 }
