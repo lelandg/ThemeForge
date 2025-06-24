@@ -647,13 +647,35 @@ public class ThemeManager : INotifyPropertyChanged
         comboBoxItemStyle.Setters.Add(new Setter(Control.BackgroundProperty, Application.Current.Resources["ComboBoxItemBackground"]));
         comboBoxItemStyle.Setters.Add(new Setter(Control.ForegroundProperty, Application.Current.Resources["TextForeground"]));
 
+        var template = new ControlTemplate(typeof(ComboBoxItem));
+        var borderFactory = new FrameworkElementFactory(typeof(Border));
+        borderFactory.Name = "Bd";
+        borderFactory.SetBinding(Border.BackgroundProperty, new System.Windows.Data.Binding("Background")
+        {
+            RelativeSource = new System.Windows.Data.RelativeSource(System.Windows.Data.RelativeSourceMode.TemplatedParent)
+        });
+        borderFactory.SetValue(Border.PaddingProperty, new Thickness(2));
+        borderFactory.SetValue(Border.SnapsToDevicePixelsProperty, true);
+
+        var contentPresenterFactory = new FrameworkElementFactory(typeof(ContentPresenter));
+        borderFactory.AppendChild(contentPresenterFactory);
+
+        template.VisualTree = borderFactory;
+
         var itemMouseOver = new Trigger { Property = ComboBoxItem.IsMouseOverProperty, Value = true };
-        itemMouseOver.Setters.Add(new Setter(Control.BackgroundProperty, Application.Current.Resources["ComboBoxItemHoverBackground"]));
-        comboBoxItemStyle.Triggers.Add(itemMouseOver);
+        var itemMouseOverSetter = new Setter(Border.BackgroundProperty, Application.Current.Resources["ComboBoxItemHoverBackground"]);
+        itemMouseOverSetter.TargetName = "Bd";
+        itemMouseOver.Setters.Add(itemMouseOverSetter);
+        template.Triggers.Add(itemMouseOver);
 
         var itemSelected = new Trigger { Property = ComboBoxItem.IsSelectedProperty, Value = true };
-        itemSelected.Setters.Add(new Setter(Control.BackgroundProperty, Application.Current.Resources["ComboBoxItemSelectedBackground"]));
-        comboBoxItemStyle.Triggers.Add(itemSelected);
+        var itemSelectedSetter = new Setter(Border.BackgroundProperty, Application.Current.Resources["ComboBoxItemSelectedBackground"]);
+        itemSelectedSetter.TargetName = "Bd";
+        itemSelected.Setters.Add(itemSelectedSetter);
+        template.Triggers.Add(itemSelected);
+
+
+        comboBoxItemStyle.Setters.Add(new Setter(Control.TemplateProperty, template));
 
         Application.Current.Resources["CustomComboBoxItem"] = comboBoxItemStyle;
     }
