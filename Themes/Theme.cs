@@ -56,6 +56,7 @@ namespace ThemeForge.Themes
                     ButtonForeground = ((SolidColorBrush)WindowTheme.ButtonForeground).Color.ToString(),
                     PanelBackground = ((SolidColorBrush)WindowTheme.PanelBackground).Color.ToString(),
                     ControlBackground = ((SolidColorBrush)WindowTheme.ControlBackground).Color.ToString(),
+                    ComboBoxBackground = ((SolidColorBrush)WindowTheme.ComboBoxBackground).Color.ToString(),
                     ControlBorderBrush = ((SolidColorBrush)WindowTheme.ControlBorderBrush).Color.ToString(),
                     ControlHoverBackground = ((SolidColorBrush)WindowTheme.ControlHoverBackground).Color.ToString(),
                     TextForeground = ((SolidColorBrush)WindowTheme.TextForeground).Color.ToString(),
@@ -119,6 +120,7 @@ namespace ThemeForge.Themes
                     ButtonForeground = new SolidColorBrush((Color)ColorConverter.ConvertFromString(data.WindowTheme.ButtonForeground)),
                     PanelBackground = new SolidColorBrush((Color)ColorConverter.ConvertFromString(data.WindowTheme.PanelBackground)),
                     ControlBackground = new SolidColorBrush((Color)ColorConverter.ConvertFromString(data.WindowTheme.ControlBackground)),
+                    ComboBoxBackground = new SolidColorBrush((Color)ColorConverter.ConvertFromString(data.WindowTheme.ComboBoxBackground)),
                     ControlBorderBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString(data.WindowTheme.ControlBorderBrush)),
                     ControlHoverBackground = new SolidColorBrush((Color)ColorConverter.ConvertFromString(data.WindowTheme.ControlHoverBackground)),
                     TextForeground = new SolidColorBrush((Color)ColorConverter.ConvertFromString(data.WindowTheme.TextForeground)),
@@ -198,6 +200,9 @@ namespace ThemeForge.Themes
 
         /// <summary>Background color for controls</summary>
         public Brush ControlBackground { get; set; } = new SolidColorBrush(Color.FromRgb(0xF0, 0xF5, 0xFF));
+
+        /// <summary>Background color for combo boxes</summary>
+        public Brush ComboBoxBackground { get; set; } = new SolidColorBrush(Color.FromRgb(0xF0, 0xF5, 0xFF));
 
         /// <summary>Border color for controls</summary>
         public Brush ControlBorderBrush { get; set; } = new SolidColorBrush(Color.FromRgb(0xB0, 0xC4, 0xDE));

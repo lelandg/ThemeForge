@@ -175,6 +175,16 @@
                                 </Border>
                             </Grid>
                         </GroupBox>
+
+                        <GroupBox Header="Data Grid" Style="{StaticResource CustomGroupBox}" Margin="0,10,0,0">
+                            <DataGrid x:Name="SampleDataGrid"
+                                      ItemsSource="{Binding SampleData}"
+                                      AutoGenerateColumns="True"
+                                      Height="150"
+                                      Background="{DynamicResource ControlBackground}"
+                                      Foreground="{DynamicResource TextForeground}"
+                                      BorderBrush="{DynamicResource ControlBorderBrush}" />
+                        </GroupBox>
                     </StackPanel>
                 </ScrollViewer>
             </GroupBox>
