@@ -10,36 +10,60 @@
         ResizeMode="CanResizeWithGrip"
         Background="{DynamicResource MainBackground}">
     <Window.Resources>
-        <!-- Placeholder resources so dynamic bindings attach to this window -->
-        <SolidColorBrush x:Key="MainBackground" Color="Transparent"/>
-        <SolidColorBrush x:Key="TitleBarBackground" Color="Transparent"/>
-        <SolidColorBrush x:Key="TextForeground" Color="Black"/>
-        <SolidColorBrush x:Key="LabelForeground" Color="Black"/>
-        <SolidColorBrush x:Key="MenuBackground" Color="Transparent"/>
+        <!-- Default theme colors for design-time preview -->
+        <SolidColorBrush x:Key="MainBackground" Color="#F0F5FA"/>
+        <SolidColorBrush x:Key="TitleBarBackground" Color="#3E85C6"/>
+        <SolidColorBrush x:Key="TextForeground" Color="#333333"/>
+        <SolidColorBrush x:Key="LabelForeground" Color="#1E5A9C"/>
+        <SolidColorBrush x:Key="MenuBackground" Color="#3E85C6"/>
         <SolidColorBrush x:Key="MenuForeground" Color="White"/>
-        <SolidColorBrush x:Key="MainAccent" Color="Transparent"/>
-        <SolidColorBrush x:Key="AlternateTextForeground" Color="Black"/>
-        <SolidColorBrush x:Key="SplitterBackground" Color="Transparent"/>
-        <SolidColorBrush x:Key="GroupBoxBorder" Color="Transparent"/>
-        <SolidColorBrush x:Key="PanelBackground" Color="Transparent"/>
-        <SolidColorBrush x:Key="ControlBackground" Color="Transparent"/>
-        <SolidColorBrush x:Key="ControlBorderBrush" Color="Transparent"/>
-        <SolidColorBrush x:Key="ControlHoverBackground" Color="Transparent"/>
-        <SolidColorBrush x:Key="ButtonBackground" Color="Transparent"/>
-        <SolidColorBrush x:Key="ButtonHoverBackground" Color="Transparent"/>
-        <SolidColorBrush x:Key="ButtonPressedBackground" Color="Transparent"/>
-        <SolidColorBrush x:Key="ButtonForeground" Color="Black"/>
-        <SolidColorBrush x:Key="MsgBoxWindowBackground" Color="Transparent"/>
-        <SolidColorBrush x:Key="MsgBoxTitleBackground" Color="Transparent"/>
-        <SolidColorBrush x:Key="MsgBoxTitleForeground" Color="Black"/>
-        <SolidColorBrush x:Key="MsgBoxBorderBrush" Color="Transparent"/>
-        <SolidColorBrush x:Key="MsgBoxButtonBackground" Color="Transparent"/>
-        <SolidColorBrush x:Key="MsgBoxButtonHoverBackground" Color="Transparent"/>
-        <SolidColorBrush x:Key="MsgBoxButtonPressedBackground" Color="Transparent"/>
-        <SolidColorBrush x:Key="MsgBoxButtonForeground" Color="Black"/>
-        <SolidColorBrush x:Key="MsgBoxButtonDisabledBackground" Color="Transparent"/>
-        <SolidColorBrush x:Key="MsgBoxButtonDisabledForeground" Color="Black"/>
-        <SolidColorBrush x:Key="MsgBoxButtonOutline" Color="Transparent"/>
+        <SolidColorBrush x:Key="MainAccent" Color="#3E85C6"/>
+        <SolidColorBrush x:Key="AlternateTextForeground" Color="#333333"/>
+        <SolidColorBrush x:Key="SplitterBackground" Color="#3E85C6"/>
+        <SolidColorBrush x:Key="GroupBoxBorder" Color="#B0C4DE"/>
+
+        <!-- Style for color editor rows to ensure consistent sizing -->
+        <Style x:Key="ColorEditorRowStyle" TargetType="Grid">
+            <Setter Property="Margin" Value="5,2" />
+            <Setter Property="HorizontalAlignment" Value="Stretch" />
+        </Style>
+        <Style x:Key="ColorLabelStyle" TargetType="TextBlock">
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="HorizontalAlignment" Value="Right" />
+            <Setter Property="Margin" Value="0,0,5,0" />
+            <Setter Property="Foreground" Value="{DynamicResource TextForeground}" />
+        </Style>
+        <Style x:Key="ColorSwatchStyle" TargetType="Border">
+            <Setter Property="Height" Value="30" />
+            <Setter Property="Margin" Value="5,0" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="BorderBrush" Value="{DynamicResource GroupBoxBorder}" />
+        </Style>
+        <Style x:Key="ColorChangeButtonStyle" TargetType="Button" BasedOn="{StaticResource CustomButton}">
+            <Setter Property="Width" Value="Auto" />
+            <Setter Property="MinWidth" Value="80" />
+            <Setter Property="Height" Value="30" />
+            <Setter Property="Padding" Value="10,0" />
+        </Style>
+        <SolidColorBrush x:Key="PanelBackground" Color="#00FFFFFF"/>
+        <SolidColorBrush x:Key="ControlBackground" Color="#F0F5FF"/>
+        <SolidColorBrush x:Key="ControlBorderBrush" Color="#B0C4DE"/>
+        <SolidColorBrush x:Key="ControlHoverBackground" Color="#E0E5EF"/>
+        <SolidColorBrush x:Key="ButtonBackground" Color="#3E85C6"/>
+        <SolidColorBrush x:Key="ButtonHoverBackground" Color="#5E95D6"/>
+        <SolidColorBrush x:Key="ButtonPressedBackground" Color="#2E75B6"/>
+        <SolidColorBrush x:Key="ButtonForeground" Color="White"/>
+        <SolidColorBrush x:Key="MsgBoxWindowBackground" Color="#F0F5FA"/>
+        <SolidColorBrush x:Key="MsgBoxTitleBackground" Color="#3E85C6"/>
+        <SolidColorBrush x:Key="MsgBoxTitleForeground" Color="White"/>
+        <SolidColorBrush x:Key="MsgBoxBorderBrush" Color="#3E85C6"/>
+        <SolidColorBrush x:Key="MsgBoxButtonBackground" Color="#3E85C6"/>
+        <SolidColorBrush x:Key="MsgBoxButtonHoverBackground" Color="#5E95D6"/>
+        <SolidColorBrush x:Key="MsgBoxButtonPressedBackground" Color="#2E75B6"/>
+        <SolidColorBrush x:Key="MsgBoxButtonForeground" Color="White"/>
+        <SolidColorBrush x:Key="MsgBoxButtonDisabledBackground" Color="#DDDDDD"/>
+        <SolidColorBrush x:Key="MsgBoxButtonDisabledForeground" Color="#999999"/>
+        <SolidColorBrush x:Key="MsgBoxButtonOutline" Color="#B0C4DE"/>
     </Window.Resources>
             <Grid>
         <Grid.RowDefinitions>
@@ -285,78 +309,78 @@
                                 <!-- Left Column -->
                                 <Grid Grid.Column="0" Grid.Row="0" Margin="5">
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="150"/>
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="Auto"/>
                                     </Grid.ColumnDefinitions>
 
                                     <TextBlock Grid.Column="0" Text="Main Background:" VerticalAlignment="Center"
-                                            Foreground="{DynamicResource TextForeground}"/>
+                                            Foreground="{DynamicResource TextForeground}" HorizontalAlignment="Right" Margin="0,0,5,0"/>
                                     <Border Grid.Column="1" Background="{Binding CurrentTheme.WindowTheme.MainBackground}" 
-                                            Height="25" Margin="5,0" BorderBrush="{DynamicResource GroupBoxBorder}" BorderThickness="1"/>
+                                            Height="30" Margin="5,0" BorderBrush="{DynamicResource GroupBoxBorder}" BorderThickness="1"/>
                                     <Button Grid.Column="2" Content="Change..." Style="{DynamicResource CustomButton}" 
-                                            Width="60" Height="25" Click="EditMainBackground_Click"/>
+                                            Width="Auto" MinWidth="80" Height="30" Padding="10,0" Click="EditMainBackground_Click"/>
                                 </Grid>
 
                                 <Grid Grid.Column="0" Grid.Row="1" Margin="5">
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="150"/>
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="Auto"/>
                                     </Grid.ColumnDefinitions>
 
                                     <TextBlock Grid.Column="0" Text="Text Foreground:" VerticalAlignment="Center"
-                                            Foreground="{DynamicResource TextForeground}"/>
+                                            Foreground="{DynamicResource TextForeground}" HorizontalAlignment="Right" Margin="0,0,5,0"/>
                                     <Border Grid.Column="1" Background="{Binding CurrentTheme.WindowTheme.TextForeground}" 
-                                            Height="25" Margin="5,0" BorderBrush="{DynamicResource GroupBoxBorder}" BorderThickness="1"/>
+                                            Height="30" Margin="5,0" BorderBrush="{DynamicResource GroupBoxBorder}" BorderThickness="1"/>
                                     <Button Grid.Column="2" Content="Change..." Style="{DynamicResource CustomButton}" 
-                                            Width="60" Height="25" Click="EditTextForeground_Click"/>
+                                            Width="Auto" MinWidth="80" Height="30" Padding="10,0" Click="EditTextForeground_Click"/>
                                 </Grid>
 
                                 <Grid Grid.Column="0" Grid.Row="2" Margin="5">
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="150"/>
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="Auto"/>
                                     </Grid.ColumnDefinitions>
 
                                     <TextBlock Grid.Column="0" Text="GroupBox Border:" VerticalAlignment="Center"
-                                            Foreground="{DynamicResource TextForeground}"/>
+                                            Foreground="{DynamicResource TextForeground}" HorizontalAlignment="Right" Margin="0,0,5,0"/>
                                     <Border Grid.Column="1" Background="{Binding CurrentTheme.WindowTheme.GroupBoxBorder}" 
-                                            Height="25" Margin="5,0" BorderBrush="{DynamicResource GroupBoxBorder}" BorderThickness="1"/>
+                                            Height="30" Margin="5,0" BorderBrush="{DynamicResource GroupBoxBorder}" BorderThickness="1"/>
                                     <Button Grid.Column="2" Content="Change..." Style="{DynamicResource CustomButton}" 
-                                            Width="60" Height="25" Click="EditGroupBoxBorder_Click"/>
+                                            Width="Auto" MinWidth="80" Height="30" Padding="10,0" Click="EditGroupBoxBorder_Click"/>
                                 </Grid>
 
                                 <!-- Right Column -->
                                 <Grid Grid.Column="1" Grid.Row="0" Margin="5">
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="150"/>
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="Auto"/>
                                     </Grid.ColumnDefinitions>
 
                                     <TextBlock Grid.Column="0" Text="Title Bar Background:" VerticalAlignment="Center"
-                                            Foreground="{DynamicResource TextForeground}"/>
+                                            Foreground="{DynamicResource TextForeground}" HorizontalAlignment="Right" Margin="0,0,5,0"/>
                                     <Border Grid.Column="1" Background="{Binding CurrentTheme.WindowTheme.TitleBarBackground}" 
-                                            Height="25" Margin="5,0" BorderBrush="{DynamicResource GroupBoxBorder}" BorderThickness="1"/>
+                                            Height="30" Margin="5,0" BorderBrush="{DynamicResource GroupBoxBorder}" BorderThickness="1"/>
                                     <Button Grid.Column="2" Content="Change..." Style="{DynamicResource CustomButton}" 
-                                            Width="60" Height="25" Click="EditTitleBarBackground_Click"/>
+                                            Width="Auto" MinWidth="80" Height="30" Padding="10,0" Click="EditTitleBarBackground_Click"/>
                                 </Grid>
 
                                 <Grid Grid.Column="1" Grid.Row="1" Margin="5">
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="150"/>
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="Auto"/>
                                     </Grid.ColumnDefinitions>
 
                                     <TextBlock Grid.Column="0" Text="Label Foreground:" VerticalAlignment="Center"
-                                            Foreground="{DynamicResource TextForeground}"/>
+                                            Foreground="{DynamicResource TextForeground}" HorizontalAlignment="Right" Margin="0,0,5,0"/>
                                     <Border Grid.Column="1" Background="{Binding CurrentTheme.WindowTheme.LabelForeground}" 
-                                            Height="25" Margin="5,0" BorderBrush="{DynamicResource GroupBoxBorder}" BorderThickness="1"/>
+                                            Height="30" Margin="5,0" BorderBrush="{DynamicResource GroupBoxBorder}" BorderThickness="1"/>
                                     <Button Grid.Column="2" Content="Change..." Style="{DynamicResource CustomButton}" 
-                                            Width="60" Height="25" Click="EditLabelForeground_Click"/>
+                                            Width="Auto" MinWidth="80" Height="30" Padding="10,0" Click="EditLabelForeground_Click"/>
                                 </Grid>
                             </Grid>
                         </GroupBox>
@@ -373,65 +397,61 @@
                                 </Grid.RowDefinitions>
 
                                 <!-- Left Column -->
-                                <Grid Grid.Column="0" Grid.Row="0" Margin="5">
+                                <Grid Grid.Column="0" Grid.Row="0" Style="{StaticResource ColorEditorRowStyle}">
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="150"/>
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="Auto"/>
                                     </Grid.ColumnDefinitions>
 
-                                    <TextBlock Grid.Column="0" Text="Button Background:" VerticalAlignment="Center"
-                                            Foreground="{DynamicResource TextForeground}"/>
+                                    <TextBlock Grid.Column="0" Text="Button Background:" Style="{StaticResource ColorLabelStyle}"/>
                                     <Border Grid.Column="1" Background="{Binding CurrentTheme.WindowTheme.ButtonBackground}" 
-                                            Height="25" Margin="5,0" BorderBrush="{DynamicResource GroupBoxBorder}" BorderThickness="1"/>
-                                    <Button Grid.Column="2" Content="Change..." Style="{DynamicResource CustomButton}" 
-                                            Width="60" Height="25" Click="EditButtonBackground_Click"/>
+                                            Style="{StaticResource ColorSwatchStyle}"/>
+                                    <Button Grid.Column="2" Content="Change..." Style="{StaticResource ColorChangeButtonStyle}" 
+                                            Click="EditButtonBackground_Click"/>
                                 </Grid>
 
-                                <Grid Grid.Column="0" Grid.Row="1" Margin="5">
+                                                                    <Grid Grid.Column="0" Grid.Row="1" Style="{StaticResource ColorEditorRowStyle}">
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="150"/>
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="Auto"/>
                                     </Grid.ColumnDefinitions>
 
-                                    <TextBlock Grid.Column="0" Text="Button Pressed:" VerticalAlignment="Center"
-                                            Foreground="{DynamicResource TextForeground}"/>
+                                    <TextBlock Grid.Column="0" Text="Button Pressed:" Style="{StaticResource ColorLabelStyle}"/>
                                     <Border Grid.Column="1" Background="{Binding CurrentTheme.WindowTheme.ButtonPressedBackground}" 
-                                            Height="25" Margin="5,0" BorderBrush="#555" BorderThickness="1"/>
-                                    <Button Grid.Column="2" Content="Change..." Style="{DynamicResource CustomButton}" 
-                                            Width="60" Height="25" Click="EditButtonPressedBackground_Click"/>
+                                            Style="{StaticResource ColorSwatchStyle}"/>
+                                    <Button Grid.Column="2" Content="Change..." Style="{StaticResource ColorChangeButtonStyle}" 
+                                            Click="EditButtonPressedBackground_Click"/>
                                 </Grid>
 
                                 <!-- Right Column -->
-                                <Grid Grid.Column="1" Grid.Row="0" Margin="5">
+                                                                    <Grid Grid.Column="1" Grid.Row="0" Style="{StaticResource ColorEditorRowStyle}">
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="150"/>
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="Auto"/>
                                     </Grid.ColumnDefinitions>
 
-                                    <TextBlock Grid.Column="0" Text="Button Hover:" VerticalAlignment="Center"
-                                            Foreground="{DynamicResource TextForeground}"/>
+                                    <TextBlock Grid.Column="0" Text="Button Hover:" Style="{StaticResource ColorLabelStyle}"/>
                                     <Border Grid.Column="1" Background="{Binding CurrentTheme.WindowTheme.ButtonHoverBackground}" 
-                                            Height="25" Margin="5,0" BorderBrush="#555" BorderThickness="1"/>
-                                    <Button Grid.Column="2" Content="Change..." Style="{DynamicResource CustomButton}" 
-                                            Width="60" Height="25" Click="EditButtonHoverBackground_Click"/>
+                                            Style="{StaticResource ColorSwatchStyle}"/>
+                                    <Button Grid.Column="2" Content="Change..." Style="{StaticResource ColorChangeButtonStyle}" 
+                                            Click="EditButtonHoverBackground_Click"/>
                                 </Grid>
 
-                                <Grid Grid.Column="1" Grid.Row="1" Margin="5">
+                                                                    <Grid Grid.Column="1" Grid.Row="1" Style="{StaticResource ColorEditorRowStyle}">
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="150"/>
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="Auto"/>
                                     </Grid.ColumnDefinitions>
 
-                                    <TextBlock Grid.Column="0" Text="Button Foreground:" VerticalAlignment="Center"
-                                            Foreground="{DynamicResource TextForeground}"/>
+                                    <TextBlock Grid.Column="0" Text="Button Foreground:" Style="{StaticResource ColorLabelStyle}"/>
                                     <Border Grid.Column="1" Background="{Binding CurrentTheme.WindowTheme.ButtonForeground}" 
-                                            Height="25" Margin="5,0" BorderBrush="#555" BorderThickness="1"/>
-                                    <Button Grid.Column="2" Content="Change..." Style="{DynamicResource CustomButton}" 
-                                            Width="60" Height="25" Click="EditButtonForeground_Click"/>
+                                            Style="{StaticResource ColorSwatchStyle}"/>
+                                    <Button Grid.Column="2" Content="Change..." Style="{StaticResource ColorChangeButtonStyle}" 
+                                            Click="EditButtonForeground_Click"/>
                                 </Grid>
                             </Grid>
                         </GroupBox>
@@ -451,15 +471,15 @@
                                 </Grid.RowDefinitions>
 
                                 <!-- Left Column -->
-                                <Grid Grid.Column="0" Grid.Row="0" Margin="5,2">
+                                <Grid Grid.Column="0" Grid.Row="0" Style="{StaticResource ColorEditorRowStyle}">
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="150"/>
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="Auto"/>
                                     </Grid.ColumnDefinitions>
-                                    <TextBlock Grid.Column="0" Text="Main Accent:" VerticalAlignment="Center" Foreground="{DynamicResource TextForeground}"/>
-                                    <Border Grid.Column="1" Background="{Binding CurrentTheme.WindowTheme.MainAccent}" Height="25" Margin="5,0" BorderBrush="{DynamicResource GroupBoxBorder}" BorderThickness="1"/>
-                                    <Button Grid.Column="2" Content="Change..." Style="{DynamicResource CustomButton}" Width="60" Height="25" Click="EditMainAccent_Click"/>
+                                    <TextBlock Grid.Column="0" Text="Main Accent:" Style="{StaticResource ColorLabelStyle}"/>
+                                    <Border Grid.Column="1" Background="{Binding CurrentTheme.WindowTheme.MainAccent}" Style="{StaticResource ColorSwatchStyle}"/>
+                                    <Button Grid.Column="2" Content="Change..." Style="{StaticResource ColorChangeButtonStyle}" Click="EditMainAccent_Click"/>
                                 </Grid>
 
                                 <Grid Grid.Column="0" Grid.Row="1" Margin="5,2">
@@ -572,19 +592,18 @@
                                 </Grid.RowDefinitions>
 
                                 <!-- Left Column -->
-                                <Grid Grid.Column="0" Grid.Row="0" Margin="5">
+                                <Grid Grid.Column="0" Grid.Row="0" Style="{StaticResource ColorEditorRowStyle}">
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="150"/>
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="Auto"/>
                                     </Grid.ColumnDefinitions>
 
-                                    <TextBlock Grid.Column="0" Text="Window Background:" VerticalAlignment="Center"
-                                             Foreground="{DynamicResource TextForeground}"/>
+                                    <TextBlock Grid.Column="0" Text="Window Background:" Style="{StaticResource ColorLabelStyle}"/>
                                     <Border Grid.Column="1" Background="{Binding CurrentTheme.MessageBoxTheme.WindowBackground}" 
-                                            Height="25" Margin="5,0" BorderBrush="#555" BorderThickness="1"/>
-                                    <Button Grid.Column="2" Content="Change..." Style="{DynamicResource CustomButton}" 
-                                            Width="60" Height="25" Click="EditMsgBoxWindowBackground_Click"/>
+                                            Style="{StaticResource ColorSwatchStyle}"/>
+                                    <Button Grid.Column="2" Content="Change..." Style="{StaticResource ColorChangeButtonStyle}" 
+                                            Click="EditMsgBoxWindowBackground_Click"/>
                                 </Grid>
 
                                 <Grid Grid.Column="0" Grid.Row="1" Margin="5">
