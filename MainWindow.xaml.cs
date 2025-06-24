@@ -1,3 +1,4 @@
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -7,6 +8,8 @@ namespace ThemeForge;
 
 public partial class MainWindow : Window
 {
+    public ObservableCollection<SampleItem> SampleData { get; } = new();
+
     public MainWindow()
     {
         InitializeComponent();
@@ -23,6 +26,11 @@ public partial class MainWindow : Window
         {
             // Initialize theme manager
             DataContext = ThemeManager.Current;
+
+            // Populate sample data
+            SampleData.Add(new SampleItem { Name = "Alpha", Value = 1, Description = "First item" });
+            SampleData.Add(new SampleItem { Name = "Beta", Value = 2, Description = "Second item" });
+            SampleData.Add(new SampleItem { Name = "Gamma", Value = 3, Description = "Third item" });
 
             // Add ESC key handler
             PreviewKeyDown += Window_PreviewKeyDown;
@@ -156,4 +164,11 @@ public partial class MainWindow : Window
             Close();
         }
     }
+}
+
+public class SampleItem
+{
+    public string? Name { get; set; }
+    public int Value { get; set; }
+    public string? Description { get; set; }
 }

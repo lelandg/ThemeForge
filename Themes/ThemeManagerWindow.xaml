@@ -47,6 +47,7 @@
         </Style>
         <SolidColorBrush x:Key="PanelBackground" Color="#00FFFFFF"/>
         <SolidColorBrush x:Key="ControlBackground" Color="#F0F5FF"/>
+        <SolidColorBrush x:Key="ComboBoxBackground" Color="#F0F5FF"/>
         <SolidColorBrush x:Key="ControlBorderBrush" Color="#B0C4DE"/>
         <SolidColorBrush x:Key="ControlHoverBackground" Color="#E0E5EF"/>
         <SolidColorBrush x:Key="ButtonBackground" Color="#3E85C6"/>

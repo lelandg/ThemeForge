@@ -147,6 +147,7 @@ public class ThemeManager : INotifyPropertyChanged
                 ButtonForeground = new SolidColorBrush(Colors.White),
                 PanelBackground = new SolidColorBrush(Colors.Transparent),
                 ControlBackground = new SolidColorBrush(Color.FromRgb(0xF0, 0xF5, 0xFF)),
+                ComboBoxBackground = new SolidColorBrush(Color.FromRgb(0xF0, 0xF5, 0xFF)),
                 ControlBorderBrush = new SolidColorBrush(Color.FromRgb(0xB0, 0xC4, 0xDE)),
                 ControlHoverBackground = new SolidColorBrush(Color.FromRgb(0xE0, 0xE5, 0xEF)),
                 TextForeground = new SolidColorBrush(Color.FromRgb(0x33, 0x33, 0x33)),
@@ -195,6 +196,7 @@ public class ThemeManager : INotifyPropertyChanged
                 ButtonForeground = new SolidColorBrush(Colors.White),
                 PanelBackground = new SolidColorBrush(Colors.Transparent),
                 ControlBackground = new SolidColorBrush(Color.FromRgb(0x20, 0x20, 0x38)),
+                ComboBoxBackground = new SolidColorBrush(Color.FromRgb(0x20, 0x20, 0x38)),
                 ControlBorderBrush = new SolidColorBrush(Color.FromRgb(0x55, 0x55, 0x77)),
                 ControlHoverBackground = new SolidColorBrush(Color.FromRgb(0x30, 0x30, 0x48)),
                 TextForeground = new SolidColorBrush(Color.FromRgb(0xE0, 0xE0, 0xE0)),
@@ -243,6 +245,7 @@ public class ThemeManager : INotifyPropertyChanged
                 ButtonForeground = new SolidColorBrush(Colors.White),
                 PanelBackground = new SolidColorBrush(Colors.Transparent),
                 ControlBackground = new SolidColorBrush(Color.FromRgb(0x33, 0x24, 0x44)),
+                ComboBoxBackground = new SolidColorBrush(Color.FromRgb(0x33, 0x24, 0x44)),
                 ControlBorderBrush = new SolidColorBrush(Color.FromRgb(0x55, 0x3A, 0x7A)),
                 ControlHoverBackground = new SolidColorBrush(Color.FromRgb(0x43, 0x34, 0x54)),
                 TextForeground = new SolidColorBrush(Color.FromRgb(0xE0, 0xE0, 0xE0)),
@@ -291,6 +294,7 @@ public class ThemeManager : INotifyPropertyChanged
                 ButtonForeground = new SolidColorBrush(Colors.White),
                 PanelBackground = new SolidColorBrush(Colors.Transparent),
                 ControlBackground = new SolidColorBrush(Color.FromRgb(0x24, 0x44, 0x33)),
+                ComboBoxBackground = new SolidColorBrush(Color.FromRgb(0x24, 0x44, 0x33)),
                 ControlBorderBrush = new SolidColorBrush(Color.FromRgb(0x55, 0x77, 0x55)),
                 ControlHoverBackground = new SolidColorBrush(Color.FromRgb(0x34, 0x54, 0x43)),
                 TextForeground = new SolidColorBrush(Color.FromRgb(0xE0, 0xE0, 0xE0)),
@@ -339,6 +343,7 @@ public class ThemeManager : INotifyPropertyChanged
                 ButtonForeground = new SolidColorBrush(Colors.White),
                 PanelBackground = new SolidColorBrush(Colors.Transparent),
                 ControlBackground = new SolidColorBrush(Color.FromRgb(0xF0, 0xF5, 0xFF)),
+                ComboBoxBackground = new SolidColorBrush(Color.FromRgb(0xF0, 0xF5, 0xFF)),
                 ControlBorderBrush = new SolidColorBrush(Color.FromRgb(0xB0, 0xC4, 0xDE)),
                 ControlHoverBackground = new SolidColorBrush(Color.FromRgb(0xE0, 0xE5, 0xEF)),
                 TextForeground = new SolidColorBrush(Color.FromRgb(0x33, 0x33, 0x33)),
@@ -387,6 +392,7 @@ public class ThemeManager : INotifyPropertyChanged
                 ButtonForeground = new SolidColorBrush(Colors.White),
                 PanelBackground = new SolidColorBrush(Colors.Transparent),
                 ControlBackground = new SolidColorBrush(Color.FromRgb(0xF0, 0xFF, 0xF5)),
+                ComboBoxBackground = new SolidColorBrush(Color.FromRgb(0xF0, 0xFF, 0xF5)),
                 ControlBorderBrush = new SolidColorBrush(Color.FromRgb(0xB0, 0xDE, 0xC4)),
                 ControlHoverBackground = new SolidColorBrush(Color.FromRgb(0xE0, 0xEF, 0xE5)),
                 TextForeground = new SolidColorBrush(Color.FromRgb(0x33, 0x33, 0x33)),
@@ -435,6 +441,7 @@ public class ThemeManager : INotifyPropertyChanged
                 ButtonForeground = new SolidColorBrush(Colors.White),
                 PanelBackground = new SolidColorBrush(Colors.Transparent),
                 ControlBackground = new SolidColorBrush(Color.FromRgb(0xFF, 0xF5, 0xE6)),
+                ComboBoxBackground = new SolidColorBrush(Color.FromRgb(0xFF, 0xF5, 0xE6)),
                 ControlBorderBrush = new SolidColorBrush(Color.FromRgb(0xDE, 0xC4, 0xB0)),
                 ControlHoverBackground = new SolidColorBrush(Color.FromRgb(0xEF, 0xE5, 0xD6)),
                 TextForeground = new SolidColorBrush(Color.FromRgb(0x33, 0x33, 0x33)),
@@ -486,6 +493,7 @@ public class ThemeManager : INotifyPropertyChanged
             Application.Current.Resources["ButtonForeground"] = windowTheme.ButtonForeground;
             Application.Current.Resources["PanelBackground"] = windowTheme.PanelBackground;
             Application.Current.Resources["ControlBackground"] = windowTheme.ControlBackground;
+            Application.Current.Resources["ComboBoxBackground"] = windowTheme.ComboBoxBackground;
             Application.Current.Resources["ControlBorderBrush"] = windowTheme.ControlBorderBrush;
             Application.Current.Resources["ControlHoverBackground"] = windowTheme.ControlHoverBackground;
             Application.Current.Resources["TextForeground"] = windowTheme.TextForeground;
@@ -617,7 +625,7 @@ public class ThemeManager : INotifyPropertyChanged
 
         // ComboBox style
         var comboBoxStyle = new Style(typeof(ComboBox));
-        comboBoxStyle.Setters.Add(new Setter(Control.BackgroundProperty, Application.Current.Resources["ControlBackground"]));
+        comboBoxStyle.Setters.Add(new Setter(Control.BackgroundProperty, Application.Current.Resources["ComboBoxBackground"]));
         comboBoxStyle.Setters.Add(new Setter(Control.ForegroundProperty, Application.Current.Resources["TextForeground"]));
         comboBoxStyle.Setters.Add(new Setter(Control.BorderBrushProperty, Application.Current.Resources["ControlBorderBrush"]));
         comboBoxStyle.Setters.Add(new Setter(Control.BorderThicknessProperty, new Thickness(1)));
@@ -672,6 +680,7 @@ public class ThemeManager : INotifyPropertyChanged
                 ButtonForeground = CloneBrush(_currentTheme.WindowTheme.ButtonForeground),
                 PanelBackground = CloneBrush(_currentTheme.WindowTheme.PanelBackground),
                 ControlBackground = CloneBrush(_currentTheme.WindowTheme.ControlBackground),
+                ComboBoxBackground = CloneBrush(_currentTheme.WindowTheme.ComboBoxBackground),
                 ControlBorderBrush = CloneBrush(_currentTheme.WindowTheme.ControlBorderBrush),
                 ControlHoverBackground = CloneBrush(_currentTheme.WindowTheme.ControlHoverBackground),
                 TextForeground = CloneBrush(_currentTheme.WindowTheme.TextForeground),

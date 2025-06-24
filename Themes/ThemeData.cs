@@ -65,6 +65,9 @@ namespace ThemeForge.Themes
         /// <summary>Background color for controls</summary>
         public string ControlBackground { get; set; } = "#F0F5FF";
 
+        /// <summary>Background color for combo boxes</summary>
+        public string ComboBoxBackground { get; set; } = "#F0F5FF";
+
         /// <summary>Border color for controls</summary>
         public string ControlBorderBrush { get; set; } = "#B0C4DE";
 
