@@ -482,9 +482,9 @@
                                     <Button Grid.Column="2" Content="Change..." Style="{StaticResource ColorChangeButtonStyle}" Click="EditMainAccent_Click"/>
                                 </Grid>
 
-                                <Grid Grid.Column="0" Grid.Row="1" Margin="5,2">
+                                    <Grid Grid.Column="0" Grid.Row="1" Style="{StaticResource ColorEditorRowStyle}">
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="150"/>
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="Auto"/>
                                     </Grid.ColumnDefinitions>
@@ -493,9 +493,9 @@
                                     <Button Grid.Column="2" Content="Change..." Style="{StaticResource ColorChangeButtonStyle}" Click="EditMenuForeground_Click"/>
                                 </Grid>
 
-                                <Grid Grid.Column="0" Grid.Row="2" Margin="5,2">
+                                    <Grid Grid.Column="0" Grid.Row="2" Style="{StaticResource ColorEditorRowStyle}">
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="150"/>
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="Auto"/>
                                     </Grid.ColumnDefinitions>
@@ -504,9 +504,9 @@
                                     <Button Grid.Column="2" Content="Change..." Style="{StaticResource ColorChangeButtonStyle}" Click="EditSplitterBackground_Click"/>
                                 </Grid>
 
-                                <Grid Grid.Column="0" Grid.Row="3" Margin="5,2">
+                                    <Grid Grid.Column="0" Grid.Row="3" Style="{StaticResource ColorEditorRowStyle}">
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="150"/>
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="Auto"/>
                                     </Grid.ColumnDefinitions>
@@ -515,9 +515,9 @@
                                     <Button Grid.Column="2" Content="Change..." Style="{StaticResource ColorChangeButtonStyle}" Click="EditControlBackground_Click"/>
                                 </Grid>
 
-                                <Grid Grid.Column="0" Grid.Row="4" Margin="5,2">
+                                    <Grid Grid.Column="0" Grid.Row="4" Style="{StaticResource ColorEditorRowStyle}">
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="150"/>
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="Auto"/>
                                     </Grid.ColumnDefinitions>
@@ -527,9 +527,9 @@
                                 </Grid>
 
                                 <!-- Right Column -->
-                                <Grid Grid.Column="1" Grid.Row="0" Margin="5,2">
+                                    <Grid Grid.Column="1" Grid.Row="0" Style="{StaticResource ColorEditorRowStyle}">
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="150"/>
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="Auto"/>
                                     </Grid.ColumnDefinitions>
@@ -538,9 +538,9 @@
                                     <Button Grid.Column="2" Content="Change..." Style="{StaticResource ColorChangeButtonStyle}" Click="EditMenuBackground_Click"/>
                                 </Grid>
 
-                                <Grid Grid.Column="1" Grid.Row="1" Margin="5,2">
+                                    <Grid Grid.Column="1" Grid.Row="1" Style="{StaticResource ColorEditorRowStyle}">
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="150"/>
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="Auto"/>
                                     </Grid.ColumnDefinitions>
@@ -549,9 +549,9 @@
                                     <Button Grid.Column="2" Content="Change..." Style="{StaticResource ColorChangeButtonStyle}" Click="EditAlternateTextForeground_Click"/>
                                 </Grid>
 
-                                <Grid Grid.Column="1" Grid.Row="2" Margin="5,2">
+                                    <Grid Grid.Column="1" Grid.Row="2" Style="{StaticResource ColorEditorRowStyle}">
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="150"/>
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="Auto"/>
                                     </Grid.ColumnDefinitions>
@@ -560,9 +560,9 @@
                                     <Button Grid.Column="2" Content="Change..." Style="{StaticResource ColorChangeButtonStyle}" Click="EditPanelBackground_Click"/>
                                 </Grid>
 
-                                <Grid Grid.Column="1" Grid.Row="3" Margin="5,2">
+                                    <Grid Grid.Column="1" Grid.Row="3" Style="{StaticResource ColorEditorRowStyle}">
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="150"/>
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="Auto"/>
                                     </Grid.ColumnDefinitions>
@@ -606,9 +606,9 @@
                                             Click="EditMsgBoxWindowBackground_Click"/>
                                 </Grid>
 
-                                <Grid Grid.Column="0" Grid.Row="1" Margin="5">
+                                <Grid Grid.Column="0" Grid.Row="1" Style="{StaticResource ColorEditorRowStyle}">
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="150"/>
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="Auto"/>
                                     </Grid.ColumnDefinitions>
@@ -621,9 +621,9 @@
                                 </Grid>
 
                                 <!-- Right Column -->
-                                <Grid Grid.Column="1" Grid.Row="0" Margin="5">
+                                <Grid Grid.Column="1" Grid.Row="0" Style="{StaticResource ColorEditorRowStyle}">
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="150"/>
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="Auto"/>
                                     </Grid.ColumnDefinitions>
@@ -635,9 +635,9 @@
                                             Click="EditMsgBoxTitleBackground_Click"/>
                                 </Grid>
 
-                                <Grid Grid.Column="1" Grid.Row="1" Margin="5">
+                                <Grid Grid.Column="1" Grid.Row="1" Style="{StaticResource ColorEditorRowStyle}">
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="150"/>
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="Auto"/>
                                     </Grid.ColumnDefinitions>
@@ -664,9 +664,9 @@
                                 </Grid.RowDefinitions>
 
                                 <!-- Left Column -->
-                                <Grid Grid.Column="0" Grid.Row="0" Margin="5">
+                                <Grid Grid.Column="0" Grid.Row="0" Style="{StaticResource ColorEditorRowStyle}">
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="150"/>
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="Auto"/>
                                     </Grid.ColumnDefinitions>
@@ -678,9 +678,9 @@
                                             Click="EditMsgBoxButtonBackground_Click"/>
                                 </Grid>
 
-                                <Grid Grid.Column="0" Grid.Row="1" Margin="5">
+                                <Grid Grid.Column="0" Grid.Row="1" Style="{StaticResource ColorEditorRowStyle}">
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="150"/>
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="Auto"/>
                                     </Grid.ColumnDefinitions>
@@ -692,9 +692,9 @@
                                             Click="EditMsgBoxButtonPressedBackground_Click"/>
                                 </Grid>
 
-                                <Grid Grid.Column="0" Grid.Row="2" Margin="5">
+                                <Grid Grid.Column="0" Grid.Row="2" Style="{StaticResource ColorEditorRowStyle}">
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="150"/>
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="Auto"/>
                                     </Grid.ColumnDefinitions>
@@ -707,9 +707,9 @@
                                 </Grid>
 
                                 <!-- Right Column -->
-                                <Grid Grid.Column="1" Grid.Row="0" Margin="5">
+                                <Grid Grid.Column="1" Grid.Row="0" Style="{StaticResource ColorEditorRowStyle}">
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="150"/>
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="Auto"/>
                                     </Grid.ColumnDefinitions>
@@ -721,9 +721,9 @@
                                             Click="EditMsgBoxButtonHoverBackground_Click"/>
                                 </Grid>
 
-                                <Grid Grid.Column="1" Grid.Row="1" Margin="5">
+                                <Grid Grid.Column="1" Grid.Row="1" Style="{StaticResource ColorEditorRowStyle}">
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="150"/>
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="Auto"/>
                                     </Grid.ColumnDefinitions>
@@ -735,9 +735,9 @@
                                             Click="EditMsgBoxButtonForeground_Click"/>
                                 </Grid>
 
-                                <Grid Grid.Column="1" Grid.Row="2" Margin="5">
+                                <Grid Grid.Column="1" Grid.Row="2" Style="{StaticResource ColorEditorRowStyle}">
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="150"/>
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="Auto"/>
                                     </Grid.ColumnDefinitions>
@@ -761,9 +761,9 @@
                                     <RowDefinition Height="Auto"/>
                                 </Grid.RowDefinitions>
 
-                                <Grid Grid.Column="0" Grid.Row="0" Margin="5">
+                                <Grid Grid.Column="0" Grid.Row="0" Style="{StaticResource ColorEditorRowStyle}">
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="150"/>
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="Auto"/>
                                     </Grid.ColumnDefinitions>
