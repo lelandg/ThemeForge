@@ -197,24 +197,24 @@ namespace ThemeForge.Themes
         private void UpdateWindowResourcesFromWorkingTheme()
         {
             // Window Theme
-            Resources["MainBackgroundBrush"] = _workingTheme.WindowTheme.MainBackground;
-            Resources["TitleBarBackgroundBrush"] = _workingTheme.WindowTheme.TitleBarBackground;
-            Resources["TextForegroundBrush"] = _workingTheme.WindowTheme.TextForeground;
-            Resources["LabelForegroundBrush"] = _workingTheme.WindowTheme.LabelForeground;
-            Resources["GroupBoxBorderBrush"] = _workingTheme.WindowTheme.GroupBoxBorder;
-            Resources["ButtonBackgroundBrush"] = _workingTheme.WindowTheme.ButtonBackground;
-            Resources["ButtonHoverBackgroundBrush"] = _workingTheme.WindowTheme.ButtonHoverBackground;
-            Resources["ButtonPressedBackgroundBrush"] = _workingTheme.WindowTheme.ButtonPressedBackground;
-            Resources["ButtonForegroundBrush"] = _workingTheme.WindowTheme.ButtonForeground;
+            Resources["MainBackground"] = _workingTheme.WindowTheme.MainBackground;
+            Resources["TitleBarBackground"] = _workingTheme.WindowTheme.TitleBarBackground;
+            Resources["TextForeground"] = _workingTheme.WindowTheme.TextForeground;
+            Resources["LabelForeground"] = _workingTheme.WindowTheme.LabelForeground;
+            Resources["GroupBoxBorder"] = _workingTheme.WindowTheme.GroupBoxBorder;
+            Resources["ButtonBackground"] = _workingTheme.WindowTheme.ButtonBackground;
+            Resources["ButtonHoverBackground"] = _workingTheme.WindowTheme.ButtonHoverBackground;
+            Resources["ButtonPressedBackground"] = _workingTheme.WindowTheme.ButtonPressedBackground;
+            Resources["ButtonForeground"] = _workingTheme.WindowTheme.ButtonForeground;
 
             // MessageBox Theme
-            Resources["MsgBoxWindowBackgroundBrush"] = _workingTheme.MessageBoxTheme.WindowBackground;
-            Resources["MsgBoxTitleBackgroundBrush"] = _workingTheme.MessageBoxTheme.TitleBackground;
+            Resources["MsgBoxWindowBackground"] = _workingTheme.MessageBoxTheme.WindowBackground;
+            Resources["MsgBoxTitleBackground"] = _workingTheme.MessageBoxTheme.TitleBackground;
             Resources["MsgBoxBorderBrush"] = _workingTheme.MessageBoxTheme.BorderBrush;
-            Resources["MsgBoxButtonBackgroundBrush"] = _workingTheme.MessageBoxTheme.ButtonBackground;
-            Resources["MsgBoxButtonHoverBackgroundBrush"] = _workingTheme.MessageBoxTheme.ButtonHoverBackground;
-            Resources["MsgBoxButtonPressedBackgroundBrush"] = _workingTheme.MessageBoxTheme.ButtonPressedBackground;
-            Resources["MsgBoxButtonForegroundBrush"] = _workingTheme.MessageBoxTheme.ButtonForeground;
+            Resources["MsgBoxButtonBackground"] = _workingTheme.MessageBoxTheme.ButtonBackground;
+            Resources["MsgBoxButtonHoverBackground"] = _workingTheme.MessageBoxTheme.ButtonHoverBackground;
+            Resources["MsgBoxButtonPressedBackground"] = _workingTheme.MessageBoxTheme.ButtonPressedBackground;
+            Resources["MsgBoxButtonForeground"] = _workingTheme.MessageBoxTheme.ButtonForeground;
         }
 
         private void EditMainBackground_Click(object sender, RoutedEventArgs e)
