@@ -2,6 +2,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using ThemeForge.Themes.Dialogs;
+using Application = System.Windows.Application;
 using Brush = System.Windows.Media.Brush;
 using OpenFileDialog = Microsoft.Win32.OpenFileDialog;
 using SaveFileDialog = Microsoft.Win32.SaveFileDialog;
@@ -38,14 +39,15 @@ namespace ThemeForge.Themes
             if (ThemeSelector.SelectedItem is Theme selectedTheme)
             {
                 _workingTheme = selectedTheme;
-                DataContext = null;
-                DataContext = ThemeManager.Current;
 
                 // Update delete button state
                 DeleteThemeButton.IsEnabled = !selectedTheme.IsBuiltIn;
+
+                // Apply the theme changes to this window immediately for a live preview
+                ApplyWorkingThemeToWindowAndRefreshBindings();
             }
         }
-
+        
         private void NewThemeButton_Click(object sender, RoutedEventArgs e)
         {
             var dialog = new TextInputDialog("Enter a name for the new theme:", "New Theme");
@@ -55,30 +57,25 @@ namespace ThemeForge.Themes
             {
                 var newTheme = ThemeManager.Current.CreateNewThemeBasedOnCurrent(dialog.InputText);
                 _workingTheme = newTheme;
-                RefreshThemeSelector();
+                RefreshThemeSelector(); // This will trigger the preview via SelectionChanged
             }
         }
-
+        
         private void DeleteThemeButton_Click(object sender, RoutedEventArgs e)
         {
             if (ThemeSelector.SelectedItem is Theme selectedTheme && !selectedTheme.IsBuiltIn)
             {
                 if (CustomMessageBox.Show("Are you sure you want to delete this theme?",
-                                  "Confirm Delete",
-                                  MessageBoxButton.YesNo,
-                                  MessageBoxImage.Warning) == MessageBoxResult.Yes)
+                        "Confirm Delete",
+                        MessageBoxButton.YesNo,
+                        MessageBoxImage.Warning) == MessageBoxResult.Yes)
                 {
                     // Remove from custom themes
                     ThemeManager.Current.CustomThemes.Remove(selectedTheme);
                     ThemeManager.Current.SaveCustomThemes();
 
-                    // Save current theme to settings
+                    // Save current theme to settings (this line is duplicated)
                     App.Settings.ThemeName = ThemeManager.Current.CurrentTheme.Name;
-
-
-                    // Save current theme to settings
-                    App.Settings.ThemeName = ThemeManager.Current.CurrentTheme.Name;
-
 
                     // Set current theme to default if we're deleting the active theme
                     if (ThemeManager.Current.CurrentTheme == selectedTheme)
@@ -95,7 +92,7 @@ namespace ThemeForge.Themes
                 }
             }
         }
-
+        
         private void ApplyThemeButton_Click(object sender, RoutedEventArgs e)
         {
             if (_workingTheme != null)
@@ -160,7 +157,8 @@ namespace ThemeForge.Themes
                 {
                     var importedTheme = ThemeManager.Current.ImportTheme(dialog.FileName);
                     _workingTheme = importedTheme;
-                    RefreshThemeSelector();
+                    RefreshThemeSelector(); // This will trigger the preview via SelectionChanged
+
                     CustomMessageBox.Show("Theme imported successfully.", "Import Complete", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
                 catch (Exception ex)
@@ -169,8 +167,55 @@ namespace ThemeForge.Themes
                 }
             }
         }
-
+        
         #region Color Editors
+
+        /// <summary>
+        /// Applies the in-memory _workingTheme to this window's resources and updates its DataContext
+        /// to provide an immediate visual preview of changes.
+        /// </summary>
+        private void ApplyWorkingThemeToWindowAndRefreshBindings()
+        {
+            // Part 1: Update the window's own styling to reflect _workingTheme.
+            UpdateWindowResourcesFromWorkingTheme();
+
+            // Part 2: Update the DataContext so that UI elements bound to theme properties
+            // (like color swatches) show the values from _workingTheme.
+            // We create an anonymous object with a 'CurrentTheme' property to match the original binding path.
+            DataContext = new { CurrentTheme = _workingTheme };
+
+            // Force the UI to re-render with the new resources and data context.
+            InvalidateVisual();
+            UpdateLayout();
+        }
+
+        /// <summary>
+        /// Manually updates this window's local resources from the _workingTheme object.
+        /// This overrides the application-level theme for this window only, by mapping
+        /// theme properties to the corresponding resource keys used in XAML styles.
+        /// </summary>
+        private void UpdateWindowResourcesFromWorkingTheme()
+        {
+            // Window Theme
+            Resources["MainBackgroundBrush"] = _workingTheme.WindowTheme.MainBackground;
+            Resources["TitleBarBackgroundBrush"] = _workingTheme.WindowTheme.TitleBarBackground;
+            Resources["TextForegroundBrush"] = _workingTheme.WindowTheme.TextForeground;
+            Resources["LabelForegroundBrush"] = _workingTheme.WindowTheme.LabelForeground;
+            Resources["GroupBoxBorderBrush"] = _workingTheme.WindowTheme.GroupBoxBorder;
+            Resources["ButtonBackgroundBrush"] = _workingTheme.WindowTheme.ButtonBackground;
+            Resources["ButtonHoverBackgroundBrush"] = _workingTheme.WindowTheme.ButtonHoverBackground;
+            Resources["ButtonPressedBackgroundBrush"] = _workingTheme.WindowTheme.ButtonPressedBackground;
+            Resources["ButtonForegroundBrush"] = _workingTheme.WindowTheme.ButtonForeground;
+
+            // MessageBox Theme
+            Resources["MsgBoxWindowBackgroundBrush"] = _workingTheme.MessageBoxTheme.WindowBackground;
+            Resources["MsgBoxTitleBackgroundBrush"] = _workingTheme.MessageBoxTheme.TitleBackground;
+            Resources["MsgBoxBorderBrush"] = _workingTheme.MessageBoxTheme.BorderBrush;
+            Resources["MsgBoxButtonBackgroundBrush"] = _workingTheme.MessageBoxTheme.ButtonBackground;
+            Resources["MsgBoxButtonHoverBackgroundBrush"] = _workingTheme.MessageBoxTheme.ButtonHoverBackground;
+            Resources["MsgBoxButtonPressedBackgroundBrush"] = _workingTheme.MessageBoxTheme.ButtonPressedBackground;
+            Resources["MsgBoxButtonForegroundBrush"] = _workingTheme.MessageBoxTheme.ButtonForeground;
+        }
 
         private void EditMainBackground_Click(object sender, RoutedEventArgs e)
         {
@@ -263,9 +308,8 @@ namespace ThemeForge.Themes
                     var newColor = colorPicker.SelectedColor;
                     setter(new SolidColorBrush(newColor));
 
-                    // Refresh UI
-                    DataContext = null;
-                    DataContext = ThemeManager.Current;
+                    // Apply the theme changes to this window immediately for a live preview
+                    ApplyWorkingThemeToWindowAndRefreshBindings();
                 }
             }
         }
