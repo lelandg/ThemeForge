@@ -29,8 +29,30 @@ namespace ThemeForge.Themes
             // Create a working copy of the current theme
             _workingTheme = ThemeManager.Current.CurrentTheme;
 
+            // Ensure the window resources are properly updated with current theme values
+            UpdateWindowResources();
+
+            // Subscribe to theme changes
+            ThemeManager.Current.ThemeChanged += (s, e) => UpdateWindowResources();
+
             // Populate theme selector
             RefreshThemeSelector();
+        }
+
+        private void UpdateWindowResources()
+        {
+            // Explicitly update ComboBox-related resources to match Application resources
+            if (Application.Current.Resources.Contains("ComboBoxBackground"))
+                this.Resources["ComboBoxBackground"] = Application.Current.Resources["ComboBoxBackground"];
+            
+            if (Application.Current.Resources.Contains("ComboBoxItemBackground"))
+                this.Resources["ComboBoxItemBackground"] = Application.Current.Resources["ComboBoxItemBackground"];
+            
+            if (Application.Current.Resources.Contains("ComboBoxItemHoverBackground"))
+                this.Resources["ComboBoxItemHoverBackground"] = Application.Current.Resources["ComboBoxItemHoverBackground"];
+            
+            if (Application.Current.Resources.Contains("ComboBoxItemSelectedBackground"))
+                this.Resources["ComboBoxItemSelectedBackground"] = Application.Current.Resources["ComboBoxItemSelectedBackground"];
         }
 
         private void RefreshThemeSelector()
