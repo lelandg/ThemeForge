@@ -6,7 +6,8 @@
         Title="Theme Manager" 
         Height="750" Width="1100"
         WindowStartupLocation="CenterOwner"
-        Background="{DynamicResource MainBackground}">
+        Background="{DynamicResource MainBackground}"
+        Style="{DynamicResource WindowStyle}">
     <Grid Margin="20">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>

@@ -55,7 +55,7 @@ public partial class MainWindow : Window
         }
     }
 
-    private void UpdateCurrentThemeText()
+    public void UpdateCurrentThemeText()
     {
         CurrentThemeText.Text = ThemeManager.Current.CurrentTheme.Name;
     }
@@ -64,10 +64,23 @@ public partial class MainWindow : Window
     {
         if (ThemeSelector.SelectedItem is Theme selectedTheme)
         {
+            // Store the selected theme but don't apply it to the main application yet
+            var savedTheme = ThemeManager.Current.CurrentTheme;
             ThemeManager.Current.CurrentTheme = selectedTheme;
+
+            // Update the theme preview in the message box section
+            DataContext = null;
+            DataContext = ThemeManager.Current;
+
+            // Apply theme only to preview components without changing main application theme
+            ThemeManager.Current.ApplyThemeToWindow(this);
+
+            // Restore the previously active theme for the application
+            ThemeManager.Current.CurrentTheme = savedTheme;
+
             UpdateCurrentThemeText();
 
-            // Save current theme to settings
+            // Save selected theme to settings
             App.Settings.ThemeName = selectedTheme.Name;
         }
     }
