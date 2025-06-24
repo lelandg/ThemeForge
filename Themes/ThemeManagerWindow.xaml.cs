@@ -220,6 +220,10 @@ namespace ThemeForge.Themes
             Resources["GroupBoxBorder"] = _workingTheme.WindowTheme.GroupBoxBorder;
             Resources["PanelBackground"] = _workingTheme.WindowTheme.PanelBackground;
             Resources["ControlBackground"] = _workingTheme.WindowTheme.ControlBackground;
+            Resources["ComboBoxBackground"] = _workingTheme.WindowTheme.ComboBoxBackground;
+            Resources["ComboBoxItemBackground"] = _workingTheme.WindowTheme.ComboBoxItemBackground;
+            Resources["ComboBoxItemHoverBackground"] = _workingTheme.WindowTheme.ComboBoxItemHoverBackground;
+            Resources["ComboBoxItemSelectedBackground"] = _workingTheme.WindowTheme.ComboBoxItemSelectedBackground;
             Resources["ControlBorderBrush"] = _workingTheme.WindowTheme.ControlBorderBrush;
             Resources["ControlHoverBackground"] = _workingTheme.WindowTheme.ControlHoverBackground;
             Resources["ButtonBackground"] = _workingTheme.WindowTheme.ButtonBackground;
