@@ -15,19 +15,31 @@
         <SolidColorBrush x:Key="TitleBarBackground" Color="Transparent"/>
         <SolidColorBrush x:Key="TextForeground" Color="Black"/>
         <SolidColorBrush x:Key="LabelForeground" Color="Black"/>
+        <SolidColorBrush x:Key="MenuBackground" Color="Transparent"/>
         <SolidColorBrush x:Key="MenuForeground" Color="White"/>
+        <SolidColorBrush x:Key="MainAccent" Color="Transparent"/>
+        <SolidColorBrush x:Key="AlternateTextForeground" Color="Black"/>
+        <SolidColorBrush x:Key="SplitterBackground" Color="Transparent"/>
         <SolidColorBrush x:Key="GroupBoxBorder" Color="Transparent"/>
+        <SolidColorBrush x:Key="PanelBackground" Color="Transparent"/>
+        <SolidColorBrush x:Key="ControlBackground" Color="Transparent"/>
+        <SolidColorBrush x:Key="ControlBorderBrush" Color="Transparent"/>
+        <SolidColorBrush x:Key="ControlHoverBackground" Color="Transparent"/>
         <SolidColorBrush x:Key="ButtonBackground" Color="Transparent"/>
         <SolidColorBrush x:Key="ButtonHoverBackground" Color="Transparent"/>
         <SolidColorBrush x:Key="ButtonPressedBackground" Color="Transparent"/>
         <SolidColorBrush x:Key="ButtonForeground" Color="Black"/>
         <SolidColorBrush x:Key="MsgBoxWindowBackground" Color="Transparent"/>
         <SolidColorBrush x:Key="MsgBoxTitleBackground" Color="Transparent"/>
+        <SolidColorBrush x:Key="MsgBoxTitleForeground" Color="Black"/>
         <SolidColorBrush x:Key="MsgBoxBorderBrush" Color="Transparent"/>
         <SolidColorBrush x:Key="MsgBoxButtonBackground" Color="Transparent"/>
         <SolidColorBrush x:Key="MsgBoxButtonHoverBackground" Color="Transparent"/>
         <SolidColorBrush x:Key="MsgBoxButtonPressedBackground" Color="Transparent"/>
         <SolidColorBrush x:Key="MsgBoxButtonForeground" Color="Black"/>
+        <SolidColorBrush x:Key="MsgBoxButtonDisabledBackground" Color="Transparent"/>
+        <SolidColorBrush x:Key="MsgBoxButtonDisabledForeground" Color="Black"/>
+        <SolidColorBrush x:Key="MsgBoxButtonOutline" Color="Transparent"/>
     </Window.Resources>
             <Grid>
         <Grid.RowDefinitions>
@@ -384,10 +396,60 @@
                                 <Border Grid.Row="3" Grid.Column="1" 
                                         Background="{Binding CurrentTheme.WindowTheme.ButtonForeground}" 
                                         Height="25" Margin="5" BorderBrush="#555" BorderThickness="1"/>
-                                <Button Grid.Row="3" Grid.Column="2" Content="Change..." 
+                                <Button Grid.Row="3" Grid.Column="2" Content="Change..."
                                         Style="{DynamicResource CustomButton}" Width="80" Height="25" Margin="5"
                                         Click="EditButtonForeground_Click"/>
                             </Grid>
+                        </GroupBox>
+
+                        <GroupBox Header="Additional Colors" Style="{DynamicResource CustomGroupBox}" Margin="5,10">
+                            <UniformGrid Columns="2">
+                                <StackPanel Margin="5">
+                                    <TextBlock Text="Main Accent:" Foreground="{DynamicResource TextForeground}"/>
+                                    <Border Background="{Binding CurrentTheme.WindowTheme.MainAccent}" Height="25" Margin="0,5" BorderBrush="{DynamicResource GroupBoxBorder}" BorderThickness="1"/>
+                                    <Button Content="Change..." Style="{DynamicResource CustomButton}" Width="80" Height="25" Click="EditMainAccent_Click"/>
+                                </StackPanel>
+                                <StackPanel Margin="5">
+                                    <TextBlock Text="Menu Background:" Foreground="{DynamicResource TextForeground}"/>
+                                    <Border Background="{Binding CurrentTheme.WindowTheme.MenuBackground}" Height="25" Margin="0,5" BorderBrush="{DynamicResource GroupBoxBorder}" BorderThickness="1"/>
+                                    <Button Content="Change..." Style="{DynamicResource CustomButton}" Width="80" Height="25" Click="EditMenuBackground_Click"/>
+                                </StackPanel>
+                                <StackPanel Margin="5">
+                                    <TextBlock Text="Menu Foreground:" Foreground="{DynamicResource TextForeground}"/>
+                                    <Border Background="{Binding CurrentTheme.WindowTheme.MenuForeground}" Height="25" Margin="0,5" BorderBrush="{DynamicResource GroupBoxBorder}" BorderThickness="1"/>
+                                    <Button Content="Change..." Style="{DynamicResource CustomButton}" Width="80" Height="25" Click="EditMenuForeground_Click"/>
+                                </StackPanel>
+                                <StackPanel Margin="5">
+                                    <TextBlock Text="Alt Text Foreground:" Foreground="{DynamicResource TextForeground}"/>
+                                    <Border Background="{Binding CurrentTheme.WindowTheme.AlternateTextForeground}" Height="25" Margin="0,5" BorderBrush="{DynamicResource GroupBoxBorder}" BorderThickness="1"/>
+                                    <Button Content="Change..." Style="{DynamicResource CustomButton}" Width="80" Height="25" Click="EditAlternateTextForeground_Click"/>
+                                </StackPanel>
+                                <StackPanel Margin="5">
+                                    <TextBlock Text="Splitter Background:" Foreground="{DynamicResource TextForeground}"/>
+                                    <Border Background="{Binding CurrentTheme.WindowTheme.SplitterBackground}" Height="25" Margin="0,5" BorderBrush="{DynamicResource GroupBoxBorder}" BorderThickness="1"/>
+                                    <Button Content="Change..." Style="{DynamicResource CustomButton}" Width="80" Height="25" Click="EditSplitterBackground_Click"/>
+                                </StackPanel>
+                                <StackPanel Margin="5">
+                                    <TextBlock Text="Panel Background:" Foreground="{DynamicResource TextForeground}"/>
+                                    <Border Background="{Binding CurrentTheme.WindowTheme.PanelBackground}" Height="25" Margin="0,5" BorderBrush="{DynamicResource GroupBoxBorder}" BorderThickness="1"/>
+                                    <Button Content="Change..." Style="{DynamicResource CustomButton}" Width="80" Height="25" Click="EditPanelBackground_Click"/>
+                                </StackPanel>
+                                <StackPanel Margin="5">
+                                    <TextBlock Text="Control Background:" Foreground="{DynamicResource TextForeground}"/>
+                                    <Border Background="{Binding CurrentTheme.WindowTheme.ControlBackground}" Height="25" Margin="0,5" BorderBrush="{DynamicResource GroupBoxBorder}" BorderThickness="1"/>
+                                    <Button Content="Change..." Style="{DynamicResource CustomButton}" Width="80" Height="25" Click="EditControlBackground_Click"/>
+                                </StackPanel>
+                                <StackPanel Margin="5">
+                                    <TextBlock Text="Control Border:" Foreground="{DynamicResource TextForeground}"/>
+                                    <Border Background="{Binding CurrentTheme.WindowTheme.ControlBorderBrush}" Height="25" Margin="0,5" BorderBrush="{DynamicResource GroupBoxBorder}" BorderThickness="1"/>
+                                    <Button Content="Change..." Style="{DynamicResource CustomButton}" Width="80" Height="25" Click="EditControlBorderBrush_Click"/>
+                                </StackPanel>
+                                <StackPanel Margin="5">
+                                    <TextBlock Text="Control Hover:" Foreground="{DynamicResource TextForeground}"/>
+                                    <Border Background="{Binding CurrentTheme.WindowTheme.ControlHoverBackground}" Height="25" Margin="0,5" BorderBrush="{DynamicResource GroupBoxBorder}" BorderThickness="1"/>
+                                    <Button Content="Change..." Style="{DynamicResource CustomButton}" Width="80" Height="25" Click="EditControlHoverBackground_Click"/>
+                                </StackPanel>
+                            </UniformGrid>
                         </GroupBox>
                     </StackPanel>
                 </ScrollViewer>
@@ -499,13 +561,38 @@
                                 <TextBlock Grid.Row="4" Grid.Column="0" Text="Button Foreground:" 
                                            Margin="5" VerticalAlignment="Center"
                                            Foreground="{DynamicResource TextForeground}"/>
-                                <Border Grid.Row="4" Grid.Column="1" 
-                                        Background="{Binding CurrentTheme.MessageBoxTheme.ButtonForeground}" 
+                                <Border Grid.Row="4" Grid.Column="1"
+                                        Background="{Binding CurrentTheme.MessageBoxTheme.ButtonForeground}"
                                         Height="25" Margin="5" BorderBrush="#555" BorderThickness="1"/>
-                                <Button Grid.Row="4" Grid.Column="2" Content="Change..." 
+                                <Button Grid.Row="4" Grid.Column="2" Content="Change..."
                                         Style="{DynamicResource CustomButton}" Width="80" Height="25" Margin="5"
                                         Click="EditMsgBoxButtonForeground_Click"/>
                             </Grid>
+                        </GroupBox>
+
+                        <GroupBox Header="Additional Colors" Style="{DynamicResource CustomGroupBox}" Margin="5,10">
+                            <UniformGrid Columns="2">
+                                <StackPanel Margin="5">
+                                    <TextBlock Text="Title Foreground:" Foreground="{DynamicResource TextForeground}"/>
+                                    <Border Background="{Binding CurrentTheme.MessageBoxTheme.TitleForeground}" Height="25" Margin="0,5" BorderBrush="#555" BorderThickness="1"/>
+                                    <Button Content="Change..." Style="{DynamicResource CustomButton}" Width="80" Height="25" Click="EditMsgBoxTitleForeground_Click"/>
+                                </StackPanel>
+                                <StackPanel Margin="5">
+                                    <TextBlock Text="Disabled Background:" Foreground="{DynamicResource TextForeground}"/>
+                                    <Border Background="{Binding CurrentTheme.MessageBoxTheme.ButtonDisabledBackground}" Height="25" Margin="0,5" BorderBrush="#555" BorderThickness="1"/>
+                                    <Button Content="Change..." Style="{DynamicResource CustomButton}" Width="80" Height="25" Click="EditMsgBoxButtonDisabledBackground_Click"/>
+                                </StackPanel>
+                                <StackPanel Margin="5">
+                                    <TextBlock Text="Disabled Foreground:" Foreground="{DynamicResource TextForeground}"/>
+                                    <Border Background="{Binding CurrentTheme.MessageBoxTheme.ButtonDisabledForeground}" Height="25" Margin="0,5" BorderBrush="#555" BorderThickness="1"/>
+                                    <Button Content="Change..." Style="{DynamicResource CustomButton}" Width="80" Height="25" Click="EditMsgBoxButtonDisabledForeground_Click"/>
+                                </StackPanel>
+                                <StackPanel Margin="5">
+                                    <TextBlock Text="Button Outline:" Foreground="{DynamicResource TextForeground}"/>
+                                    <Border Background="{Binding CurrentTheme.MessageBoxTheme.ButtonOutline}" Height="25" Margin="0,5" BorderBrush="#555" BorderThickness="1"/>
+                                    <Button Content="Change..." Style="{DynamicResource CustomButton}" Width="80" Height="25" Click="EditMsgBoxButtonOutline_Click"/>
+                                </StackPanel>
+                            </UniformGrid>
                         </GroupBox>
                     </StackPanel>
                 </ScrollViewer>

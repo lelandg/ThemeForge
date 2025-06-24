@@ -212,8 +212,16 @@ namespace ThemeForge.Themes
             Resources["TitleBarBackground"] = _workingTheme.WindowTheme.TitleBarBackground;
             Resources["TextForeground"] = _workingTheme.WindowTheme.TextForeground;
             Resources["LabelForeground"] = _workingTheme.WindowTheme.LabelForeground;
-            Resources["MenuForeground"] = _workingTheme.WindowTheme.LabelForeground; // Use label foreground for menu text
+            Resources["MenuBackground"] = _workingTheme.WindowTheme.MenuBackground;
+            Resources["MenuForeground"] = _workingTheme.WindowTheme.MenuForeground;
+            Resources["MainAccent"] = _workingTheme.WindowTheme.MainAccent;
+            Resources["AlternateTextForeground"] = _workingTheme.WindowTheme.AlternateTextForeground;
+            Resources["SplitterBackground"] = _workingTheme.WindowTheme.SplitterBackground;
             Resources["GroupBoxBorder"] = _workingTheme.WindowTheme.GroupBoxBorder;
+            Resources["PanelBackground"] = _workingTheme.WindowTheme.PanelBackground;
+            Resources["ControlBackground"] = _workingTheme.WindowTheme.ControlBackground;
+            Resources["ControlBorderBrush"] = _workingTheme.WindowTheme.ControlBorderBrush;
+            Resources["ControlHoverBackground"] = _workingTheme.WindowTheme.ControlHoverBackground;
             Resources["ButtonBackground"] = _workingTheme.WindowTheme.ButtonBackground;
             Resources["ButtonHoverBackground"] = _workingTheme.WindowTheme.ButtonHoverBackground;
             Resources["ButtonPressedBackground"] = _workingTheme.WindowTheme.ButtonPressedBackground;
@@ -222,11 +230,15 @@ namespace ThemeForge.Themes
             // MessageBox Theme
             Resources["MsgBoxWindowBackground"] = _workingTheme.MessageBoxTheme.WindowBackground;
             Resources["MsgBoxTitleBackground"] = _workingTheme.MessageBoxTheme.TitleBackground;
+            Resources["MsgBoxTitleForeground"] = _workingTheme.MessageBoxTheme.TitleForeground;
             Resources["MsgBoxBorderBrush"] = _workingTheme.MessageBoxTheme.BorderBrush;
             Resources["MsgBoxButtonBackground"] = _workingTheme.MessageBoxTheme.ButtonBackground;
             Resources["MsgBoxButtonHoverBackground"] = _workingTheme.MessageBoxTheme.ButtonHoverBackground;
             Resources["MsgBoxButtonPressedBackground"] = _workingTheme.MessageBoxTheme.ButtonPressedBackground;
             Resources["MsgBoxButtonForeground"] = _workingTheme.MessageBoxTheme.ButtonForeground;
+            Resources["MsgBoxButtonDisabledBackground"] = _workingTheme.MessageBoxTheme.ButtonDisabledBackground;
+            Resources["MsgBoxButtonDisabledForeground"] = _workingTheme.MessageBoxTheme.ButtonDisabledForeground;
+            Resources["MsgBoxButtonOutline"] = _workingTheme.MessageBoxTheme.ButtonOutline;
         }
 
         private void EditMainBackground_Click(object sender, RoutedEventArgs e)
@@ -252,6 +264,51 @@ namespace ThemeForge.Themes
         private void EditGroupBoxBorder_Click(object sender, RoutedEventArgs e)
         {
             EditBrush("GroupBox Border", _workingTheme.WindowTheme.GroupBoxBorder, newBrush => _workingTheme.WindowTheme.GroupBoxBorder = newBrush);
+        }
+
+        private void EditMainAccent_Click(object sender, RoutedEventArgs e)
+        {
+            EditBrush("Main Accent", _workingTheme.WindowTheme.MainAccent, newBrush => _workingTheme.WindowTheme.MainAccent = newBrush);
+        }
+
+        private void EditMenuBackground_Click(object sender, RoutedEventArgs e)
+        {
+            EditBrush("Menu Background", _workingTheme.WindowTheme.MenuBackground, newBrush => _workingTheme.WindowTheme.MenuBackground = newBrush);
+        }
+
+        private void EditMenuForeground_Click(object sender, RoutedEventArgs e)
+        {
+            EditBrush("Menu Foreground", _workingTheme.WindowTheme.MenuForeground, newBrush => _workingTheme.WindowTheme.MenuForeground = newBrush);
+        }
+
+        private void EditAlternateTextForeground_Click(object sender, RoutedEventArgs e)
+        {
+            EditBrush("Alternate Text Foreground", _workingTheme.WindowTheme.AlternateTextForeground, newBrush => _workingTheme.WindowTheme.AlternateTextForeground = newBrush);
+        }
+
+        private void EditSplitterBackground_Click(object sender, RoutedEventArgs e)
+        {
+            EditBrush("Splitter Background", _workingTheme.WindowTheme.SplitterBackground, newBrush => _workingTheme.WindowTheme.SplitterBackground = newBrush);
+        }
+
+        private void EditPanelBackground_Click(object sender, RoutedEventArgs e)
+        {
+            EditBrush("Panel Background", _workingTheme.WindowTheme.PanelBackground, newBrush => _workingTheme.WindowTheme.PanelBackground = newBrush);
+        }
+
+        private void EditControlBackground_Click(object sender, RoutedEventArgs e)
+        {
+            EditBrush("Control Background", _workingTheme.WindowTheme.ControlBackground, newBrush => _workingTheme.WindowTheme.ControlBackground = newBrush);
+        }
+
+        private void EditControlBorderBrush_Click(object sender, RoutedEventArgs e)
+        {
+            EditBrush("Control Border", _workingTheme.WindowTheme.ControlBorderBrush, newBrush => _workingTheme.WindowTheme.ControlBorderBrush = newBrush);
+        }
+
+        private void EditControlHoverBackground_Click(object sender, RoutedEventArgs e)
+        {
+            EditBrush("Control Hover Background", _workingTheme.WindowTheme.ControlHoverBackground, newBrush => _workingTheme.WindowTheme.ControlHoverBackground = newBrush);
         }
 
         private void EditButtonBackground_Click(object sender, RoutedEventArgs e)
@@ -307,6 +364,26 @@ namespace ThemeForge.Themes
         private void EditMsgBoxButtonForeground_Click(object sender, RoutedEventArgs e)
         {
             EditBrush("Message Box Button Foreground", _workingTheme.MessageBoxTheme.ButtonForeground, newBrush => _workingTheme.MessageBoxTheme.ButtonForeground = newBrush);
+        }
+
+        private void EditMsgBoxTitleForeground_Click(object sender, RoutedEventArgs e)
+        {
+            EditBrush("Message Box Title Foreground", _workingTheme.MessageBoxTheme.TitleForeground, newBrush => _workingTheme.MessageBoxTheme.TitleForeground = newBrush);
+        }
+
+        private void EditMsgBoxButtonDisabledBackground_Click(object sender, RoutedEventArgs e)
+        {
+            EditBrush("Message Box Button Disabled Background", _workingTheme.MessageBoxTheme.ButtonDisabledBackground, newBrush => _workingTheme.MessageBoxTheme.ButtonDisabledBackground = newBrush);
+        }
+
+        private void EditMsgBoxButtonDisabledForeground_Click(object sender, RoutedEventArgs e)
+        {
+            EditBrush("Message Box Button Disabled Foreground", _workingTheme.MessageBoxTheme.ButtonDisabledForeground, newBrush => _workingTheme.MessageBoxTheme.ButtonDisabledForeground = newBrush);
+        }
+
+        private void EditMsgBoxButtonOutline_Click(object sender, RoutedEventArgs e)
+        {
+            EditBrush("Message Box Button Outline", _workingTheme.MessageBoxTheme.ButtonOutline, newBrush => _workingTheme.MessageBoxTheme.ButtonOutline = newBrush);
         }
 
         private void EditBrush(string name, Brush currentBrush, Action<SolidColorBrush> setter)
