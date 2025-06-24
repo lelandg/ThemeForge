@@ -795,7 +795,6 @@ public class ThemeManager : INotifyPropertyChanged
                     SaveCustomThemes();
                 }
 
-
                 return theme;
             }
 
@@ -809,35 +808,5 @@ public class ThemeManager : INotifyPropertyChanged
         }
     }
 
-    public void ApplyThemeToWindow(Window window)
-    {
-        if (CurrentTheme == null || window == null) return;
-
-        // Create window-specific resource dictionary
-        var themeResources = new ResourceDictionary();
-
-        // Window theme resources
-        themeResources.Add("MainBackground", CurrentTheme.WindowTheme.MainBackground);
-        themeResources.Add("TitleBarBackground", CurrentTheme.WindowTheme.TitleBarBackground);
-        themeResources.Add("MenuBackground", CurrentTheme.WindowTheme.MenuBackground);
-        themeResources.Add("MenuForeground", CurrentTheme.WindowTheme.MenuForeground);
-        themeResources.Add("SplitterBackground", CurrentTheme.WindowTheme.SplitterBackground);
-        themeResources.Add("GroupBoxBorder", CurrentTheme.WindowTheme.GroupBoxBorder);
-        themeResources.Add("ButtonBackground", CurrentTheme.WindowTheme.ButtonBackground);
-        themeResources.Add("ButtonHoverBackground", CurrentTheme.WindowTheme.ButtonHoverBackground);
-        themeResources.Add("ButtonPressedBackground", CurrentTheme.WindowTheme.ButtonPressedBackground);
-        themeResources.Add("ButtonForeground", CurrentTheme.WindowTheme.ButtonForeground);
-        themeResources.Add("ControlBackground", CurrentTheme.WindowTheme.ControlBackground);
-        themeResources.Add("ControlBorderBrush", CurrentTheme.WindowTheme.ControlBorderBrush);
-        themeResources.Add("ControlHoverBackground", CurrentTheme.WindowTheme.ControlHoverBackground);
-        themeResources.Add("TextForeground", CurrentTheme.WindowTheme.TextForeground);
-        themeResources.Add("LabelForeground", CurrentTheme.WindowTheme.LabelForeground);
-
-        // Apply to the specific window
-        window.Resources.MergedDictionaries.Clear();
-        window.Resources.MergedDictionaries.Add(themeResources);
-        window.InvalidateVisual();
-        window.UpdateLayout();
-    }
     public event PropertyChangedEventHandler? PropertyChanged;
 }

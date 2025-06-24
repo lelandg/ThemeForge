@@ -1,5 +1,3 @@
-using System;
-using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -40,14 +38,6 @@ namespace ThemeForge.Themes
             if (ThemeSelector.SelectedItem is Theme selectedTheme)
             {
                 _workingTheme = selectedTheme;
-
-                // Apply theme only to this window
-                var savedCurrentTheme = ThemeManager.Current.CurrentTheme;
-                ThemeManager.Current.CurrentTheme = selectedTheme;
-                ThemeManager.Current.ApplyThemeToWindow(this);
-                ThemeManager.Current.CurrentTheme = savedCurrentTheme;
-
-                // Update UI context
                 DataContext = null;
                 DataContext = ThemeManager.Current;
 
@@ -110,18 +100,19 @@ namespace ThemeForge.Themes
         {
             if (_workingTheme != null)
             {
-                // Apply the selected theme to the entire application
                 ThemeManager.Current.CurrentTheme = _workingTheme;
-                ThemeManager.Current.ApplyTheme();
-
-                // Update main window text
-                var mainWindow = System.Windows.Application.Current.MainWindow as MainWindow;
+                // Force main window to refresh theme
+                var mainWindow = System.Windows.Application.Current.MainWindow;
                 if (mainWindow != null)
                 {
-                    mainWindow.UpdateCurrentThemeText();
+                    mainWindow.Resources.MergedDictionaries.Clear();
+                    foreach (var dict in System.Windows.Application.Current.Resources.MergedDictionaries)
+                    {
+                        mainWindow.Resources.MergedDictionaries.Add(dict);
+                    }
+                    mainWindow.InvalidateVisual();
+                    mainWindow.UpdateLayout();
                 }
-
-                CustomMessageBox.Show("Theme applied to application", "Theme Applied", MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }
 

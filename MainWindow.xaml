@@ -6,9 +6,7 @@
         xmlns:local="clr-namespace:ThemeForge"
         mc:Ignorable="d"
         Title="Theme Demo" Height="500" Width="800"
-        Background="{DynamicResource MainBackground}"
-        WindowStyle="SingleBorderWindow"
-        ResizeMode="CanResize">
+        Background="{DynamicResource MainBackground}">
             <Window.Resources>
         <!-- Dark Blue Theme for design-time preview -->
         <SolidColorBrush x:Key="MainBackground" Color="#1A1A2E"/>
