@@ -17,6 +17,9 @@ public partial class MainWindow : Window
             // Initialize theme manager
             DataContext = ThemeManager.Current;
 
+            // Add ESC key handler
+            PreviewKeyDown += Window_PreviewKeyDown;
+
             // Populate theme selector
             ThemeSelector.ItemsSource = ThemeManager.Current.BuiltInThemes.Concat(ThemeManager.Current.CustomThemes);
 
@@ -136,6 +139,14 @@ public partial class MainWindow : Window
         if (ThemeManager.Current.CurrentTheme != null)
         {
             App.Settings.ThemeName = ThemeManager.Current.CurrentTheme.Name;
+        }
+    }
+
+    private void Window_PreviewKeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+    {
+        if (e.Key == System.Windows.Input.Key.Escape)
+        {
+            Close();
         }
     }
 }

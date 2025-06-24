@@ -20,6 +20,18 @@ namespace ThemeForge.Themes
             InputTextBox.Text = defaultValue;
             InputTextBox.SelectAll();
             InputTextBox.Focus();
+
+            // Add ESC key handler
+            PreviewKeyDown += Window_PreviewKeyDown;
+        }
+
+        private void Window_PreviewKeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            if (e.Key == System.Windows.Input.Key.Escape)
+            {
+                DialogResult = false;
+                Close();
+            }
         }
 
         private void OkButton_Click(object sender, RoutedEventArgs e)

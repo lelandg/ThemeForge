@@ -16,6 +16,7 @@ namespace ThemeForge.Themes
         {
             InitializeComponent();
             DataContext = ThemeManager.Current;
+            PreviewKeyDown += Window_PreviewKeyDown;
 
             // Create a working copy of the current theme
             _workingTheme = ThemeManager.Current.CurrentTheme;
@@ -270,5 +271,12 @@ namespace ThemeForge.Themes
         }
 
         #endregion
+        private void Window_PreviewKeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            if (e.Key == System.Windows.Input.Key.Escape)
+            {
+                Close();
+            }
+        }
     }
 }
