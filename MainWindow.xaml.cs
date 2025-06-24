@@ -11,6 +11,13 @@ public partial class MainWindow : Window
     {
         InitializeComponent();
 
+        // Enable window dragging by clicking on the title bar
+        this.MouseLeftButtonDown += (s, e) =>
+        {
+            if (e.ChangedButton == System.Windows.Input.MouseButton.Left)
+                this.DragMove();
+        };
+
         // Skip theme application in design mode to keep design-time resources
         if (!System.ComponentModel.DesignerProperties.GetIsInDesignMode(this))
         {

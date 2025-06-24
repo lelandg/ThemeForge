@@ -6,96 +6,36 @@
         xmlns:local="clr-namespace:ThemeForge"
         mc:Ignorable="d"
         Title="Theme Demo" Height="500" Width="800"
-        Background="{DynamicResource MainBackground}">
-            <Window.Resources>
-        <!-- Dark Blue Theme for design-time preview -->
-        <SolidColorBrush x:Key="MainBackground" Color="#1A1A2E"/>
-        <SolidColorBrush x:Key="TitleBarBackground" Color="#0D2B45"/>
-        <SolidColorBrush x:Key="MenuBackground" Color="#0D2B45"/>
-        <SolidColorBrush x:Key="MenuForeground" Color="#FFFFFF"/>
-        <SolidColorBrush x:Key="SplitterBackground" Color="#0D2B45"/>
-        <SolidColorBrush x:Key="GroupBoxBorder" Color="#3A3A5A"/>
-        <SolidColorBrush x:Key="ButtonBackground" Color="#2C3E50"/>
-        <SolidColorBrush x:Key="ButtonHoverBackground" Color="#34495E"/>
-        <SolidColorBrush x:Key="ButtonPressedBackground" Color="#1C2E40"/>
-        <SolidColorBrush x:Key="ButtonForeground" Color="#FFFFFF"/>
-        <SolidColorBrush x:Key="PanelBackground" Color="Transparent"/>
-        <SolidColorBrush x:Key="ControlBackground" Color="#202038"/>
-        <SolidColorBrush x:Key="ControlBorderBrush" Color="#555577"/>
-        <SolidColorBrush x:Key="ControlHoverBackground" Color="#303048"/>
-        <SolidColorBrush x:Key="TextForeground" Color="#E0E0E0"/>
-        <SolidColorBrush x:Key="LabelForeground" Color="#7FA9D8"/>
+        Background="{DynamicResource MainBackground}"
+        WindowStyle="None" ResizeMode="CanResize"
+        BorderBrush="{DynamicResource TitleBarBackground}" BorderThickness="1">
+    <Grid>
+    <!-- Custom Title Bar -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="32"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
 
-            <!-- Button Style for design-time preview -->
-            <Style x:Key="CustomButton" TargetType="Button">
-                <Setter Property="Background" Value="{DynamicResource ButtonBackground}"/>
-                <Setter Property="Foreground" Value="{DynamicResource ButtonForeground}"/>
-                <Setter Property="BorderBrush" Value="{DynamicResource ControlBorderBrush}"/>
-                <Setter Property="Padding" Value="10,5,10,5"/>
-                <Setter Property="Template">
-                    <Setter.Value>
-                        <ControlTemplate TargetType="Button">
-                            <Border Background="{TemplateBinding Background}"
-                                    BorderBrush="{TemplateBinding BorderBrush}"
-                                    BorderThickness="1"
-                                    CornerRadius="3">
-                                <ContentPresenter HorizontalAlignment="Center"
-                                                  VerticalAlignment="Center"
-                                                  Margin="{TemplateBinding Padding}"/>
-                            </Border>
-                            <ControlTemplate.Triggers>
-                                <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Background" Value="{DynamicResource ButtonHoverBackground}"/>
-                                </Trigger>
-                                <Trigger Property="IsPressed" Value="True">
-                                    <Setter Property="Background" Value="{DynamicResource ButtonPressedBackground}"/>
-                                </Trigger>
-                            </ControlTemplate.Triggers>
-                        </ControlTemplate>
-                    </Setter.Value>
-                </Setter>
-            </Style>
+        <Grid Grid.Row="0" Background="{DynamicResource TitleBarBackground}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
 
-            <!-- GroupBox Style for design-time preview -->
-            <Style x:Key="CustomGroupBox" TargetType="GroupBox">
-                <Setter Property="BorderBrush" Value="{DynamicResource GroupBoxBorder}"/>
-                <Setter Property="BorderThickness" Value="1"/>
-                <Setter Property="Padding" Value="10"/>
-                <Setter Property="Margin" Value="5"/>
-                <Setter Property="Template">
-                    <Setter.Value>
-                        <ControlTemplate TargetType="GroupBox">
-                            <Grid>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="Auto"/>
-                                    <RowDefinition Height="*"/>
-                                </Grid.RowDefinitions>
-                                <Border Grid.Row="0" Grid.RowSpan="2"
-                                        BorderBrush="{TemplateBinding BorderBrush}"
-                                        BorderThickness="{TemplateBinding BorderThickness}"
-                                        CornerRadius="3"/>
-                                <Border Grid.Row="0" Background="{DynamicResource MainBackground}"
-                                        Margin="10,0,0,0">
-                                    <ContentPresenter ContentSource="Header"
-                                                      RecognizesAccessKey="True"
-                                                      Margin="5,0,5,0"/>
-                                </Border>
-                                <ContentPresenter Grid.Row="1"
-                                                  Margin="{TemplateBinding Padding}"/>
-                            </Grid>
-                        </ControlTemplate>
-                    </Setter.Value>
-                </Setter>
-                <Setter Property="HeaderTemplate">
-                    <Setter.Value>
-                        <DataTemplate>
-                            <TextBlock Text="{Binding}" Foreground="{DynamicResource LabelForeground}" FontWeight="SemiBold"/>
-                        </DataTemplate>
-                    </Setter.Value>
-                </Setter>
-            </Style>
-            </Window.Resources>
-    <Grid Margin="20">
+            <TextBlock Text="Theme Demo" VerticalAlignment="Center" Margin="15,0,0,0"
+                       Foreground="{DynamicResource MenuForeground}" FontWeight="SemiBold"/>
+
+            <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button Content="_" Width="45" Height="32" BorderThickness="0"
+                        Background="Transparent" Foreground="{DynamicResource MenuForeground}"/>
+                <Button Content="□" Width="45" Height="32" BorderThickness="0"
+                        Background="Transparent" Foreground="{DynamicResource MenuForeground}"/>
+                <Button Content="✕" Width="45" Height="32" BorderThickness="0"
+                        Background="Transparent" Foreground="{DynamicResource MenuForeground}"/>
+            </StackPanel>
+        </Grid>
+
+        <Grid Grid.Row="1" Margin="20">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
@@ -170,12 +110,18 @@
                                 <RadioButton Content="Radio Button 2" Margin="5" 
                                              Foreground="{DynamicResource TextForeground}"/>
 
-                                <TextBox Text="Text Box" Margin="5" Width="150"/>
+                                <TextBox Text="Text Box" Margin="5" Width="150" 
+                                         Background="{DynamicResource ControlBackground}"
+                                         Foreground="{DynamicResource TextForeground}"
+                                         BorderBrush="{DynamicResource ControlBorderBrush}"/>
 
-                                <ComboBox Margin="5" Width="150">
-                                    <ComboBoxItem Content="ComboBox Item 1"/>
-                                    <ComboBoxItem Content="ComboBox Item 2"/>
-                                    <ComboBoxItem Content="ComboBox Item 3"/>
+                                <ComboBox Margin="5" Width="150" 
+                                          Background="{DynamicResource ControlBackground}"
+                                          Foreground="{DynamicResource TextForeground}"
+                                          BorderBrush="{DynamicResource ControlBorderBrush}">
+                                    <ComboBoxItem Content="ComboBox Item 1" Foreground="{DynamicResource TextForeground}"/>
+                                    <ComboBoxItem Content="ComboBox Item 2" Foreground="{DynamicResource TextForeground}"/>
+                                    <ComboBoxItem Content="ComboBox Item 3" Foreground="{DynamicResource TextForeground}"/>
                                 </ComboBox>
                             </WrapPanel>
                         </GroupBox>
@@ -205,26 +151,22 @@
                                         <Border Grid.Row="1" Grid.Column="0" Width="32" Height="32" 
                                                 Margin="10,0" VerticalAlignment="Center">
                                             <TextBlock Text="ℹ" FontSize="24" HorizontalAlignment="Center"
-                                                       Foreground="{DynamicResource ButtonBackground}"/>
+                                                       Foreground="{Binding CurrentTheme.WindowTheme.ButtonBackground}"/>
                                         </Border>
 
                                         <!-- Message Text -->
                                         <TextBlock Grid.Row="1" Grid.Column="1" 
                                                    Text="This is a sample message box. Theme changes will be reflected here."
                                                    VerticalAlignment="Center" TextWrapping="Wrap" 
-                                                   Foreground="{DynamicResource TextForeground}"/>
+                                                   Foreground="{Binding CurrentTheme.WindowTheme.TextForeground}"/>
 
                                         <!-- Buttons -->
                                         <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal" 
                                                     HorizontalAlignment="Center" Margin="0,0,0,10">
                                             <Button Content="OK" Width="80" Height="28" Margin="5,0"
-                                                    Background="{Binding CurrentTheme.MessageBoxTheme.ButtonBackground}"
-                                                    Foreground="{Binding CurrentTheme.MessageBoxTheme.ButtonForeground}"
-                                                    BorderBrush="{Binding CurrentTheme.MessageBoxTheme.ButtonOutline}"/>
+                                                    Style="{StaticResource CustomButton}"/>
                                             <Button Content="Cancel" Width="80" Height="28" Margin="5,0"
-                                                    Background="{Binding CurrentTheme.MessageBoxTheme.ButtonBackground}"
-                                                    Foreground="{Binding CurrentTheme.MessageBoxTheme.ButtonForeground}"
-                                                    BorderBrush="{Binding CurrentTheme.MessageBoxTheme.ButtonOutline}"/>
+                                                    Style="{StaticResource CustomButton}"/>
                                         </StackPanel>
                                     </Grid>
                                 </Border>
@@ -245,5 +187,6 @@
                        VerticalAlignment="Center" 
                        Foreground="{DynamicResource LabelForeground}"/>
         </StackPanel>
+    </Grid>
     </Grid>
 </Window>

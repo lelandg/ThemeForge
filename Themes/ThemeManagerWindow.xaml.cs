@@ -45,6 +45,10 @@ namespace ThemeForge.Themes
 
                 // Apply the theme changes to this window immediately for a live preview
                 ApplyWorkingThemeToWindowAndRefreshBindings();
+                
+                // Also apply the theme globally so all windows get updated
+                ThemeManager.Current.CurrentTheme = selectedTheme;
+                ThemeManager.Current.ApplyTheme();
             }
         }
         
