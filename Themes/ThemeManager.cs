@@ -11,6 +11,8 @@ using Application = System.Windows.Application;
 using Brush = System.Windows.Media.Brush;
 using Button = System.Windows.Controls.Button;
 using Color = System.Windows.Media.Color;
+using ComboBox = System.Windows.Controls.ComboBox;
+using Control = System.Windows.Controls.Control;
 using GroupBox = System.Windows.Controls.GroupBox;
 using HorizontalAlignment = System.Windows.HorizontalAlignment;
 
