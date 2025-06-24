@@ -114,10 +114,12 @@
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
 
-            <ComboBox x:Name="ThemeSelector" 
+            <ComboBox x:Name="ThemeSelector"
                       Grid.Column="0"
-                      Margin="0,0,10,0" 
+                      Margin="0,0,10,0"
                       Height="30"
+                      Style="{StaticResource CustomComboBox}"
+                      ItemContainerStyle="{StaticResource CustomComboBoxItem}"
                       SelectedIndex="0"
                       SelectionChanged="ThemeSelector_SelectionChanged">
                 <ComboBox.ItemTemplate>
@@ -197,7 +199,9 @@
                                                 <RadioButton Content="Radio Button 2" Margin="5" 
                                                              Foreground="{Binding CurrentTheme.WindowTheme.TextForeground}"/>
 
-                                                <ComboBox Margin="5" SelectedIndex="0">
+                                                <ComboBox Margin="5" SelectedIndex="0"
+                                                          Style="{StaticResource CustomComboBox}"
+                                                          ItemContainerStyle="{StaticResource CustomComboBoxItem}">
                                                     <ComboBoxItem Content="ComboBox Item 1"/>
                                                     <ComboBoxItem Content="ComboBox Item 2"/>
                                                     <ComboBoxItem Content="ComboBox Item 3"/>

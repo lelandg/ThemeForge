@@ -150,7 +150,10 @@ public class ThemeManager : INotifyPropertyChanged
                 ControlBorderBrush = new SolidColorBrush(Color.FromRgb(0xB0, 0xC4, 0xDE)),
                 ControlHoverBackground = new SolidColorBrush(Color.FromRgb(0xE0, 0xE5, 0xEF)),
                 TextForeground = new SolidColorBrush(Color.FromRgb(0x33, 0x33, 0x33)),
-                LabelForeground = new SolidColorBrush(Color.FromRgb(0x1E, 0x5A, 0x9C))
+                LabelForeground = new SolidColorBrush(Color.FromRgb(0x1E, 0x5A, 0x9C)),
+                ComboBoxItemBackground = new SolidColorBrush(Color.FromRgb(0xF0, 0xF5, 0xFF)),
+                ComboBoxItemHoverBackground = new SolidColorBrush(Color.FromRgb(0xE0, 0xE5, 0xEF)),
+                ComboBoxItemSelectedBackground = new SolidColorBrush(Color.FromRgb(0x3E, 0x85, 0xC6))
             },
             MessageBoxTheme = new MessageBoxTheme
             {
@@ -195,7 +198,10 @@ public class ThemeManager : INotifyPropertyChanged
                 ControlBorderBrush = new SolidColorBrush(Color.FromRgb(0x55, 0x55, 0x77)),
                 ControlHoverBackground = new SolidColorBrush(Color.FromRgb(0x30, 0x30, 0x48)),
                 TextForeground = new SolidColorBrush(Color.FromRgb(0xE0, 0xE0, 0xE0)),
-                LabelForeground = new SolidColorBrush(Color.FromRgb(0x7F, 0xA9, 0xD8))
+                LabelForeground = new SolidColorBrush(Color.FromRgb(0x7F, 0xA9, 0xD8)),
+                ComboBoxItemBackground = new SolidColorBrush(Color.FromRgb(0x20, 0x20, 0x38)),
+                ComboBoxItemHoverBackground = new SolidColorBrush(Color.FromRgb(0x30, 0x30, 0x48)),
+                ComboBoxItemSelectedBackground = new SolidColorBrush(Color.FromRgb(0x0D, 0x2B, 0x45))
             },
             MessageBoxTheme = new MessageBoxTheme
             {
@@ -240,7 +246,10 @@ public class ThemeManager : INotifyPropertyChanged
                 ControlBorderBrush = new SolidColorBrush(Color.FromRgb(0x55, 0x3A, 0x7A)),
                 ControlHoverBackground = new SolidColorBrush(Color.FromRgb(0x43, 0x34, 0x54)),
                 TextForeground = new SolidColorBrush(Color.FromRgb(0xE0, 0xE0, 0xE0)),
-                LabelForeground = new SolidColorBrush(Color.FromRgb(0xC4, 0x9D, 0xE3))
+                LabelForeground = new SolidColorBrush(Color.FromRgb(0xC4, 0x9D, 0xE3)),
+                ComboBoxItemBackground = new SolidColorBrush(Color.FromRgb(0x33, 0x24, 0x44)),
+                ComboBoxItemHoverBackground = new SolidColorBrush(Color.FromRgb(0x43, 0x34, 0x54)),
+                ComboBoxItemSelectedBackground = new SolidColorBrush(Color.FromRgb(0x42, 0x25, 0x6F))
             },
             MessageBoxTheme = new MessageBoxTheme
             {
@@ -285,7 +294,10 @@ public class ThemeManager : INotifyPropertyChanged
                 ControlBorderBrush = new SolidColorBrush(Color.FromRgb(0x55, 0x77, 0x55)),
                 ControlHoverBackground = new SolidColorBrush(Color.FromRgb(0x34, 0x54, 0x43)),
                 TextForeground = new SolidColorBrush(Color.FromRgb(0xE0, 0xE0, 0xE0)),
-                LabelForeground = new SolidColorBrush(Color.FromRgb(0x9D, 0xE3, 0xC4))
+                LabelForeground = new SolidColorBrush(Color.FromRgb(0x9D, 0xE3, 0xC4)),
+                ComboBoxItemBackground = new SolidColorBrush(Color.FromRgb(0x24, 0x44, 0x33)),
+                ComboBoxItemHoverBackground = new SolidColorBrush(Color.FromRgb(0x34, 0x54, 0x43)),
+                ComboBoxItemSelectedBackground = new SolidColorBrush(Color.FromRgb(0x25, 0x6F, 0x42))
             },
             MessageBoxTheme = new MessageBoxTheme
             {
@@ -330,7 +342,10 @@ public class ThemeManager : INotifyPropertyChanged
                 ControlBorderBrush = new SolidColorBrush(Color.FromRgb(0xB0, 0xC4, 0xDE)),
                 ControlHoverBackground = new SolidColorBrush(Color.FromRgb(0xE0, 0xE5, 0xEF)),
                 TextForeground = new SolidColorBrush(Color.FromRgb(0x33, 0x33, 0x33)),
-                LabelForeground = new SolidColorBrush(Color.FromRgb(0x1E, 0x5A, 0x9C))
+                LabelForeground = new SolidColorBrush(Color.FromRgb(0x1E, 0x5A, 0x9C)),
+                ComboBoxItemBackground = new SolidColorBrush(Color.FromRgb(0xF0, 0xF5, 0xFF)),
+                ComboBoxItemHoverBackground = new SolidColorBrush(Color.FromRgb(0xE0, 0xE5, 0xEF)),
+                ComboBoxItemSelectedBackground = new SolidColorBrush(Color.FromRgb(0x1E, 0x5A, 0x9C))
             },
             MessageBoxTheme = new MessageBoxTheme
             {
@@ -375,7 +390,10 @@ public class ThemeManager : INotifyPropertyChanged
                 ControlBorderBrush = new SolidColorBrush(Color.FromRgb(0xB0, 0xDE, 0xC4)),
                 ControlHoverBackground = new SolidColorBrush(Color.FromRgb(0xE0, 0xEF, 0xE5)),
                 TextForeground = new SolidColorBrush(Color.FromRgb(0x33, 0x33, 0x33)),
-                LabelForeground = new SolidColorBrush(Color.FromRgb(0x15, 0x6B, 0x40))
+                LabelForeground = new SolidColorBrush(Color.FromRgb(0x15, 0x6B, 0x40)),
+                ComboBoxItemBackground = new SolidColorBrush(Color.FromRgb(0xF0, 0xFF, 0xF5)),
+                ComboBoxItemHoverBackground = new SolidColorBrush(Color.FromRgb(0xE0, 0xEF, 0xE5)),
+                ComboBoxItemSelectedBackground = new SolidColorBrush(Color.FromRgb(0x3E, 0xC6, 0x85))
             },
             MessageBoxTheme = new MessageBoxTheme
             {
@@ -420,7 +438,10 @@ public class ThemeManager : INotifyPropertyChanged
                 ControlBorderBrush = new SolidColorBrush(Color.FromRgb(0xDE, 0xC4, 0xB0)),
                 ControlHoverBackground = new SolidColorBrush(Color.FromRgb(0xEF, 0xE5, 0xD6)),
                 TextForeground = new SolidColorBrush(Color.FromRgb(0x33, 0x33, 0x33)),
-                LabelForeground = new SolidColorBrush(Color.FromRgb(0xC4, 0x65, 0x1E))
+                LabelForeground = new SolidColorBrush(Color.FromRgb(0xC4, 0x65, 0x1E)),
+                ComboBoxItemBackground = new SolidColorBrush(Color.FromRgb(0xFF, 0xF5, 0xE6)),
+                ComboBoxItemHoverBackground = new SolidColorBrush(Color.FromRgb(0xEF, 0xE5, 0xD6)),
+                ComboBoxItemSelectedBackground = new SolidColorBrush(Color.FromRgb(0xE6, 0x85, 0x3E))
             },
             MessageBoxTheme = new MessageBoxTheme
             {
@@ -469,6 +490,9 @@ public class ThemeManager : INotifyPropertyChanged
             Application.Current.Resources["ControlHoverBackground"] = windowTheme.ControlHoverBackground;
             Application.Current.Resources["TextForeground"] = windowTheme.TextForeground;
             Application.Current.Resources["LabelForeground"] = windowTheme.LabelForeground;
+            Application.Current.Resources["ComboBoxItemBackground"] = windowTheme.ComboBoxItemBackground;
+            Application.Current.Resources["ComboBoxItemHoverBackground"] = windowTheme.ComboBoxItemHoverBackground;
+            Application.Current.Resources["ComboBoxItemSelectedBackground"] = windowTheme.ComboBoxItemSelectedBackground;
         }
 
         // Apply to message box style generator
@@ -590,6 +614,38 @@ public class ThemeManager : INotifyPropertyChanged
         groupBoxStyle.Setters.Add(new Setter(GroupBox.HeaderTemplateProperty, headerTemplate));
 
         Application.Current.Resources["CustomGroupBox"] = groupBoxStyle;
+
+        // ComboBox style
+        var comboBoxStyle = new Style(typeof(ComboBox));
+        comboBoxStyle.Setters.Add(new Setter(Control.BackgroundProperty, Application.Current.Resources["ControlBackground"]));
+        comboBoxStyle.Setters.Add(new Setter(Control.ForegroundProperty, Application.Current.Resources["TextForeground"]));
+        comboBoxStyle.Setters.Add(new Setter(Control.BorderBrushProperty, Application.Current.Resources["ControlBorderBrush"]));
+        comboBoxStyle.Setters.Add(new Setter(Control.BorderThicknessProperty, new Thickness(1)));
+
+        var comboBoxMouseOver = new Trigger { Property = UIElement.IsMouseOverProperty, Value = true };
+        comboBoxMouseOver.Setters.Add(new Setter(Control.BackgroundProperty, Application.Current.Resources["ControlHoverBackground"]));
+        comboBoxStyle.Triggers.Add(comboBoxMouseOver);
+
+        var comboBoxFocus = new Trigger { Property = ComboBox.IsKeyboardFocusWithinProperty, Value = true };
+        comboBoxFocus.Setters.Add(new Setter(Control.BackgroundProperty, Application.Current.Resources["ControlHoverBackground"]));
+        comboBoxStyle.Triggers.Add(comboBoxFocus);
+
+        Application.Current.Resources["CustomComboBox"] = comboBoxStyle;
+
+        // ComboBoxItem style
+        var comboBoxItemStyle = new Style(typeof(ComboBoxItem));
+        comboBoxItemStyle.Setters.Add(new Setter(Control.BackgroundProperty, Application.Current.Resources["ComboBoxItemBackground"]));
+        comboBoxItemStyle.Setters.Add(new Setter(Control.ForegroundProperty, Application.Current.Resources["TextForeground"]));
+
+        var itemMouseOver = new Trigger { Property = ComboBoxItem.IsMouseOverProperty, Value = true };
+        itemMouseOver.Setters.Add(new Setter(Control.BackgroundProperty, Application.Current.Resources["ComboBoxItemHoverBackground"]));
+        comboBoxItemStyle.Triggers.Add(itemMouseOver);
+
+        var itemSelected = new Trigger { Property = ComboBoxItem.IsSelectedProperty, Value = true };
+        itemSelected.Setters.Add(new Setter(Control.BackgroundProperty, Application.Current.Resources["ComboBoxItemSelectedBackground"]));
+        comboBoxItemStyle.Triggers.Add(itemSelected);
+
+        Application.Current.Resources["CustomComboBoxItem"] = comboBoxItemStyle;
     }
 
     /// <summary>
@@ -620,6 +676,9 @@ public class ThemeManager : INotifyPropertyChanged
                 ControlHoverBackground = CloneBrush(_currentTheme.WindowTheme.ControlHoverBackground),
                 TextForeground = CloneBrush(_currentTheme.WindowTheme.TextForeground),
                 LabelForeground = CloneBrush(_currentTheme.WindowTheme.LabelForeground),
+                ComboBoxItemBackground = CloneBrush(_currentTheme.WindowTheme.ComboBoxItemBackground),
+                ComboBoxItemHoverBackground = CloneBrush(_currentTheme.WindowTheme.ComboBoxItemHoverBackground),
+                ComboBoxItemSelectedBackground = CloneBrush(_currentTheme.WindowTheme.ComboBoxItemSelectedBackground),
                 AlternateTextForeground = CloneBrush(_currentTheme.WindowTheme.AlternateTextForeground),
                 MainAccent = CloneBrush(_currentTheme.WindowTheme.MainAccent)
             },

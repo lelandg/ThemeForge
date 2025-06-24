@@ -59,7 +59,10 @@ namespace ThemeForge.Themes
                     ControlBorderBrush = ((SolidColorBrush)WindowTheme.ControlBorderBrush).Color.ToString(),
                     ControlHoverBackground = ((SolidColorBrush)WindowTheme.ControlHoverBackground).Color.ToString(),
                     TextForeground = ((SolidColorBrush)WindowTheme.TextForeground).Color.ToString(),
-                    LabelForeground = ((SolidColorBrush)WindowTheme.LabelForeground).Color.ToString()
+                    LabelForeground = ((SolidColorBrush)WindowTheme.LabelForeground).Color.ToString(),
+                    ComboBoxItemBackground = ((SolidColorBrush)WindowTheme.ComboBoxItemBackground).Color.ToString(),
+                    ComboBoxItemHoverBackground = ((SolidColorBrush)WindowTheme.ComboBoxItemHoverBackground).Color.ToString(),
+                    ComboBoxItemSelectedBackground = ((SolidColorBrush)WindowTheme.ComboBoxItemSelectedBackground).Color.ToString()
                 };
             }
 
@@ -119,7 +122,10 @@ namespace ThemeForge.Themes
                     ControlBorderBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString(data.WindowTheme.ControlBorderBrush)),
                     ControlHoverBackground = new SolidColorBrush((Color)ColorConverter.ConvertFromString(data.WindowTheme.ControlHoverBackground)),
                     TextForeground = new SolidColorBrush((Color)ColorConverter.ConvertFromString(data.WindowTheme.TextForeground)),
-                    LabelForeground = new SolidColorBrush((Color)ColorConverter.ConvertFromString(data.WindowTheme.LabelForeground))
+                    LabelForeground = new SolidColorBrush((Color)ColorConverter.ConvertFromString(data.WindowTheme.LabelForeground)),
+                    ComboBoxItemBackground = new SolidColorBrush((Color)ColorConverter.ConvertFromString(data.WindowTheme.ComboBoxItemBackground)),
+                    ComboBoxItemHoverBackground = new SolidColorBrush((Color)ColorConverter.ConvertFromString(data.WindowTheme.ComboBoxItemHoverBackground)),
+                    ComboBoxItemSelectedBackground = new SolidColorBrush((Color)ColorConverter.ConvertFromString(data.WindowTheme.ComboBoxItemSelectedBackground))
                 };
             }
 
@@ -204,6 +210,15 @@ namespace ThemeForge.Themes
 
         /// <summary>Foreground color for labels</summary>
         public Brush LabelForeground { get; set; } = new SolidColorBrush(Color.FromRgb(0x1E, 0x5A, 0x9C));
+
+        /// <summary>Background color for combo box items</summary>
+        public Brush ComboBoxItemBackground { get; set; } = new SolidColorBrush(Color.FromRgb(0xF0, 0xF5, 0xFF));
+
+        /// <summary>Background color for combo box items when hovered</summary>
+        public Brush ComboBoxItemHoverBackground { get; set; } = new SolidColorBrush(Color.FromRgb(0xE0, 0xE5, 0xEF));
+
+        /// <summary>Background color for combo box items when selected</summary>
+        public Brush ComboBoxItemSelectedBackground { get; set; } = new SolidColorBrush(Color.FromRgb(0x3E, 0x85, 0xC6));
     }
 
     /// <summary>

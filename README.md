@@ -38,7 +38,8 @@ Themes consist of two main parts:
 - Window Theme - Controls the appearance of application windows
 - Message Box Theme - Controls the appearance of message boxes
 
-All color properties of these themes can be edited through the Theme Manager window.
+All color properties of these themes can be edited through the Theme Manager window. 
+This includes colors for combo box items and other common WPF controls.
 
 ## Adding to Your Project
 
