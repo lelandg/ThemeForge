@@ -100,6 +100,18 @@ namespace ThemeForge.Themes
             if (_workingTheme != null)
             {
                 ThemeManager.Current.CurrentTheme = _workingTheme;
+                // Force main window to refresh theme
+                var mainWindow = System.Windows.Application.Current.MainWindow;
+                if (mainWindow != null)
+                {
+                    mainWindow.Resources.MergedDictionaries.Clear();
+                    foreach (var dict in System.Windows.Application.Current.Resources.MergedDictionaries)
+                    {
+                        mainWindow.Resources.MergedDictionaries.Add(dict);
+                    }
+                    mainWindow.InvalidateVisual();
+                    mainWindow.UpdateLayout();
+                }
             }
         }
 

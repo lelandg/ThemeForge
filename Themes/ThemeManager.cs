@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Text.Json;
@@ -18,7 +19,7 @@ namespace ThemeForge.Themes;
 /// <summary>
 /// Manages application-wide theming, including windows and message boxes
 /// </summary>
-public class ThemeManager
+public class ThemeManager : INotifyPropertyChanged
 {
     private static ThemeManager? _instance;
 
@@ -47,6 +48,7 @@ public class ThemeManager
                 _currentTheme = value;
                 ApplyTheme();
                 ThemeChanged?.Invoke(this, EventArgs.Empty);
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(CurrentTheme)));
             }
         }
     }
@@ -805,4 +807,6 @@ public class ThemeManager
             throw;
         }
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
 }
