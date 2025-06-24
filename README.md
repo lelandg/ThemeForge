@@ -38,7 +38,7 @@ Themes consist of two main parts:
 - Window Theme - Controls the appearance of application windows
 - Message Box Theme - Controls the appearance of message boxes
 
-You can customize any color aspect of these themes through the Theme Manager window.
+All color properties of these themes can be edited through the Theme Manager window.
 
 ## Adding to Your Project
 
