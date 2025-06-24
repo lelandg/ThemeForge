@@ -226,6 +226,10 @@ namespace ThemeForge.Themes
             Resources["ComboBoxItemSelectedBackground"] = _workingTheme.WindowTheme.ComboBoxItemSelectedBackground;
             Resources["ControlBorderBrush"] = _workingTheme.WindowTheme.ControlBorderBrush;
             Resources["ControlHoverBackground"] = _workingTheme.WindowTheme.ControlHoverBackground;
+
+            // Update ComboBox backgrounds explicitly to ensure proper theming
+            if (ThemeSelector != null)
+                ThemeSelector.Background = _workingTheme.WindowTheme.ComboBoxBackground;
             Resources["ButtonBackground"] = _workingTheme.WindowTheme.ButtonBackground;
             Resources["ButtonHoverBackground"] = _workingTheme.WindowTheme.ButtonHoverBackground;
             Resources["ButtonPressedBackground"] = _workingTheme.WindowTheme.ButtonPressedBackground;
