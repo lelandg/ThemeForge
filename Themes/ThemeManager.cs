@@ -550,12 +550,12 @@ public class ThemeManager : INotifyPropertyChanged
         buttonFactory.SetValue(Border.BorderThicknessProperty, new Thickness(1));
         buttonFactory.SetValue(Border.CornerRadiusProperty, new CornerRadius(3));
 
-        var contentPresenterFactory = new FrameworkElementFactory(typeof(ContentPresenter));
-        contentPresenterFactory.SetValue(ContentPresenter.HorizontalAlignmentProperty, HorizontalAlignment.Center);
-        contentPresenterFactory.SetValue(ContentPresenter.VerticalAlignmentProperty, VerticalAlignment.Center);
-        contentPresenterFactory.SetBinding(ContentPresenter.MarginProperty, new System.Windows.Data.Binding("Padding") { RelativeSource = new System.Windows.Data.RelativeSource(System.Windows.Data.RelativeSourceMode.TemplatedParent) });
+        var buttonContentPresenterFactory = new FrameworkElementFactory(typeof(ContentPresenter));
+        buttonContentPresenterFactory.SetValue(ContentPresenter.HorizontalAlignmentProperty, HorizontalAlignment.Center);
+        buttonContentPresenterFactory.SetValue(ContentPresenter.VerticalAlignmentProperty, VerticalAlignment.Center);
+        buttonContentPresenterFactory.SetBinding(ContentPresenter.MarginProperty, new System.Windows.Data.Binding("Padding") { RelativeSource = new System.Windows.Data.RelativeSource(System.Windows.Data.RelativeSourceMode.TemplatedParent) });
 
-        buttonFactory.AppendChild(contentPresenterFactory);
+        buttonFactory.AppendChild(buttonContentPresenterFactory);
         buttonTemplate.VisualTree = buttonFactory;
 
         var mouseOverTrigger = new Trigger { Property = Button.IsMouseOverProperty, Value = true };
@@ -587,13 +587,13 @@ public class ThemeManager : INotifyPropertyChanged
         rowDef2.SetValue(RowDefinition.HeightProperty, new GridLength(1, GridUnitType.Star));
         groupBoxFactory.AppendChild(rowDef2);
 
-        var borderFactory = new FrameworkElementFactory(typeof(Border));
-        borderFactory.SetValue(Grid.RowProperty, 0);
-        borderFactory.SetValue(Grid.RowSpanProperty, 2);
-        borderFactory.SetBinding(Border.BorderBrushProperty, new System.Windows.Data.Binding("BorderBrush") { RelativeSource = new System.Windows.Data.RelativeSource(System.Windows.Data.RelativeSourceMode.TemplatedParent) });
-        borderFactory.SetBinding(Border.BorderThicknessProperty, new System.Windows.Data.Binding("BorderThickness") { RelativeSource = new System.Windows.Data.RelativeSource(System.Windows.Data.RelativeSourceMode.TemplatedParent) });
-        borderFactory.SetValue(Border.CornerRadiusProperty, new CornerRadius(3));
-        groupBoxFactory.AppendChild(borderFactory);
+        var groupBoxBorderFactory = new FrameworkElementFactory(typeof(Border));
+        groupBoxBorderFactory.SetValue(Grid.RowProperty, 0);
+        groupBoxBorderFactory.SetValue(Grid.RowSpanProperty, 2);
+        groupBoxBorderFactory.SetBinding(Border.BorderBrushProperty, new System.Windows.Data.Binding("BorderBrush") { RelativeSource = new System.Windows.Data.RelativeSource(System.Windows.Data.RelativeSourceMode.TemplatedParent) });
+        groupBoxBorderFactory.SetBinding(Border.BorderThicknessProperty, new System.Windows.Data.Binding("BorderThickness") { RelativeSource = new System.Windows.Data.RelativeSource(System.Windows.Data.RelativeSourceMode.TemplatedParent) });
+        groupBoxBorderFactory.SetValue(Border.CornerRadiusProperty, new CornerRadius(3));
+        groupBoxFactory.AppendChild(groupBoxBorderFactory);
 
         var headerBorderFactory = new FrameworkElementFactory(typeof(Border));
         headerBorderFactory.SetValue(Grid.RowProperty, 0);
