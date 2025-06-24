@@ -648,19 +648,19 @@ public class ThemeManager : INotifyPropertyChanged
         comboBoxItemStyle.Setters.Add(new Setter(Control.ForegroundProperty, Application.Current.Resources["TextForeground"]));
 
         var template = new ControlTemplate(typeof(ComboBoxItem));
-        var comboBoxItemBorderFactory = new FrameworkElementFactory(typeof(Border));
-        comboBoxItemBorderFactory.Name = "Bd";
-        comboBoxItemBorderFactory.SetBinding(Border.BackgroundProperty, new System.Windows.Data.Binding("Background")
+        var borderFactory = new FrameworkElementFactory(typeof(Border));
+        borderFactory.Name = "Bd";
+        borderFactory.SetBinding(Border.BackgroundProperty, new System.Windows.Data.Binding("Background")
         {
             RelativeSource = new System.Windows.Data.RelativeSource(System.Windows.Data.RelativeSourceMode.TemplatedParent)
         });
-        comboBoxItemBorderFactory.SetValue(Border.PaddingProperty, new Thickness(2));
-        comboBoxItemBorderFactory.SetValue(Border.SnapsToDevicePixelsProperty, true);
+        borderFactory.SetValue(Border.PaddingProperty, new Thickness(2));
+        borderFactory.SetValue(Border.SnapsToDevicePixelsProperty, true);
 
-        var comboBoxItemContentPresenterFactory = new FrameworkElementFactory(typeof(ContentPresenter));
-        comboBoxItemBorderFactory.AppendChild(comboBoxItemContentPresenterFactory);
+        var contentPresenterFactory = new FrameworkElementFactory(typeof(ContentPresenter));
+        borderFactory.AppendChild(contentPresenterFactory);
 
-        template.VisualTree = comboBoxItemBorderFactory;
+        template.VisualTree = borderFactory;
 
         var itemMouseOver = new Trigger { Property = ComboBoxItem.IsMouseOverProperty, Value = true };
         var itemMouseOverSetter = new Setter(Border.BackgroundProperty, Application.Current.Resources["ComboBoxItemHoverBackground"]);
