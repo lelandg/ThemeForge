@@ -16,7 +16,8 @@ namespace ThemeForge.Themes
         public ThemeManagerWindow()
         {
             InitializeComponent();
-            // DataContext will be set by ApplyWorkingThemeToWindowAndRefreshBindings
+            // Set DataContext to ThemeManager.Current for live theme updates
+            DataContext = ThemeManager.Current;
             PreviewKeyDown += Window_PreviewKeyDown;
 
             // Enable window dragging by clicking on the title bar

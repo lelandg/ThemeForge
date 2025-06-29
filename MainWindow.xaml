@@ -56,15 +56,15 @@
             </Grid.ColumnDefinitions>
 
             <!-- Theme Selector Panel -->
-            <GroupBox Grid.Column="0" Header="Theme Selection" Style="{StaticResource CustomGroupBox}">
+            <GroupBox Grid.Column="0" Header="Theme Selection" Style="{DynamicResource CustomGroupBox}">
                 <StackPanel>
                     <TextBlock Text="Select a theme:" Margin="0,0,0,10" Foreground="{DynamicResource TextForeground}"/>
 
                     <ComboBox x:Name="ThemeSelector"
                               Margin="0,0,0,20"
                               Height="30"
-                              Style="{StaticResource CustomComboBox}"
-                              ItemContainerStyle="{StaticResource CustomComboBoxItem}"
+                              Style="{DynamicResource CustomComboBox}"
+                              ItemContainerStyle="{DynamicResource CustomComboBoxItem}"
                               SelectionChanged="ThemeSelector_SelectionChanged">
                         <ComboBox.ItemTemplate>
                             <DataTemplate>
@@ -79,30 +79,30 @@
                     </ComboBox>
 
                     <Button Content="Open Theme Manager" 
-                            Style="{StaticResource CustomButton}" 
+                            Style="{DynamicResource CustomButton}" 
                             Height="30" Margin="0,0,0,10"
                             Click="OpenThemeManager_Click"/>
 
                     <Button Content="Show Message Box" 
-                            Style="{StaticResource CustomButton}" 
+                            Style="{DynamicResource CustomButton}" 
                             Height="30" Margin="0,0,0,10"
                             Click="ShowMessageBox_Click"/>
 
                     <Button Content="Show Question Dialog" 
-                            Style="{StaticResource CustomButton}" 
+                            Style="{DynamicResource CustomButton}" 
                             Height="30"
                             Click="ShowQuestion_Click"/>
                 </StackPanel>
             </GroupBox>
 
             <!-- Preview Panel -->
-            <GroupBox Grid.Column="1" Header="Preview" Style="{StaticResource CustomGroupBox}" Margin="10,0,0,0">
+            <GroupBox Grid.Column="1" Header="Preview" Style="{DynamicResource CustomGroupBox}" Margin="10,0,0,0">
                 <ScrollViewer VerticalScrollBarVisibility="Auto">
                     <StackPanel>
-                        <GroupBox Header="Controls" Style="{StaticResource CustomGroupBox}">
+                        <GroupBox Header="Controls" Style="{DynamicResource CustomGroupBox}">
                             <WrapPanel>
                                 <Button Content="Standard Button" 
-                                        Style="{StaticResource CustomButton}" 
+                                        Style="{DynamicResource CustomButton}" 
                                         Margin="5" Width="120" Height="30"/>
 
                                 <CheckBox Content="Check Box" Margin="5" 
@@ -120,8 +120,8 @@
                                          BorderBrush="{DynamicResource ControlBorderBrush}"/>
 
                                 <ComboBox Margin="5" Width="150"
-                                          Style="{StaticResource CustomComboBox}"
-                                          ItemContainerStyle="{StaticResource CustomComboBoxItem}">
+                                          Style="{DynamicResource CustomComboBox}"
+                                          ItemContainerStyle="{DynamicResource CustomComboBoxItem}">
                                     <ComboBoxItem Content="ComboBox Item 1" />
                                     <ComboBoxItem Content="ComboBox Item 2" />
                                     <ComboBoxItem Content="ComboBox Item 3" />
@@ -129,7 +129,7 @@
                             </WrapPanel>
                         </GroupBox>
 
-                        <GroupBox Header="Message Box Preview" Style="{StaticResource CustomGroupBox}">
+                        <GroupBox Header="Message Box Preview" Style="{DynamicResource CustomGroupBox}">
                             <Grid Height="160">
                                 <Border BorderThickness="1" BorderBrush="{Binding CurrentTheme.MessageBoxTheme.BorderBrush}">
                                     <Grid Background="{Binding CurrentTheme.MessageBoxTheme.WindowBackground}">
@@ -167,16 +167,16 @@
                                         <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal" 
                                                     HorizontalAlignment="Center" Margin="0,0,0,10">
                                             <Button Content="OK" Width="80" Height="28" Margin="5,0"
-                                                    Style="{StaticResource CustomButton}"/>
+                                                    Style="{DynamicResource CustomButton}"/>
                                             <Button Content="Cancel" Width="80" Height="28" Margin="5,0"
-                                                    Style="{StaticResource CustomButton}"/>
+                                                    Style="{DynamicResource CustomButton}"/>
                                         </StackPanel>
                                     </Grid>
                                 </Border>
                             </Grid>
                         </GroupBox>
 
-                        <GroupBox Header="Data Grid" Style="{StaticResource CustomGroupBox}" Margin="0,10,0,0">
+                        <GroupBox Header="Data Grid" Style="{DynamicResource CustomGroupBox}" Margin="0,10,0,0">
                             <DataGrid x:Name="SampleDataGrid"
                                       ItemsSource="{Binding SampleData}"
                                       AutoGenerateColumns="True"

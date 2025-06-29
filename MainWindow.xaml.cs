@@ -3,6 +3,7 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using ThemeForge.Themes;
+using Application = System.Windows.Application;
 
 namespace ThemeForge;
 
@@ -26,6 +27,9 @@ public partial class MainWindow : Window
         {
             // Initialize theme manager
             DataContext = ThemeManager.Current;
+
+            // Ensure default theme is applied to the main window
+            ThemeManager.Current.CurrentTheme = ThemeManager.Current.BuiltInThemes.First(t => t.Name == "Default");
 
             // Populate sample data
             SampleData.Add(new SampleItem { Name = "Alpha", Value = 1, Description = "First item" });
@@ -75,11 +79,28 @@ public partial class MainWindow : Window
         CurrentThemeText.Text = ThemeManager.Current.CurrentTheme.Name;
     }
 
+    private void ApplyThemeResources(Theme theme)
+    {
+        // WindowTheme
+        Application.Current.Resources["ButtonBackground"] = new System.Windows.Media.SolidColorBrush(((System.Windows.Media.SolidColorBrush)theme.WindowTheme.ButtonBackground).Color);
+        Application.Current.Resources["ButtonForeground"] = new System.Windows.Media.SolidColorBrush(((System.Windows.Media.SolidColorBrush)theme.WindowTheme.ButtonForeground).Color);
+        Application.Current.Resources["ButtonHoverBackground"] = new System.Windows.Media.SolidColorBrush(((System.Windows.Media.SolidColorBrush)theme.WindowTheme.ButtonHoverBackground).Color);
+        Application.Current.Resources["ButtonPressedBackground"] = new System.Windows.Media.SolidColorBrush(((System.Windows.Media.SolidColorBrush)theme.WindowTheme.ButtonPressedBackground).Color);
+        Application.Current.Resources["ControlBorderBrush"] = new System.Windows.Media.SolidColorBrush(((System.Windows.Media.SolidColorBrush)theme.WindowTheme.ControlBorderBrush).Color);
+        // MessageBoxTheme (if you use these keys elsewhere)
+        Application.Current.Resources["MessageBoxButtonBackground"] = new System.Windows.Media.SolidColorBrush(((System.Windows.Media.SolidColorBrush)theme.MessageBoxTheme.ButtonBackground).Color);
+        Application.Current.Resources["MessageBoxButtonForeground"] = new System.Windows.Media.SolidColorBrush(((System.Windows.Media.SolidColorBrush)theme.MessageBoxTheme.ButtonForeground).Color);
+        Application.Current.Resources["MessageBoxButtonHoverBackground"] = new System.Windows.Media.SolidColorBrush(((System.Windows.Media.SolidColorBrush)theme.MessageBoxTheme.ButtonHoverBackground).Color);
+        Application.Current.Resources["MessageBoxButtonPressedBackground"] = new System.Windows.Media.SolidColorBrush(((System.Windows.Media.SolidColorBrush)theme.MessageBoxTheme.ButtonPressedBackground).Color);
+        Application.Current.Resources["MessageBoxButtonOutline"] = new System.Windows.Media.SolidColorBrush(((System.Windows.Media.SolidColorBrush)theme.MessageBoxTheme.ButtonOutline).Color);
+    }
+
     private void ThemeSelector_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
         if (ThemeSelector.SelectedItem is Theme selectedTheme)
         {
             ThemeManager.Current.CurrentTheme = selectedTheme;
+            ApplyThemeResources(selectedTheme);
             UpdateCurrentThemeText();
 
             // Save current theme to settings
@@ -97,6 +118,7 @@ public partial class MainWindow : Window
         ThemeSelector.ItemsSource = null;
         ThemeSelector.ItemsSource = ThemeManager.Current.BuiltInThemes.Concat(ThemeManager.Current.CustomThemes);
         ThemeSelector.SelectedItem = ThemeManager.Current.CurrentTheme;
+        ApplyThemeResources(ThemeManager.Current.CurrentTheme);
         UpdateCurrentThemeText();
 
         // Save current theme to settings
@@ -124,15 +146,12 @@ public partial class MainWindow : Window
             {
                 var newTheme = ThemeManager.Current.CreateNewThemeBasedOnCurrent(dialog.InputText);
                 ThemeManager.Current.CurrentTheme = newTheme;
-
-                // Refresh theme selector
                 ThemeSelector.ItemsSource = null;
                 ThemeSelector.ItemsSource = ThemeManager.Current.BuiltInThemes.Concat(ThemeManager.Current.CustomThemes);
                 ThemeSelector.SelectedItem = newTheme;
+                ApplyThemeResources(newTheme);
                 UpdateCurrentThemeText();
 
-                // Save current theme to settings
-                App.Settings.ThemeName = newTheme.Name;
 
                 // Save current theme to settings
                 App.Settings.ThemeName = newTheme.Name;

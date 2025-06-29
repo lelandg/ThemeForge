@@ -2,6 +2,7 @@ using System.Windows.Media;
 using Brush = System.Windows.Media.Brush;
 using Color = System.Windows.Media.Color;
 using ColorConverter = System.Windows.Media.ColorConverter;
+using System.ComponentModel;
 
 namespace ThemeForge.Themes
 {
@@ -157,111 +158,117 @@ namespace ThemeForge.Themes
     /// <summary>
     /// Contains theme settings for windows
     /// </summary>
-    public class WindowTheme
+    public class WindowTheme : INotifyPropertyChanged
     {
-        /// <summary>Background color for the main window</summary>
-        public Brush MainBackground { get; set; } = new SolidColorBrush(Color.FromRgb(0xF0, 0xF5, 0xFA));
+        public event PropertyChangedEventHandler PropertyChanged;
+        private void OnPropertyChanged(string propertyName) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
-        /// <summary>Background color for title bars</summary>
-        public Brush TitleBarBackground { get; set; } = new SolidColorBrush(Color.FromRgb(0x3E, 0x85, 0xC6));
+        private Brush _mainBackground = new SolidColorBrush(Color.FromRgb(0xF0, 0xF5, 0xFA));
+        public Brush MainBackground { get => _mainBackground; set { if (_mainBackground != value) { _mainBackground = value; OnPropertyChanged(nameof(MainBackground)); } } }
 
-        /// <summary>Accent color for the main elements</summary>
-        public Brush MainAccent { get; set; } = new SolidColorBrush(Color.FromRgb(0x3E, 0x85, 0xC6));
+        private Brush _titleBarBackground = new SolidColorBrush(Color.FromRgb(0x3E, 0x85, 0xC6));
+        public Brush TitleBarBackground { get => _titleBarBackground; set { if (_titleBarBackground != value) { _titleBarBackground = value; OnPropertyChanged(nameof(TitleBarBackground)); } } }
 
-        /// <summary>Background color for menus</summary>
-        public Brush MenuBackground { get; set; } = new SolidColorBrush(Color.FromRgb(0x3E, 0x85, 0xC6));
+        private Brush _mainAccent = new SolidColorBrush(Color.FromRgb(0x3E, 0x85, 0xC6));
+        public Brush MainAccent { get => _mainAccent; set { if (_mainAccent != value) { _mainAccent = value; OnPropertyChanged(nameof(MainAccent)); } } }
 
-        /// <summary>Foreground color for menu text</summary>
-        public Brush MenuForeground { get; set; } = new SolidColorBrush(Colors.White);
+        private Brush _menuBackground = new SolidColorBrush(Color.FromRgb(0x3E, 0x85, 0xC6));
+        public Brush MenuBackground { get => _menuBackground; set { if (_menuBackground != value) { _menuBackground = value; OnPropertyChanged(nameof(MenuBackground)); } } }
 
-        /// <summary>Foreground color for alternate text</summary>
-        public Brush AlternateTextForeground { get; set; } = new SolidColorBrush(Color.FromRgb(0x33, 0x33, 0x33));
+        private Brush _menuForeground = new SolidColorBrush(Colors.White);
+        public Brush MenuForeground { get => _menuForeground; set { if (_menuForeground != value) { _menuForeground = value; OnPropertyChanged(nameof(MenuForeground)); } } }
 
-        /// <summary>Background color for splitters</summary>
-        public Brush SplitterBackground { get; set; } = new SolidColorBrush(Color.FromRgb(0x3E, 0x85, 0xC6));
+        private Brush _alternateTextForeground = new SolidColorBrush(Color.FromRgb(0x33, 0x33, 0x33));
+        public Brush AlternateTextForeground { get => _alternateTextForeground; set { if (_alternateTextForeground != value) { _alternateTextForeground = value; OnPropertyChanged(nameof(AlternateTextForeground)); } } }
 
-        /// <summary>Border color for group boxes</summary>
-        public Brush GroupBoxBorder { get; set; } = new SolidColorBrush(Color.FromRgb(0xB0, 0xC4, 0xDE));
+        private Brush _splitterBackground = new SolidColorBrush(Color.FromRgb(0x3E, 0x85, 0xC6));
+        public Brush SplitterBackground { get => _splitterBackground; set { if (_splitterBackground != value) { _splitterBackground = value; OnPropertyChanged(nameof(SplitterBackground)); } } }
 
-        /// <summary>Background color for buttons</summary>
-        public Brush ButtonBackground { get; set; } = new SolidColorBrush(Color.FromRgb(0x3E, 0x85, 0xC6));
+        private Brush _groupBoxBorder = new SolidColorBrush(Color.FromRgb(0xB0, 0xC4, 0xDE));
+        public Brush GroupBoxBorder { get => _groupBoxBorder; set { if (_groupBoxBorder != value) { _groupBoxBorder = value; OnPropertyChanged(nameof(GroupBoxBorder)); } } }
 
-        /// <summary>Background color for buttons when hovered</summary>
-        public Brush ButtonHoverBackground { get; set; } = new SolidColorBrush(Color.FromRgb(0x5E, 0x95, 0xD6));
+        private Brush _buttonBackground = new SolidColorBrush(Color.FromRgb(0x3E, 0x85, 0xC6));
+        public Brush ButtonBackground { get => _buttonBackground; set { if (_buttonBackground != value) { _buttonBackground = value; OnPropertyChanged(nameof(ButtonBackground)); } } }
 
-        /// <summary>Background color for buttons when pressed</summary>
-        public Brush ButtonPressedBackground { get; set; } = new SolidColorBrush(Color.FromRgb(0x2E, 0x75, 0xB6));
+        private Brush _buttonHoverBackground = new SolidColorBrush(Color.FromRgb(0x5E, 0x95, 0xD6));
+        public Brush ButtonHoverBackground { get => _buttonHoverBackground; set { if (_buttonHoverBackground != value) { _buttonHoverBackground = value; OnPropertyChanged(nameof(ButtonHoverBackground)); } } }
 
-        /// <summary>Foreground color for buttons</summary>
-        public Brush ButtonForeground { get; set; } = new SolidColorBrush(Colors.White);
+        private Brush _buttonPressedBackground = new SolidColorBrush(Color.FromRgb(0x2E, 0x75, 0xB6));
+        public Brush ButtonPressedBackground { get => _buttonPressedBackground; set { if (_buttonPressedBackground != value) { _buttonPressedBackground = value; OnPropertyChanged(nameof(ButtonPressedBackground)); } } }
 
-        /// <summary>Background color for panels</summary>
-        public Brush PanelBackground { get; set; } = new SolidColorBrush(Colors.Transparent);
+        private Brush _buttonForeground = new SolidColorBrush(Colors.White);
+        public Brush ButtonForeground { get => _buttonForeground; set { if (_buttonForeground != value) { _buttonForeground = value; OnPropertyChanged(nameof(ButtonForeground)); } } }
 
-        /// <summary>Background color for controls</summary>
-        public Brush ControlBackground { get; set; } = new SolidColorBrush(Color.FromRgb(0xF0, 0xF5, 0xFF));
+        private Brush _panelBackground = new SolidColorBrush(Colors.Transparent);
+        public Brush PanelBackground { get => _panelBackground; set { if (_panelBackground != value) { _panelBackground = value; OnPropertyChanged(nameof(PanelBackground)); } } }
 
-        /// <summary>Background color for combo boxes</summary>
-        public Brush ComboBoxBackground { get; set; } = new SolidColorBrush(Color.FromRgb(0xF0, 0xF5, 0xFF));
+        private Brush _controlBackground = new SolidColorBrush(Color.FromRgb(0xF0, 0xF5, 0xFF));
+        public Brush ControlBackground { get => _controlBackground; set { if (_controlBackground != value) { _controlBackground = value; OnPropertyChanged(nameof(ControlBackground)); } } }
 
-        /// <summary>Border color for controls</summary>
-        public Brush ControlBorderBrush { get; set; } = new SolidColorBrush(Color.FromRgb(0xB0, 0xC4, 0xDE));
+        private Brush _comboBoxBackground = new SolidColorBrush(Color.FromRgb(0xF0, 0xF5, 0xFF));
+        public Brush ComboBoxBackground { get => _comboBoxBackground; set { if (_comboBoxBackground != value) { _comboBoxBackground = value; OnPropertyChanged(nameof(ComboBoxBackground)); } } }
 
-        /// <summary>Background color for controls when hovered</summary>
-        public Brush ControlHoverBackground { get; set; } = new SolidColorBrush(Color.FromRgb(0xE0, 0xE5, 0xEF));
+        private Brush _controlBorderBrush = new SolidColorBrush(Color.FromRgb(0xB0, 0xC4, 0xDE));
+        public Brush ControlBorderBrush { get => _controlBorderBrush; set { if (_controlBorderBrush != value) { _controlBorderBrush = value; OnPropertyChanged(nameof(ControlBorderBrush)); } } }
 
-        /// <summary>Foreground color for text</summary>
-        public Brush TextForeground { get; set; } = new SolidColorBrush(Color.FromRgb(0x33, 0x33, 0x33));
+        private Brush _controlHoverBackground = new SolidColorBrush(Color.FromRgb(0xE0, 0xE5, 0xEF));
+        public Brush ControlHoverBackground { get => _controlHoverBackground; set { if (_controlHoverBackground != value) { _controlHoverBackground = value; OnPropertyChanged(nameof(ControlHoverBackground)); } } }
 
-        /// <summary>Foreground color for labels</summary>
-        public Brush LabelForeground { get; set; } = new SolidColorBrush(Color.FromRgb(0x1E, 0x5A, 0x9C));
+        private Brush _textForeground = new SolidColorBrush(Color.FromRgb(0x33, 0x33, 0x33));
+        public Brush TextForeground { get => _textForeground; set { if (_textForeground != value) { _textForeground = value; OnPropertyChanged(nameof(TextForeground)); } } }
 
-        /// <summary>Background color for combo box items</summary>
-        public Brush ComboBoxItemBackground { get; set; } = new SolidColorBrush(Color.FromRgb(0xF0, 0xF5, 0xFF));
+        private Brush _labelForeground = new SolidColorBrush(Color.FromRgb(0x1E, 0x5A, 0x9C));
+        public Brush LabelForeground { get => _labelForeground; set { if (_labelForeground != value) { _labelForeground = value; OnPropertyChanged(nameof(LabelForeground)); } } }
 
-        /// <summary>Background color for combo box items when hovered</summary>
-        public Brush ComboBoxItemHoverBackground { get; set; } = new SolidColorBrush(Color.FromRgb(0xE0, 0xE5, 0xEF));
+        private Brush _comboBoxItemBackground = new SolidColorBrush(Color.FromRgb(0xF0, 0xF5, 0xFF));
+        public Brush ComboBoxItemBackground { get => _comboBoxItemBackground; set { if (_comboBoxItemBackground != value) { _comboBoxItemBackground = value; OnPropertyChanged(nameof(ComboBoxItemBackground)); } } }
 
-        /// <summary>Background color for combo box items when selected</summary>
-        public Brush ComboBoxItemSelectedBackground { get; set; } = new SolidColorBrush(Color.FromRgb(0x3E, 0x85, 0xC6));
+        private Brush _comboBoxItemHoverBackground = new SolidColorBrush(Color.FromRgb(0xE0, 0xE5, 0xEF));
+        public Brush ComboBoxItemHoverBackground { get => _comboBoxItemHoverBackground; set { if (_comboBoxItemHoverBackground != value) { _comboBoxItemHoverBackground = value; OnPropertyChanged(nameof(ComboBoxItemHoverBackground)); } } }
+
+        private Brush _comboBoxItemSelectedBackground = new SolidColorBrush(Color.FromRgb(0x3E, 0x85, 0xC6));
+        public Brush ComboBoxItemSelectedBackground { get => _comboBoxItemSelectedBackground; set { if (_comboBoxItemSelectedBackground != value) { _comboBoxItemSelectedBackground = value; OnPropertyChanged(nameof(ComboBoxItemSelectedBackground)); } } }
     }
 
     /// <summary>
     /// Contains theme settings for message boxes
     /// </summary>
-    public class MessageBoxTheme
+    public class MessageBoxTheme : INotifyPropertyChanged
     {
-        /// <summary>Background color for the message box title</summary>
-        public Brush TitleBackground { get; set; } = new SolidColorBrush(Color.FromRgb(0x3E, 0x85, 0xC6));
+        public event PropertyChangedEventHandler PropertyChanged;
+        private void OnPropertyChanged(string propertyName) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
-        /// <summary>Background color for the message box window</summary>
-        public Brush WindowBackground { get; set; } = new SolidColorBrush(Color.FromRgb(0xF0, 0xF5, 0xFA));
+        private Brush _titleBackground = new SolidColorBrush(Color.FromRgb(0x3E, 0x85, 0xC6));
+        public Brush TitleBackground { get => _titleBackground; set { if (_titleBackground != value) { _titleBackground = value; OnPropertyChanged(nameof(TitleBackground)); } } }
 
-        /// <summary>Border color for the message box</summary>
-        public Brush BorderBrush { get; set; } = new SolidColorBrush(Color.FromRgb(0x3E, 0x85, 0xC6));
+        private Brush _windowBackground = new SolidColorBrush(Color.FromRgb(0xF0, 0xF5, 0xFA));
+        public Brush WindowBackground { get => _windowBackground; set { if (_windowBackground != value) { _windowBackground = value; OnPropertyChanged(nameof(WindowBackground)); } } }
 
-        /// <summary>Background color for message box buttons</summary>
-        public Brush ButtonBackground { get; set; } = new SolidColorBrush(Color.FromRgb(0x3E, 0x85, 0xC6));
+        private Brush _borderBrush = new SolidColorBrush(Color.FromRgb(0x3E, 0x85, 0xC6));
+        public Brush BorderBrush { get => _borderBrush; set { if (_borderBrush != value) { _borderBrush = value; OnPropertyChanged(nameof(BorderBrush)); } } }
 
-        /// <summary>Background color for message box buttons when hovered</summary>
-        public Brush ButtonHoverBackground { get; set; } = new SolidColorBrush(Color.FromRgb(0x5E, 0x95, 0xD6));
+        private Brush _buttonBackground = new SolidColorBrush(Color.FromRgb(0x3E, 0x85, 0xC6));
+        public Brush ButtonBackground { get => _buttonBackground; set { if (_buttonBackground != value) { _buttonBackground = value; OnPropertyChanged(nameof(ButtonBackground)); } } }
 
-        /// <summary>Background color for message box buttons when pressed</summary>
-        public Brush ButtonPressedBackground { get; set; } = new SolidColorBrush(Color.FromRgb(0x2E, 0x75, 0xB6));
+        private Brush _buttonHoverBackground = new SolidColorBrush(Color.FromRgb(0x5E, 0x95, 0xD6));
+        public Brush ButtonHoverBackground { get => _buttonHoverBackground; set { if (_buttonHoverBackground != value) { _buttonHoverBackground = value; OnPropertyChanged(nameof(ButtonHoverBackground)); } } }
 
-        /// <summary>Background color for message box buttons when disabled</summary>
-        public Brush ButtonDisabledBackground { get; set; } = new SolidColorBrush(Color.FromRgb(0xDD, 0xDD, 0xDD));
+        private Brush _buttonPressedBackground = new SolidColorBrush(Color.FromRgb(0x2E, 0x75, 0xB6));
+        public Brush ButtonPressedBackground { get => _buttonPressedBackground; set { if (_buttonPressedBackground != value) { _buttonPressedBackground = value; OnPropertyChanged(nameof(ButtonPressedBackground)); } } }
 
-        /// <summary>Foreground color for the message box title</summary>
-        public Brush TitleForeground { get; set; } = new SolidColorBrush(Colors.White);
+        private Brush _buttonDisabledBackground = new SolidColorBrush(Color.FromRgb(0xDD, 0xDD, 0xDD));
+        public Brush ButtonDisabledBackground { get => _buttonDisabledBackground; set { if (_buttonDisabledBackground != value) { _buttonDisabledBackground = value; OnPropertyChanged(nameof(ButtonDisabledBackground)); } } }
 
-        /// <summary>Foreground color for message box buttons</summary>
-        public Brush ButtonForeground { get; set; } = new SolidColorBrush(Colors.White);
+        private Brush _titleForeground = new SolidColorBrush(Colors.White);
+        public Brush TitleForeground { get => _titleForeground; set { if (_titleForeground != value) { _titleForeground = value; OnPropertyChanged(nameof(TitleForeground)); } } }
 
-        /// <summary>Foreground color for message box buttons when disabled</summary>
-        public Brush ButtonDisabledForeground { get; set; } = new SolidColorBrush(Color.FromRgb(0x99, 0x99, 0x99));
+        private Brush _buttonForeground = new SolidColorBrush(Colors.White);
+        public Brush ButtonForeground { get => _buttonForeground; set { if (_buttonForeground != value) { _buttonForeground = value; OnPropertyChanged(nameof(ButtonForeground)); } } }
 
-        /// <summary>Outline color for message box buttons</summary>
-        public Brush ButtonOutline { get; set; } = new SolidColorBrush(Color.FromRgb(0xB0, 0xC4, 0xDE));
+        private Brush _buttonDisabledForeground = new SolidColorBrush(Color.FromRgb(0x99, 0x99, 0x99));
+        public Brush ButtonDisabledForeground { get => _buttonDisabledForeground; set { if (_buttonDisabledForeground != value) { _buttonDisabledForeground = value; OnPropertyChanged(nameof(ButtonDisabledForeground)); } } }
+
+        private Brush _buttonOutline = new SolidColorBrush(Color.FromRgb(0xB0, 0xC4, 0xDE));
+        public Brush ButtonOutline { get => _buttonOutline; set { if (_buttonOutline != value) { _buttonOutline = value; OnPropertyChanged(nameof(ButtonOutline)); } } }
     }
 }

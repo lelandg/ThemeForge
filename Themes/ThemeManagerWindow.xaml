@@ -10,17 +10,11 @@
         ResizeMode="CanResizeWithGrip"
         Background="{DynamicResource MainBackground}">
     <Window.Resources>
-        <!-- Default theme colors for design-time preview -->
-        <SolidColorBrush x:Key="MainBackground" Color="#F0F5FA"/>
-        <SolidColorBrush x:Key="TitleBarBackground" Color="#3E85C6"/>
-        <SolidColorBrush x:Key="TextForeground" Color="#333333"/>
-        <SolidColorBrush x:Key="LabelForeground" Color="#1E5A9C"/>
-        <SolidColorBrush x:Key="MenuBackground" Color="#3E85C6"/>
-        <SolidColorBrush x:Key="MenuForeground" Color="White"/>
-        <SolidColorBrush x:Key="MainAccent" Color="#3E85C6"/>
-        <SolidColorBrush x:Key="AlternateTextForeground" Color="#333333"/>
-        <SolidColorBrush x:Key="SplitterBackground" Color="#3E85C6"/>
-        <SolidColorBrush x:Key="GroupBoxBorder" Color="#B0C4DE"/>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Themes/Styles/CommonStyles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        <!-- Style for color editor rows to ensure consistent sizing -->
 
         <!-- Style for color editor rows to ensure consistent sizing -->
         <Style x:Key="ColorEditorRowStyle" TargetType="Grid">
@@ -45,29 +39,7 @@
             <Setter Property="Height" Value="30" />
             <Setter Property="Padding" Value="10,0" />
         </Style>
-        <SolidColorBrush x:Key="PanelBackground" Color="#00FFFFFF"/>
-        <SolidColorBrush x:Key="ControlBackground" Color="#F0F5FF"/>
-        <SolidColorBrush x:Key="ComboBoxBackground" Color="#F0F5FF"/>
-        <SolidColorBrush x:Key="ComboBoxItemBackground" Color="#F0F5FF"/>
-        <SolidColorBrush x:Key="ComboBoxItemHoverBackground" Color="#E0E5EF"/>
-        <SolidColorBrush x:Key="ComboBoxItemSelectedBackground" Color="#3E85C6"/>
-        <SolidColorBrush x:Key="ControlBorderBrush" Color="#B0C4DE"/>
-        <SolidColorBrush x:Key="ControlHoverBackground" Color="#E0E5EF"/>
-        <SolidColorBrush x:Key="ButtonBackground" Color="#3E85C6"/>
-        <SolidColorBrush x:Key="ButtonHoverBackground" Color="#5E95D6"/>
-        <SolidColorBrush x:Key="ButtonPressedBackground" Color="#2E75B6"/>
-        <SolidColorBrush x:Key="ButtonForeground" Color="White"/>
-        <SolidColorBrush x:Key="MsgBoxWindowBackground" Color="#F0F5FA"/>
-        <SolidColorBrush x:Key="MsgBoxTitleBackground" Color="#3E85C6"/>
-        <SolidColorBrush x:Key="MsgBoxTitleForeground" Color="White"/>
-        <SolidColorBrush x:Key="MsgBoxBorderBrush" Color="#3E85C6"/>
-        <SolidColorBrush x:Key="MsgBoxButtonBackground" Color="#3E85C6"/>
-        <SolidColorBrush x:Key="MsgBoxButtonHoverBackground" Color="#5E95D6"/>
-        <SolidColorBrush x:Key="MsgBoxButtonPressedBackground" Color="#2E75B6"/>
-        <SolidColorBrush x:Key="MsgBoxButtonForeground" Color="White"/>
-        <SolidColorBrush x:Key="MsgBoxButtonDisabledBackground" Color="#DDDDDD"/>
-        <SolidColorBrush x:Key="MsgBoxButtonDisabledForeground" Color="#999999"/>
-        <SolidColorBrush x:Key="MsgBoxButtonOutline" Color="#B0C4DE"/>
+        </ResourceDictionary>
     </Window.Resources>
             <Grid>
         <Grid.RowDefinitions>
@@ -88,12 +60,15 @@
             <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
                 <Button x:Name="MinimizeButton" Content="_" Width="45" Height="32" BorderThickness="0"
                         Background="Transparent" Foreground="{DynamicResource MenuForeground}"
+                        Style="{DynamicResource CustomButton}"
                         Click="MinimizeButton_Click"/>
                 <Button x:Name="MaximizeButton" Content="□" Width="45" Height="32" BorderThickness="0"
                         Background="Transparent" Foreground="{DynamicResource MenuForeground}"
+                        Style="{DynamicResource CustomButton}"
                         Click="MaximizeButton_Click"/>
                 <Button x:Name="CloseWindowButton" Content="✕" Width="45" Height="32" BorderThickness="0"
                         Background="Transparent" Foreground="{DynamicResource MenuForeground}"
+                        Style="{DynamicResource CustomButton}"
                         Click="CloseWindowButton_Click"/>
             </StackPanel>
         </Grid>
@@ -154,9 +129,10 @@
         </Grid>
 
         <!-- Theme Editor -->
-        <TabControl Grid.Row="2" Margin="0,0,0,10" Background="{DynamicResource MainBackground}">
+        <TabControl Grid.Row="2" Margin="0,0,0,10" 
+                  Style="{StaticResource ThemedTabControl}">
             <!-- Preview Tab -->
-            <TabItem Header="Preview">
+            <TabItem Header="Preview" Style="{StaticResource ThemedTabItem}">
                 <ScrollViewer VerticalScrollBarVisibility="Auto">
                     <StackPanel>
                         <GroupBox Header="Window Preview" Style="{DynamicResource CustomGroupBox}" Margin="5,10">
@@ -211,7 +187,9 @@
                                                     <ComboBoxItem Content="ComboBox Item 3"/>
                                                 </ComboBox>
 
-                                                <TextBox Text="Text Box" Margin="5"/>
+                                                <TextBox Text="Text Box" Margin="5"
+                                                        Background="{Binding CurrentTheme.WindowTheme.ControlBackground}"
+                                                        Foreground="{Binding CurrentTheme.WindowTheme.TextForeground}"/>
 
                                                 <Slider Minimum="0" Maximum="100" Value="50" Margin="5"/>
                                             </StackPanel>
@@ -219,24 +197,26 @@
                                     </StackPanel>
 
                                     <!-- Right Panel -->
-                                    <TabControl Grid.Column="1">
-                                        <TabItem Header="Tab 1">
+                                    <TabControl Grid.Column="1" Style="{StaticResource ThemedTabControl}">
+                                        <TabItem Header="Tab 1" Style="{StaticResource ThemedTabItem}">
                                             <StackPanel>
                                                 <TextBlock Text="Sample Content Area" 
                                                            Margin="10" 
-                                                           Foreground="{Binding CurrentTheme.WindowTheme.TextForeground}"/>
+                                                           Foreground="{Binding CurrentTheme.WindowTheme.TextForeground}"
+                                                           Background="{Binding CurrentTheme.WindowTheme.ControlBackground}"/>
 
-                                                <ListBox Height="100" Margin="10">
+                                                <ListBox Height="100" Margin="10" Style="{StaticResource ThemedListBox}" ItemContainerStyle="{StaticResource ThemedListBoxItem}">
                                                     <ListBoxItem Content="ListBox Item 1"/>
                                                     <ListBoxItem Content="ListBox Item 2"/>
                                                     <ListBoxItem Content="ListBox Item 3"/>
                                                 </ListBox>
                                             </StackPanel>
                                         </TabItem>
-                                        <TabItem Header="Tab 2">
+                                        <TabItem Header="Tab 2" Style="{StaticResource ThemedTabItem}">
                                             <TextBlock Text="Additional content would go here" 
                                                        Margin="10" 
-                                                       Foreground="{Binding CurrentTheme.WindowTheme.TextForeground}"/>
+                                                       Foreground="{Binding CurrentTheme.WindowTheme.TextForeground}"
+                                                       Background="{Binding CurrentTheme.WindowTheme.ControlBackground}"/>
                                         </TabItem>
                                     </TabControl>
                                 </Grid>
@@ -276,7 +256,8 @@
                                         <TextBlock Grid.Row="1" Grid.Column="1" 
                                                    Text="This is a sample message box. Theme changes will be reflected here."
                                                    VerticalAlignment="Center" TextWrapping="Wrap" 
-                                                   Foreground="{DynamicResource TextForeground}"/>
+                                                   Foreground="{DynamicResource TextForeground}"
+                                                   Background="{Binding CurrentTheme.MessageBoxTheme.WindowBackground}"/>
 
                                         <!-- Buttons -->
                                         <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal" 
@@ -299,7 +280,7 @@
             </TabItem>
 
             <!-- Window Theme Tab -->
-            <TabItem Header="Window Theme">
+            <TabItem Header="Window Theme" Style="{StaticResource ThemedTabItem}">
                 <ScrollViewer VerticalScrollBarVisibility="Auto">
                     <StackPanel>
                         <GroupBox Header="Main Colors" Style="{DynamicResource CustomGroupBox}" Margin="5,10">
@@ -326,8 +307,13 @@
                                             Foreground="{DynamicResource TextForeground}" HorizontalAlignment="Right" Margin="0,0,5,0"/>
                                     <Border Grid.Column="1" Background="{Binding CurrentTheme.WindowTheme.MainBackground}" 
                                             Height="30" Margin="5,0" BorderBrush="{DynamicResource GroupBoxBorder}" BorderThickness="1"/>
-                                    <Button Grid.Column="2" Content="Change..." Style="{DynamicResource CustomButton}" 
-                                            Width="Auto" MinWidth="80" Height="30" Padding="10,0" Click="EditMainBackground_Click"/>
+                                    <Button Grid.Column="2" Content="Change..."
+                                            Background="{Binding CurrentTheme.WindowTheme.ButtonBackground}"
+                                            Foreground="{Binding CurrentTheme.WindowTheme.ButtonForeground}"
+                                            BorderBrush="{Binding CurrentTheme.WindowTheme.ButtonOutline}"
+                                            Style="{DynamicResource CustomButton}" 
+                                            Width="Auto" MinWidth="80" Height="30" Padding="10,0"
+                                            Click="EditMainBackground_Click"/>
                                 </Grid>
 
                                 <Grid Grid.Column="0" Grid.Row="1" Margin="5">
@@ -341,8 +327,13 @@
                                             Foreground="{DynamicResource TextForeground}" HorizontalAlignment="Right" Margin="0,0,5,0"/>
                                     <Border Grid.Column="1" Background="{Binding CurrentTheme.WindowTheme.TextForeground}" 
                                             Height="30" Margin="5,0" BorderBrush="{DynamicResource GroupBoxBorder}" BorderThickness="1"/>
-                                    <Button Grid.Column="2" Content="Change..." Style="{DynamicResource CustomButton}" 
-                                            Width="Auto" MinWidth="80" Height="30" Padding="10,0" Click="EditTextForeground_Click"/>
+                                    <Button Grid.Column="2" Content="Change..."
+                                            Background="{Binding CurrentTheme.WindowTheme.ButtonBackground}"
+                                            Foreground="{Binding CurrentTheme.WindowTheme.ButtonForeground}"
+                                            BorderBrush="{Binding CurrentTheme.WindowTheme.ButtonOutline}"
+                                            Style="{DynamicResource CustomButton}" 
+                                            Width="Auto" MinWidth="80" Height="30" Padding="10,0"
+                                            Click="EditTextForeground_Click"/>
                                 </Grid>
 
                                 <Grid Grid.Column="0" Grid.Row="2" Margin="5">
@@ -356,8 +347,13 @@
                                             Foreground="{DynamicResource TextForeground}" HorizontalAlignment="Right" Margin="0,0,5,0"/>
                                     <Border Grid.Column="1" Background="{Binding CurrentTheme.WindowTheme.GroupBoxBorder}" 
                                             Height="30" Margin="5,0" BorderBrush="{DynamicResource GroupBoxBorder}" BorderThickness="1"/>
-                                    <Button Grid.Column="2" Content="Change..." Style="{DynamicResource CustomButton}" 
-                                            Width="Auto" MinWidth="80" Height="30" Padding="10,0" Click="EditGroupBoxBorder_Click"/>
+                                    <Button Grid.Column="2" Content="Change..."
+                                            Background="{Binding CurrentTheme.WindowTheme.ButtonBackground}"
+                                            Foreground="{Binding CurrentTheme.WindowTheme.ButtonForeground}"
+                                            BorderBrush="{Binding CurrentTheme.WindowTheme.ButtonOutline}"
+                                            Style="{DynamicResource CustomButton}" 
+                                            Width="Auto" MinWidth="80" Height="30" Padding="10,0"
+                                            Click="EditGroupBoxBorder_Click"/>
                                 </Grid>
 
                                 <!-- Right Column -->
@@ -372,8 +368,13 @@
                                             Foreground="{DynamicResource TextForeground}" HorizontalAlignment="Right" Margin="0,0,5,0"/>
                                     <Border Grid.Column="1" Background="{Binding CurrentTheme.WindowTheme.TitleBarBackground}" 
                                             Height="30" Margin="5,0" BorderBrush="{DynamicResource GroupBoxBorder}" BorderThickness="1"/>
-                                    <Button Grid.Column="2" Content="Change..." Style="{DynamicResource CustomButton}" 
-                                            Width="Auto" MinWidth="80" Height="30" Padding="10,0" Click="EditTitleBarBackground_Click"/>
+                                    <Button Grid.Column="2" Content="Change..."
+                                            Background="{Binding CurrentTheme.WindowTheme.ButtonBackground}"
+                                            Foreground="{Binding CurrentTheme.WindowTheme.ButtonForeground}"
+                                            BorderBrush="{Binding CurrentTheme.WindowTheme.ButtonOutline}"
+                                            Style="{DynamicResource CustomButton}" 
+                                            Width="Auto" MinWidth="80" Height="30" Padding="10,0"
+                                            Click="EditTitleBarBackground_Click"/>
                                 </Grid>
 
                                 <Grid Grid.Column="1" Grid.Row="1" Margin="5">
@@ -387,7 +388,11 @@
                                             Foreground="{DynamicResource TextForeground}" HorizontalAlignment="Right" Margin="0,0,5,0"/>
                                     <Border Grid.Column="1" Background="{Binding CurrentTheme.WindowTheme.LabelForeground}" 
                                             Height="30" Margin="5,0" BorderBrush="{DynamicResource GroupBoxBorder}" BorderThickness="1"/>
-                                    <Button Grid.Column="2" Content="Change..." Style="{DynamicResource CustomButton}" 
+                                    <Button Grid.Column="2" Content="Change..."
+                                            Background="{Binding CurrentTheme.WindowTheme.ButtonBackground}"
+                                            Foreground="{Binding CurrentTheme.WindowTheme.ButtonForeground}"
+                                            BorderBrush="{Binding CurrentTheme.WindowTheme.ButtonOutline}"
+                                            Style="{DynamicResource CustomButton}" 
                                             Width="Auto" MinWidth="80" Height="30" Padding="10,0" Click="EditLabelForeground_Click"/>
                                 </Grid>
                             </Grid>
@@ -415,7 +420,11 @@
                                     <TextBlock Grid.Column="0" Text="Button Background:" Style="{StaticResource ColorLabelStyle}"/>
                                     <Border Grid.Column="1" Background="{Binding CurrentTheme.WindowTheme.ButtonBackground}" 
                                             Style="{StaticResource ColorSwatchStyle}"/>
-                                    <Button Grid.Column="2" Content="Change..." Style="{StaticResource ColorChangeButtonStyle}" 
+                                    <Button Grid.Column="2" Content="Change..." 
+                                            Background="{Binding CurrentTheme.WindowTheme.ButtonBackground}"
+                                            Foreground="{Binding CurrentTheme.WindowTheme.ButtonForeground}"
+                                            BorderBrush="{Binding CurrentTheme.WindowTheme.ButtonOutline}"
+                                            Style="{DynamicResource CustomButton}" 
                                             Click="EditButtonBackground_Click"/>
                                 </Grid>
 
@@ -429,7 +438,11 @@
                                     <TextBlock Grid.Column="0" Text="Button Pressed:" Style="{StaticResource ColorLabelStyle}"/>
                                     <Border Grid.Column="1" Background="{Binding CurrentTheme.WindowTheme.ButtonPressedBackground}" 
                                             Style="{StaticResource ColorSwatchStyle}"/>
-                                    <Button Grid.Column="2" Content="Change..." Style="{StaticResource ColorChangeButtonStyle}" 
+                                    <Button Grid.Column="2" Content="Change..." 
+                                            Background="Transparent"
+                                            Foreground="{Binding CurrentTheme.WindowTheme.ButtonForeground}"
+                                            BorderBrush="{Binding CurrentTheme.WindowTheme.ButtonOutline}"
+                                            Style="{DynamicResource CustomButton}" 
                                             Click="EditButtonPressedBackground_Click"/>
                                 </Grid>
 
@@ -444,7 +457,11 @@
                                     <TextBlock Grid.Column="0" Text="Button Hover:" Style="{StaticResource ColorLabelStyle}"/>
                                     <Border Grid.Column="1" Background="{Binding CurrentTheme.WindowTheme.ButtonHoverBackground}" 
                                             Style="{StaticResource ColorSwatchStyle}"/>
-                                    <Button Grid.Column="2" Content="Change..." Style="{StaticResource ColorChangeButtonStyle}" 
+                                    <Button Grid.Column="2" Content="Change..." 
+                                            Background="{Binding CurrentTheme.WindowTheme.ButtonBackground}"
+                                            Foreground="{Binding CurrentTheme.WindowTheme.ButtonForeground}"
+                                            BorderBrush="{Binding CurrentTheme.WindowTheme.ButtonOutline}"
+                                            Style="{DynamicResource CustomButton}" 
                                             Click="EditButtonHoverBackground_Click"/>
                                 </Grid>
 
@@ -455,10 +472,16 @@
                                         <ColumnDefinition Width="Auto"/>
                                     </Grid.ColumnDefinitions>
 
-                                    <TextBlock Grid.Column="0" Text="Button Foreground:" Style="{StaticResource ColorLabelStyle}"/>
+                                    <TextBlock Grid.Column="0" Text="Button Foreground:" 
+                                               Background="Transparent" 
+                                               Style="{StaticResource ColorLabelStyle}"/>
                                     <Border Grid.Column="1" Background="{Binding CurrentTheme.WindowTheme.ButtonForeground}" 
                                             Style="{StaticResource ColorSwatchStyle}"/>
-                                    <Button Grid.Column="2" Content="Change..." Style="{StaticResource ColorChangeButtonStyle}" 
+                                    <Button Grid.Column="2" Content="Change..." 
+                                            Background="{Binding CurrentTheme.WindowTheme.ButtonBackground}"
+                                            Foreground="{Binding CurrentTheme.WindowTheme.ButtonForeground}"
+                                            BorderBrush="{Binding CurrentTheme.WindowTheme.ButtonOutline}"
+                                            Style="{DynamicResource CustomButton}" 
                                             Click="EditButtonForeground_Click"/>
                                 </Grid>
                             </Grid>
@@ -487,7 +510,12 @@
                                     </Grid.ColumnDefinitions>
                                     <TextBlock Grid.Column="0" Text="Main Accent:" Style="{StaticResource ColorLabelStyle}"/>
                                     <Border Grid.Column="1" Background="{Binding CurrentTheme.WindowTheme.MainAccent}" Style="{StaticResource ColorSwatchStyle}"/>
-                                    <Button Grid.Column="2" Content="Change..." Style="{StaticResource ColorChangeButtonStyle}" Click="EditMainAccent_Click"/>
+                                    <Button Grid.Column="2" Content="Change..." 
+                                            Background="{Binding CurrentTheme.WindowTheme.ButtonBackground}"
+                                            Foreground="{Binding CurrentTheme.WindowTheme.ButtonForeground}"
+                                            BorderBrush="{Binding CurrentTheme.WindowTheme.ButtonOutline}"
+                                            Style="{DynamicResource CustomButton}" 
+                                            Click="EditMainAccent_Click"/>
                                 </Grid>
 
                                     <Grid Grid.Column="0" Grid.Row="1" Style="{StaticResource ColorEditorRowStyle}">
@@ -498,7 +526,12 @@
                                     </Grid.ColumnDefinitions>
                                     <TextBlock Grid.Column="0" Text="Menu Foreground:" Style="{StaticResource ColorLabelStyle}"/>
                                     <Border Grid.Column="1" Background="{Binding CurrentTheme.WindowTheme.MenuForeground}" Style="{StaticResource ColorSwatchStyle}"/>
-                                    <Button Grid.Column="2" Content="Change..." Style="{StaticResource ColorChangeButtonStyle}" Click="EditMenuForeground_Click"/>
+                                    <Button Grid.Column="2" Content="Change..." 
+                                            Background="{Binding CurrentTheme.WindowTheme.ButtonBackground}"
+                                            Foreground="{Binding CurrentTheme.WindowTheme.ButtonForeground}"
+                                            BorderBrush="{Binding CurrentTheme.WindowTheme.ButtonOutline}"
+                                            Style="{DynamicResource CustomButton}" 
+                                            Click="EditMenuForeground_Click"/>
                                 </Grid>
 
                                     <Grid Grid.Column="0" Grid.Row="2" Style="{StaticResource ColorEditorRowStyle}">
@@ -509,7 +542,12 @@
                                     </Grid.ColumnDefinitions>
                                     <TextBlock Grid.Column="0" Text="Splitter Background:" Style="{StaticResource ColorLabelStyle}"/>
                                     <Border Grid.Column="1" Background="{Binding CurrentTheme.WindowTheme.SplitterBackground}" Style="{StaticResource ColorSwatchStyle}"/>
-                                    <Button Grid.Column="2" Content="Change..." Style="{StaticResource ColorChangeButtonStyle}" Click="EditSplitterBackground_Click"/>
+                                    <Button Grid.Column="2" Content="Change..." 
+                                            Background="{Binding CurrentTheme.WindowTheme.ButtonBackground}"
+                                            Foreground="{Binding CurrentTheme.WindowTheme.ButtonForeground}"
+                                            BorderBrush="{Binding CurrentTheme.WindowTheme.ButtonOutline}"
+                                            Style="{DynamicResource CustomButton}" 
+                                            Click="EditSplitterBackground_Click"/>
                                 </Grid>
 
                                     <Grid Grid.Column="0" Grid.Row="3" Style="{StaticResource ColorEditorRowStyle}">
@@ -520,18 +558,28 @@
                                     </Grid.ColumnDefinitions>
                                     <TextBlock Grid.Column="0" Text="Control Background:" Style="{StaticResource ColorLabelStyle}"/>
                                     <Border Grid.Column="1" Background="{Binding CurrentTheme.WindowTheme.ControlBackground}" Style="{StaticResource ColorSwatchStyle}"/>
-                                    <Button Grid.Column="2" Content="Change..." Style="{StaticResource ColorChangeButtonStyle}" Click="EditControlBackground_Click"/>
+                                    <Button Grid.Column="2" Content="Change..." 
+                                            Background="{Binding CurrentTheme.WindowTheme.ButtonBackground}"
+                                            Foreground="{Binding CurrentTheme.WindowTheme.ButtonForeground}"
+                                            BorderBrush="{Binding CurrentTheme.WindowTheme.ButtonOutline}"
+                                            Style="{DynamicResource CustomButton}" 
+                                            Click="EditControlBackground_Click"/>
                                 </Grid>
 
-                                    <Grid Grid.Column="0" Grid.Row="4" Style="{StaticResource ColorEditorRowStyle}">
+                                    <Grid Grid.Column="0" Grid.Row="4" Style="{DynamicResource ColorEditorRowStyle}">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="150"/>
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="Auto"/>
                                     </Grid.ColumnDefinitions>
-                                    <TextBlock Grid.Column="0" Text="Control Hover:" Style="{StaticResource ColorLabelStyle}"/>
+                                    <TextBlock Grid.Column="0" Text="Control Hover:" Style="{DynamicResource ColorLabelStyle}"/>
                                     <Border Grid.Column="1" Background="{Binding CurrentTheme.WindowTheme.ControlHoverBackground}" Style="{StaticResource ColorSwatchStyle}"/>
-                                    <Button Grid.Column="2" Content="Change..." Style="{StaticResource ColorChangeButtonStyle}" Click="EditControlHoverBackground_Click"/>
+                                    <Button Grid.Column="2" Content="Change..." 
+                                            Background="{Binding CurrentTheme.WindowTheme.ButtonBackground}"
+                                            Foreground="{Binding CurrentTheme.WindowTheme.ButtonForeground}"
+                                            BorderBrush="{Binding CurrentTheme.WindowTheme.ButtonOutline}"
+                                            Style="{DynamicResource CustomButton}" 
+                                            Click="EditControlHoverBackground_Click"/>
                                 </Grid>
 
                                 <!-- Right Column -->
@@ -543,7 +591,12 @@
                                     </Grid.ColumnDefinitions>
                                     <TextBlock Grid.Column="0" Text="Menu Background:" Style="{StaticResource ColorLabelStyle}"/>
                                     <Border Grid.Column="1" Background="{Binding CurrentTheme.WindowTheme.MenuBackground}" Style="{StaticResource ColorSwatchStyle}"/>
-                                    <Button Grid.Column="2" Content="Change..." Style="{StaticResource ColorChangeButtonStyle}" Click="EditMenuBackground_Click"/>
+                                    <Button Grid.Column="2" Content="Change..." 
+                                            Background="{Binding CurrentTheme.WindowTheme.ButtonBackground}"
+                                            Foreground="{Binding CurrentTheme.WindowTheme.ButtonForeground}"
+                                            BorderBrush="{Binding CurrentTheme.WindowTheme.ButtonOutline}"
+                                            Style="{DynamicResource CustomButton}" 
+                                            Click="EditMenuBackground_Click"/>
                                 </Grid>
 
                                     <Grid Grid.Column="1" Grid.Row="1" Style="{StaticResource ColorEditorRowStyle}">
@@ -554,7 +607,12 @@
                                     </Grid.ColumnDefinitions>
                                     <TextBlock Grid.Column="0" Text="Alt Text Foreground:" Style="{StaticResource ColorLabelStyle}"/>
                                     <Border Grid.Column="1" Background="{Binding CurrentTheme.WindowTheme.AlternateTextForeground}" Style="{StaticResource ColorSwatchStyle}"/>
-                                    <Button Grid.Column="2" Content="Change..." Style="{StaticResource ColorChangeButtonStyle}" Click="EditAlternateTextForeground_Click"/>
+                                    <Button Grid.Column="2" Content="Change..." 
+                                            Background="{Binding CurrentTheme.WindowTheme.ButtonBackground}"
+                                            Foreground="{Binding CurrentTheme.WindowTheme.ButtonForeground}"
+                                            BorderBrush="{Binding CurrentTheme.WindowTheme.ButtonOutline}"
+                                            Style="{DynamicResource CustomButton}" 
+                                            Click="EditAlternateTextForeground_Click"/>
                                 </Grid>
 
                                     <Grid Grid.Column="1" Grid.Row="2" Style="{StaticResource ColorEditorRowStyle}">
@@ -565,7 +623,12 @@
                                     </Grid.ColumnDefinitions>
                                     <TextBlock Grid.Column="0" Text="Panel Background:" Style="{StaticResource ColorLabelStyle}"/>
                                     <Border Grid.Column="1" Background="{Binding CurrentTheme.WindowTheme.PanelBackground}" Style="{StaticResource ColorSwatchStyle}"/>
-                                    <Button Grid.Column="2" Content="Change..." Style="{StaticResource ColorChangeButtonStyle}" Click="EditPanelBackground_Click"/>
+                                    <Button Grid.Column="2" Content="Change..." 
+                                            Background="{Binding CurrentTheme.WindowTheme.ButtonBackground}"
+                                            Foreground="{Binding CurrentTheme.WindowTheme.ButtonForeground}"
+                                            BorderBrush="{Binding CurrentTheme.WindowTheme.ButtonOutline}"
+                                            Style="{DynamicResource CustomButton}" 
+                                            Click="EditPanelBackground_Click"/>
                                 </Grid>
 
                                     <Grid Grid.Column="1" Grid.Row="3" Style="{StaticResource ColorEditorRowStyle}">
@@ -576,7 +639,12 @@
                                     </Grid.ColumnDefinitions>
                                     <TextBlock Grid.Column="0" Text="Control Border:" Style="{StaticResource ColorLabelStyle}"/>
                                     <Border Grid.Column="1" Background="{Binding CurrentTheme.WindowTheme.ControlBorderBrush}" Style="{StaticResource ColorSwatchStyle}"/>
-                                    <Button Grid.Column="2" Content="Change..." Style="{StaticResource ColorChangeButtonStyle}" Click="EditControlBorderBrush_Click"/>
+                                    <Button Grid.Column="2" Content="Change..." 
+                                            Background="{Binding CurrentTheme.WindowTheme.ButtonBackground}"
+                                            Foreground="{Binding CurrentTheme.WindowTheme.ButtonForeground}"
+                                            BorderBrush="{Binding CurrentTheme.WindowTheme.ButtonOutline}"
+                                            Style="{DynamicResource CustomButton}" 
+                                            Click="EditControlBorderBrush_Click"/>
                                 </Grid>
                             </Grid>
                         </GroupBox>
@@ -585,7 +653,7 @@
             </TabItem>
 
             <!-- Message Box Theme Tab -->
-            <TabItem Header="Message Box Theme">
+            <TabItem Header="Message Box Theme" Style="{StaticResource ThemedTabItem}">
                 <ScrollViewer VerticalScrollBarVisibility="Auto">
                     <StackPanel>
                         <GroupBox Header="Main Colors" Style="{DynamicResource CustomGroupBox}" Margin="5,10">
@@ -610,7 +678,11 @@
                                     <TextBlock Grid.Column="0" Text="Window Background:" Style="{StaticResource ColorLabelStyle}"/>
                                     <Border Grid.Column="1" Background="{Binding CurrentTheme.MessageBoxTheme.WindowBackground}" 
                                             Style="{StaticResource ColorSwatchStyle}"/>
-                                    <Button Grid.Column="2" Content="Change..." Style="{StaticResource ColorChangeButtonStyle}" 
+                                    <Button Grid.Column="2" Content="Change..." 
+                                            Background="{Binding CurrentTheme.WindowTheme.ButtonBackground}"
+                                            Foreground="{Binding CurrentTheme.WindowTheme.ButtonForeground}"
+                                            BorderBrush="{Binding CurrentTheme.WindowTheme.ButtonOutline}"
+                                            Style="{DynamicResource CustomButton}"
                                             Click="EditMsgBoxWindowBackground_Click"/>
                                 </Grid>
 
@@ -624,7 +696,11 @@
                                     <TextBlock Grid.Column="0" Text="Border Brush:" Style="{StaticResource ColorLabelStyle}"/>
                                     <Border Grid.Column="1" Background="{Binding CurrentTheme.MessageBoxTheme.BorderBrush}"
                                             Style="{StaticResource ColorSwatchStyle}"/>
-                                    <Button Grid.Column="2" Content="Change..." Style="{StaticResource ColorChangeButtonStyle}"
+                                    <Button Grid.Column="2" Content="Change..." 
+                                            Background="{Binding CurrentTheme.WindowTheme.ButtonBackground}"
+                                            Foreground="{Binding CurrentTheme.WindowTheme.ButtonForeground}"
+                                            BorderBrush="{Binding CurrentTheme.WindowTheme.ButtonOutline}"
+                                            Style="{DynamicResource CustomButton}"
                                             Click="EditMsgBoxBorderBrush_Click"/>
                                 </Grid>
 
@@ -639,7 +715,11 @@
                                     <TextBlock Grid.Column="0" Text="Title Background:" Style="{StaticResource ColorLabelStyle}"/>
                                     <Border Grid.Column="1" Background="{Binding CurrentTheme.MessageBoxTheme.TitleBackground}"
                                             Style="{StaticResource ColorSwatchStyle}"/>
-                                    <Button Grid.Column="2" Content="Change..." Style="{StaticResource ColorChangeButtonStyle}"
+                                    <Button Grid.Column="2" Content="Change..." 
+                                            Background="{Binding CurrentTheme.WindowTheme.ButtonBackground}"
+                                            Foreground="{Binding CurrentTheme.WindowTheme.ButtonForeground}"
+                                            BorderBrush="{Binding CurrentTheme.WindowTheme.ButtonOutline}"
+                                            Style="{DynamicResource CustomButton}"
                                             Click="EditMsgBoxTitleBackground_Click"/>
                                 </Grid>
 
@@ -653,13 +733,20 @@
                                     <TextBlock Grid.Column="0" Text="Title Foreground:" Style="{StaticResource ColorLabelStyle}"/>
                                     <Border Grid.Column="1" Background="{Binding CurrentTheme.MessageBoxTheme.TitleForeground}"
                                             Style="{StaticResource ColorSwatchStyle}"/>
-                                    <Button Grid.Column="2" Content="Change..." Style="{StaticResource ColorChangeButtonStyle}"
+                                    <Button Grid.Column="2" Content="Change..."
+                                            Background="{Binding CurrentTheme.WindowTheme.ButtonBackground}"
+                                            Foreground="{Binding CurrentTheme.WindowTheme.ButtonForeground}"
+                                            BorderBrush="{Binding CurrentTheme.WindowTheme.ButtonOutline}"
+                                            Style="{DynamicResource CustomButton}"
                                             Click="EditMsgBoxTitleForeground_Click"/>
                                 </Grid>
                             </Grid>
                         </GroupBox>
 
-                        <GroupBox Header="Button Colors" Style="{DynamicResource CustomGroupBox}" Margin="5,10">
+                        <GroupBox Header="Button Colors" 
+                                  Background="{Binding CurrentTheme.WindowTheme.ButtonForeground}" 
+                                  Style="{StaticResource CustomGroupBox}"
+                                  Margin="5,10">
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*"/>
@@ -679,10 +766,17 @@
                                         <ColumnDefinition Width="Auto"/>
                                     </Grid.ColumnDefinitions>
 
-                                    <TextBlock Grid.Column="0" Text="Button Background:" Style="{StaticResource ColorLabelStyle}"/>
+                                    <TextBlock Grid.Column="0" Text="Button Background:" 
+                                               Background="Transparent" 
+                                               Style="{StaticResource ColorLabelStyle}"
+                                               />
                                     <Border Grid.Column="1" Background="{Binding CurrentTheme.MessageBoxTheme.ButtonBackground}"
                                             Style="{StaticResource ColorSwatchStyle}"/>
-                                    <Button Grid.Column="2" Content="Change..." Style="{StaticResource ColorChangeButtonStyle}"
+                                    <Button Grid.Column="2" Content="Change..." 
+                                            Background="{Binding CurrentTheme.WindowTheme.ButtonBackground}"
+                                            Foreground="{Binding CurrentTheme.WindowTheme.ButtonForeground}"
+                                            BorderBrush="{Binding CurrentTheme.WindowTheme.ButtonOutline}"
+                                            Style="{DynamicResource CustomButton}"
                                             Click="EditMsgBoxButtonBackground_Click"/>
                                 </Grid>
 
@@ -693,10 +787,16 @@
                                         <ColumnDefinition Width="Auto"/>
                                     </Grid.ColumnDefinitions>
 
-                                    <TextBlock Grid.Column="0" Text="Button Pressed:" Style="{StaticResource ColorLabelStyle}"/>
+                                    <TextBlock Grid.Column="0" Text="Button Pressed:" 
+                                               Background="Transparent" 
+                                               Style="{StaticResource ColorLabelStyle}"/>
                                     <Border Grid.Column="1" Background="{Binding CurrentTheme.MessageBoxTheme.ButtonPressedBackground}"
                                             Style="{StaticResource ColorSwatchStyle}"/>
-                                    <Button Grid.Column="2" Content="Change..." Style="{StaticResource ColorChangeButtonStyle}"
+                                    <Button Grid.Column="2" Content="Change..." 
+                                            Background="{Binding CurrentTheme.WindowTheme.ButtonBackground}"
+                                            Foreground="{Binding CurrentTheme.WindowTheme.ButtonForeground}"
+                                            BorderBrush="{Binding CurrentTheme.WindowTheme.ButtonOutline}"
+                                            Style="{DynamicResource CustomButton}"
                                             Click="EditMsgBoxButtonPressedBackground_Click"/>
                                 </Grid>
 
@@ -710,7 +810,11 @@
                                     <TextBlock Grid.Column="0" Text="Disabled Background:" Style="{StaticResource ColorLabelStyle}"/>
                                     <Border Grid.Column="1" Background="{Binding CurrentTheme.MessageBoxTheme.ButtonDisabledBackground}"
                                             Style="{StaticResource ColorSwatchStyle}"/>
-                                    <Button Grid.Column="2" Content="Change..." Style="{StaticResource ColorChangeButtonStyle}"
+                                    <Button Grid.Column="2" Content="Change..."
+                                            Background="{Binding CurrentTheme.WindowTheme.ButtonBackground}"
+                                            Foreground="{Binding CurrentTheme.WindowTheme.ButtonForeground}"
+                                            BorderBrush="{Binding CurrentTheme.WindowTheme.ButtonOutline}"
+                                            Style="{DynamicResource CustomButton}"
                                             Click="EditMsgBoxButtonDisabledBackground_Click"/>
                                 </Grid>
 
@@ -722,10 +826,16 @@
                                         <ColumnDefinition Width="Auto"/>
                                     </Grid.ColumnDefinitions>
 
-                                    <TextBlock Grid.Column="0" Text="Button Hover:" Style="{StaticResource ColorLabelStyle}"/>
+                                    <TextBlock Grid.Column="0" Text="Button Hover:" 
+                                               Background="Transparent" 
+                                               Style="{StaticResource ColorLabelStyle}"/>
                                     <Border Grid.Column="1" Background="{Binding CurrentTheme.MessageBoxTheme.ButtonHoverBackground}"
                                             Style="{StaticResource ColorSwatchStyle}"/>
-                                    <Button Grid.Column="2" Content="Change..." Style="{StaticResource ColorChangeButtonStyle}"
+                                    <Button Grid.Column="2" Content="Change..." 
+                                            Background="{Binding CurrentTheme.WindowTheme.ButtonBackground}"
+                                            Foreground="{Binding CurrentTheme.WindowTheme.ButtonForeground}"
+                                            BorderBrush="{Binding CurrentTheme.WindowTheme.ButtonOutline}"
+                                            Style="{DynamicResource CustomButton}"
                                             Click="EditMsgBoxButtonHoverBackground_Click"/>
                                 </Grid>
 
@@ -736,10 +846,16 @@
                                         <ColumnDefinition Width="Auto"/>
                                     </Grid.ColumnDefinitions>
 
-                                    <TextBlock Grid.Column="0" Text="Button Foreground:" Style="{StaticResource ColorLabelStyle}"/>
+                                    <TextBlock Grid.Column="0" Text="Button Foreground:" 
+                                               Background="Transparent" 
+                                               Style="{StaticResource ColorLabelStyle}"/>
                                     <Border Grid.Column="1" Background="{Binding CurrentTheme.MessageBoxTheme.ButtonForeground}"
                                             Style="{StaticResource ColorSwatchStyle}"/>
-                                    <Button Grid.Column="2" Content="Change..." Style="{StaticResource ColorChangeButtonStyle}"
+                                    <Button Grid.Column="2" Content="Change..." 
+                                            Background="{Binding CurrentTheme.WindowTheme.ButtonBackground}"
+                                            Foreground="{Binding CurrentTheme.WindowTheme.ButtonForeground}"
+                                            BorderBrush="{Binding CurrentTheme.WindowTheme.ButtonOutline}"
+                                            Style="{DynamicResource CustomButton}"
                                             Click="EditMsgBoxButtonForeground_Click"/>
                                 </Grid>
 
@@ -753,7 +869,11 @@
                                     <TextBlock Grid.Column="0" Text="Disabled Foreground:" Style="{StaticResource ColorLabelStyle}"/>
                                     <Border Grid.Column="1" Background="{Binding CurrentTheme.MessageBoxTheme.ButtonDisabledForeground}"
                                             Style="{StaticResource ColorSwatchStyle}"/>
-                                    <Button Grid.Column="2" Content="Change..." Style="{StaticResource ColorChangeButtonStyle}"
+                                    <Button Grid.Column="2" Content="Change..."
+                                            Background="{Binding CurrentTheme.WindowTheme.ButtonBackground}"
+                                            Foreground="{Binding CurrentTheme.WindowTheme.ButtonForeground}"
+                                            BorderBrush="{Binding CurrentTheme.WindowTheme.ButtonOutline}"
+                                            Style="{DynamicResource CustomButton}"
                                             Click="EditMsgBoxButtonDisabledForeground_Click"/>
                                 </Grid>
                             </Grid>
@@ -776,10 +896,16 @@
                                         <ColumnDefinition Width="Auto"/>
                                     </Grid.ColumnDefinitions>
 
-                                    <TextBlock Grid.Column="0" Text="Button Outline:" Style="{StaticResource ColorLabelStyle}"/>
+                                    <TextBlock Grid.Column="0" Text="Button Outline:" 
+                                               Background="Transparent" 
+                                               Style="{StaticResource ColorLabelStyle}"/>
                                     <Border Grid.Column="1" Background="{Binding CurrentTheme.MessageBoxTheme.ButtonOutline}"
                                             Style="{StaticResource ColorSwatchStyle}"/>
-                                    <Button Grid.Column="2" Content="Change..." Style="{StaticResource ColorChangeButtonStyle}"
+                                    <Button Grid.Column="2" Content="Change..."
+                                            Background="{Binding CurrentTheme.WindowTheme.ButtonBackground}"
+                                            Foreground="{Binding CurrentTheme.WindowTheme.ButtonForeground}"
+                                            BorderBrush="{Binding CurrentTheme.WindowTheme.ButtonOutline}"
+                                            Style="{DynamicResource CustomButton}"
                                             Click="EditMsgBoxButtonOutline_Click"/>
                                 </Grid>
                             </Grid>

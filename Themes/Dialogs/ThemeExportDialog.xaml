@@ -8,6 +8,10 @@
         Foreground="{DynamicResource TextForeground}">
     
     <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Themes/Styles/CommonStyles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
         <!-- TextBox Style consistent with main window -->
         <Style TargetType="TextBox">
             <Setter Property="Background" Value="{DynamicResource ControlBackground}" />
@@ -74,6 +78,7 @@
             <Setter Property="Background" Value="{DynamicResource ControlBackground}" />
             <Setter Property="Foreground" Value="{DynamicResource TextForeground}" />
         </Style>
+        </ResourceDictionary>
     </Window.Resources>
     
     <Border BorderThickness="1" BorderBrush="{DynamicResource GroupBoxBorder}" Margin="0">
