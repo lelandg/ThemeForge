@@ -50,6 +50,41 @@ To incorporate this theming system into your own project:
 3. Initialize the theme manager in your application startup
 4. Apply theme resources to your UI elements
 
+## Screenshots
+
+### Default Theme
+![Default Theme](Images/ThemeForge_Default.png)
+
+### Dark Blue Theme
+![Dark Blue Theme](Images/ThemeForge_DarkBlue.png)
+
+### Blue Theme
+![Blue Theme](Images/ThemeForge_MainBlue.png)
+
+### Dark Green Theme
+![Dark Green Theme](Images/ThemeForge_DarkGreen.png)
+
+### Green Theme
+![Green Theme](Images/ThemeForge_MainGreen.png)
+
+### Dark Purple Theme
+![Dark Purple Theme](Images/ThemeForge_DarkPurple.png)
+
+### Orange Theme
+![Orange Theme](Images/ThemeForge_MainOrange.png)
+
+### Theme Manager with Color Customization
+![Theme Manager](Images/ThemeForge_Manager_Blue.png)
+
+### Custom Window Colors
+![Custom Window Colors](Images/ThemeForge_MainCustomWindowColors.png)
+
+### Message Box Customizer
+![Message Box Customizer](Images/ThemeForge_Manager_MessageBoxCustomizer.png)
+
+### Color Picker
+![Color Picker](Images/ThemeForge_ColorPicker.png)
+
 ## License
 
 This project is available for free use in personal and commercial applications.
