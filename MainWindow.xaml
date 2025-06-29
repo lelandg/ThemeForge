@@ -11,12 +11,36 @@
         AllowsTransparency="True"
         ResizeMode="CanResizeWithGrip"
         BorderBrush="{DynamicResource TitleBarBackground}" BorderThickness="0">
+            <d:Window.Resources>
+        <!-- Default theme resources for design-time only -->
+        <ResourceDictionary>
+            <SolidColorBrush x:Key="MainBackground" Color="#F5F5F5"/>
+            <SolidColorBrush x:Key="TitleBarBackground" Color="#2C3E50"/>
+            <SolidColorBrush x:Key="MenuForeground" Color="#FFFFFF"/>
+            <SolidColorBrush x:Key="TextForeground" Color="#2C3E50"/>
+            <SolidColorBrush x:Key="LabelForeground" Color="#2C3E50"/>
+            <SolidColorBrush x:Key="ControlBackground" Color="#555555"/>
+            <SolidColorBrush x:Key="ControlBorderBrush" Color="#BDC3C7"/>
+            <SolidColorBrush x:Key="ButtonBackground" Color="#3498DB"/>
+            <SolidColorBrush x:Key="ButtonForeground" Color="#FFFFFF"/>
+            <SolidColorBrush x:Key="ButtonBorderBrush" Color="#2980B9"/>
+            <SolidColorBrush x:Key="ButtonHoverBackground" Color="#2980B9"/>
+        </ResourceDictionary>
+            </d:Window.Resources>
     <Grid>
     <!-- Custom Title Bar -->
         <Grid.RowDefinitions>
             <RowDefinition Height="32"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
+
+        <Menu Grid.Row="1" Background="{DynamicResource TitleBarBackground}">
+            <MenuItem Header="_File" Foreground="{DynamicResource MenuForeground}">
+                <MenuItem Header="Open Image" Foreground="{DynamicResource TextForeground}" Click="OpenImage_Click"/>
+                <MenuItem Header="Save Image" Foreground="{DynamicResource TextForeground}" Click="SaveImage_Click"/>
+            </MenuItem>
+        </Menu>
 
         <Grid Grid.Row="0" Background="{DynamicResource TitleBarBackground}">
             <Grid.ColumnDefinitions>
@@ -37,7 +61,7 @@
             </StackPanel>
         </Grid>
 
-        <Grid Grid.Row="1" Margin="20">
+        <Grid Grid.Row="2" Margin="20">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>

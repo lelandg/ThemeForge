@@ -1,15 +1,27 @@
+using System;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media.Imaging;
+using Microsoft.Win32;
 using ThemeForge.Themes;
+using ThemeForge.Themes.Dialogs;
 using Application = System.Windows.Application;
 
 namespace ThemeForge;
 
+public class SampleItem
+{
+    public string? Name { get; set; }
+    public int Value { get; set; }
+    public string? Description { get; set; }
+}
+
 public partial class MainWindow : Window
 {
     public ObservableCollection<SampleItem> SampleData { get; } = new();
+    private BitmapImage? loadedImage;
 
     public MainWindow()
     {
@@ -180,14 +192,69 @@ public partial class MainWindow : Window
     {
         if (e.Key == System.Windows.Input.Key.Escape)
         {
-            Close();
+            var result = CustomMessageBox.Show("Are you sure you want to quit?", 
+                "Confirm Exit", 
+                MessageBoxButton.YesNo, 
+                MessageBoxImage.Question);
+
+            if (result == MessageBoxResult.Yes)
+            {
+                Close();
+            }
         }
     }
-}
 
-public class SampleItem
-{
-    public string? Name { get; set; }
-    public int Value { get; set; }
-    public string? Description { get; set; }
+    private void OpenImage_Click(object sender, RoutedEventArgs e)
+    {
+        var openFileDialog = new CustomOpenFileDialog
+        {
+            Filter = "Image files (*.png;*.jpeg;*.jpg)|*.png;*.jpeg;*.jpg|All files (*.*)|*.*",
+            InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures)
+        };
+
+        if (openFileDialog.ShowDialog() == true)
+        {
+            loadedImage = new BitmapImage(new Uri(openFileDialog.FileNameTextBox.Text));
+
+            // Show the image viewer window
+            var imageViewer = new ImageViewerWindow(loadedImage);
+            imageViewer.Owner = this;
+            imageViewer.ShowDialog();
+        }
+    }
+
+    private void SaveImage_Click(object sender, RoutedEventArgs e)
+    {
+        if (loadedImage == null)
+        {
+            CustomMessageBox.Show("No image is currently loaded.", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
+            return;
+        }
+
+        var saveFileDialog = new CustomSaveFileDialog
+        {
+            Filter = "PNG Image (*.png)|*.png|JPEG Image (*.jpg)|*.jpg|All files (*.*)|*.*",
+            DefaultFileName = ".png",
+            InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures)
+        };
+
+        if (saveFileDialog.ShowDialog() == true)
+        {
+            try
+            {
+                using (var fileStream = new System.IO.FileStream(saveFileDialog.FileName, System.IO.FileMode.Create))
+                {
+                    var encoder = new PngBitmapEncoder();
+                    encoder.Frames.Add(BitmapFrame.Create(loadedImage));
+                    encoder.Save(fileStream);
+                }
+
+                CustomMessageBox.Show("Image saved successfully.", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            catch (Exception ex)
+            {
+                CustomMessageBox.Show($"Error saving image: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+    }
 }

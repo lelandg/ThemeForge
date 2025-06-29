@@ -1,0 +1,36 @@
+<UserControl x:Class="ThemeForge.Themes.Dialogs.FileDialogPreviewControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="300">
+    <Grid Background="{DynamicResource ComboBoxBackground}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Preview" FontWeight="Bold" Margin="10,5"/>
+
+        <Border Grid.Row="1" BorderBrush="{DynamicResource ControlBorderBrush}" BorderThickness="1" Margin="5">
+            <Grid>
+                <TextBlock x:Name="NoPreviewText" Text="No preview available" 
+                           HorizontalAlignment="Center" VerticalAlignment="Center" 
+                           Foreground="{DynamicResource TextForeground}" Opacity="0.5"/>
+
+                <Image x:Name="PreviewImage" Stretch="Uniform" Margin="5" Visibility="Collapsed"/>
+
+                <ScrollViewer x:Name="TextPreviewScroller" Visibility="Collapsed" 
+                              VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+                    <TextBlock x:Name="TextPreview" FontFamily="Consolas" 
+                               TextWrapping="NoWrap" Margin="5"/>
+                </ScrollViewer>
+
+                <Viewport3D x:Name="ModelPreview" Visibility="Collapsed">
+                    <!-- 3D Model Preview content will be added programmatically -->
+                </Viewport3D>
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>

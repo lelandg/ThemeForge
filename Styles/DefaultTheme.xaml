@@ -1,0 +1,42 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <!-- Window Theme -->
+    <SolidColorBrush x:Key="MainBackground" Color="#FFFFFF"/>
+    <SolidColorBrush x:Key="TitleBarBackground" Color="#F0F0F0"/>
+    <SolidColorBrush x:Key="MenuForeground" Color="#000000"/>
+    <SolidColorBrush x:Key="TextForeground" Color="#000000"/>
+    <SolidColorBrush x:Key="LabelForeground" Color="#000000"/>
+    <SolidColorBrush x:Key="ControlBackground" Color="#FFFFFF"/>
+    <SolidColorBrush x:Key="ControlBorderBrush" Color="#CCCCCC"/>
+
+    <!-- GroupBox Style -->
+    <Style x:Key="CustomGroupBox" TargetType="GroupBox">
+        <Setter Property="BorderBrush" Value="{DynamicResource ControlBorderBrush}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Margin" Value="0,0,0,10"/>
+        <Setter Property="Padding" Value="10"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextForeground}"/>
+    </Style>
+
+    <!-- Button Style -->
+    <Style x:Key="CustomButton" TargetType="Button">
+        <Setter Property="Background" Value="#DDDDDD"/>
+        <Setter Property="Foreground" Value="#000000"/>
+        <Setter Property="BorderBrush" Value="#AAAAAA"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Padding" Value="10,5"/>
+    </Style>
+
+    <!-- ComboBox Style -->
+    <Style x:Key="CustomComboBox" TargetType="ComboBox">
+        <Setter Property="Background" Value="{DynamicResource ControlBackground}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextForeground}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource ControlBorderBrush}"/>
+    </Style>
+
+    <!-- ComboBoxItem Style -->
+    <Style x:Key="CustomComboBoxItem" TargetType="ComboBoxItem">
+        <Setter Property="Background" Value="{DynamicResource ControlBackground}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextForeground}"/>
+    </Style>
+</ResourceDictionary>

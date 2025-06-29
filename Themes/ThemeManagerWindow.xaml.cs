@@ -4,8 +4,6 @@ using System.Windows.Media;
 using ThemeForge.Themes.Dialogs;
 using Application = System.Windows.Application;
 using Brush = System.Windows.Media.Brush;
-using OpenFileDialog = Microsoft.Win32.OpenFileDialog;
-using SaveFileDialog = Microsoft.Win32.SaveFileDialog;
 
 namespace ThemeForge.Themes
 {
@@ -140,18 +138,12 @@ namespace ThemeForge.Themes
         {
             if (_workingTheme == null) return;
 
-            var dialog = new SaveFileDialog
-            {
-                Filter = "Theme Files (*.json)|*.json",
-                FileName = $"{_workingTheme.Name}.json",
-                DefaultExt = ".json"
-            };
-
-            if (dialog.ShowDialog() == true)
+            var filePath = DialogManager.ShowSaveFileDialog();
+            if (!string.IsNullOrEmpty(filePath))
             {
                 try
                 {
-                    ThemeManager.Current.ExportTheme(_workingTheme, dialog.FileName, ThemeExportType.Both);
+                    ThemeManager.Current.ExportTheme(_workingTheme, filePath, ThemeExportType.Both);
                     CustomMessageBox.Show("Theme exported successfully.", "Export Complete", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
                 catch (Exception ex)
@@ -163,17 +155,12 @@ namespace ThemeForge.Themes
 
         private void ImportThemeButton_Click(object sender, RoutedEventArgs e)
         {
-            var dialog = new OpenFileDialog
-            {
-                Filter = "Theme Files (*.json)|*.json",
-                DefaultExt = ".json"
-            };
-
-            if (dialog.ShowDialog() == true)
+            var filePath = DialogManager.ShowOpenFileDialog();
+            if (!string.IsNullOrEmpty(filePath))
             {
                 try
                 {
-                    var importedTheme = ThemeManager.Current.ImportTheme(dialog.FileName);
+                    var importedTheme = ThemeManager.Current.ImportTheme(filePath);
                     _workingTheme = importedTheme;
                     RefreshThemeSelector(); // This will trigger the preview via SelectionChanged
 
