@@ -392,8 +392,13 @@ namespace ThemeForge.Themes
         {
             if (currentBrush is SolidColorBrush solidBrush)
             {
-                var colorPicker = new ColorPickerDialog(solidBrush.Color);
-                colorPicker.Title = $"Select {name}";
+                var colorPicker = new ColorPickerDialog(solidBrush.Color)
+                {
+                    ColorPickerTitle =
+                    {
+                        Text = $"Select {name}"
+                    }
+                };
                 if (colorPicker.ShowDialog() == true)
                 {
                     var newColor = colorPicker.SelectedColor;

@@ -105,7 +105,7 @@
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
                     <TextBox x:Name="FileNameTextBox" Grid.Row="0" Margin="0,5" KeyDown="FileNameTextBox_KeyDown"/>
-                    <TextBlock Grid.Row="1" Text="File type:" VerticalAlignment="Center" Margin="0,5"/>
+                    <TextBlock Grid.Row="1" Grid.Column="0" Text="File type:" VerticalAlignment="Center" Margin="0,5"/>
                     <ComboBox x:Name="FileTypeComboBox" Grid.Row="1" Grid.Column="1" Width="200" Margin="5" SelectionChanged="FileTypeComboBox_SelectionChanged"/>
                 </Grid>
             </Grid>

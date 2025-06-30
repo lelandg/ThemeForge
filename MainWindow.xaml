@@ -9,7 +9,7 @@
         Background="{DynamicResource MainBackground}"
         WindowStyle="None"
         AllowsTransparency="True"
-        ResizeMode="CanResizeWithGrip"
+        ResizeMode="CanResize"
         BorderBrush="{DynamicResource TitleBarBackground}" BorderThickness="0">
             <d:Window.Resources>
         <!-- Default theme resources for design-time only -->
@@ -53,11 +53,11 @@
 
             <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
                 <Button Content="_" Width="45" Height="32" BorderThickness="0"
-                        Background="Transparent" Foreground="{DynamicResource MenuForeground}"/>
+                        Background="Transparent" Foreground="{DynamicResource MenuForeground}" Click="Minimize_Click"/>
                 <Button Content="□" Width="45" Height="32" BorderThickness="0"
-                        Background="Transparent" Foreground="{DynamicResource MenuForeground}"/>
+                        Background="Transparent" Foreground="{DynamicResource MenuForeground}" Click="Maximize_Click"/>
                 <Button Content="✕" Width="45" Height="32" BorderThickness="0"
-                        Background="Transparent" Foreground="{DynamicResource MenuForeground}"/>
+                        Background="Transparent" Foreground="{DynamicResource MenuForeground}" Click="Close_Window"/>
             </StackPanel>
         </Grid>
 
@@ -114,8 +114,13 @@
 
                     <Button Content="Show Question Dialog" 
                             Style="{DynamicResource CustomButton}" 
-                            Height="30"
+                            Height="30" Margin="0,0,0,10"
                             Click="ShowQuestion_Click"/>
+
+                    <Button Content="Color Dialog"
+                            Style="{DynamicResource CustomButton}" 
+                            Height="30" Margin="0,0,0,10"
+                            Click="ChooseColor_Click"/>
                 </StackPanel>
             </GroupBox>
 

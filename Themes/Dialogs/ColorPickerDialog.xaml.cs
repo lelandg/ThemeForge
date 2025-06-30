@@ -29,6 +29,7 @@ namespace ThemeForge.Themes.Dialogs
         private Window _eyeDropperWindow = null;
         private bool _isEyeDropperActive = false;
         private DispatcherTimer _eyeDropperTimer;
+        private bool isDragging;
 
         // For the eyedropper functionality
         [DllImport("user32.dll")]
@@ -66,6 +67,9 @@ namespace ThemeForge.Themes.Dialogs
 
             // Update the UI with the initial color
             UpdateControlsFromColor(initialColor);
+
+// Enable window dragging from the title area
+TitleBar.MouseLeftButtonDown += TitleBar_MouseLeftButtonDown;
 
             // Focus the color canvas
             Loaded += (s, e) => ColorCanvas.Focus();
@@ -838,6 +842,14 @@ namespace ThemeForge.Themes.Dialogs
 
                 _eyeDropperWindow.Close();
                 _eyeDropperWindow = null;
+            }
+        }
+
+        private void TitleBar_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.LeftButton == MouseButtonState.Pressed)
+            {
+                this.DragMove();
             }
         }
 

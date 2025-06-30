@@ -4,11 +4,13 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using Microsoft.Win32;
 using ThemeForge.Themes;
 using ThemeForge.Themes.Dialogs;
 using Application = System.Windows.Application;
+using Color = System.Windows.Media.Color;
 
 namespace ThemeForge;
 
@@ -283,5 +285,33 @@ public partial class MainWindow : Window
                 CustomMessageBox.Show($"Error saving image: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
+    }
+
+    private void Close_Window(object sender, RoutedEventArgs e)
+    {
+        Close();
+    }
+
+    private void Minimize_Click(object sender, RoutedEventArgs e)
+    {
+        WindowState = WindowState.Minimized;
+    }
+
+    private void Maximize_Click(object sender, RoutedEventArgs e)
+    {
+        WindowState = WindowState == WindowState.Maximized ? WindowState.Normal : WindowState.Maximized;
+    }
+
+    private void ChooseColor_Click(object sender, RoutedEventArgs e)
+    {
+        var colorPicker = new ColorPickerDialog(Colors.Blue)
+        {
+            ColorPickerTitle =
+            {
+                Text = $"Demo dialog (does nothing)"
+            },
+            Owner = this
+        };
+        colorPicker.ShowDialog();
     }
 }
