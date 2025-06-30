@@ -38,8 +38,8 @@ namespace ThemeForge.Themes.Dialogs
 
         public string Filter
         {
-            get => _filter1;
-            set => _filter1 = _selectedFilterExtension = value;
+            get => _filter;
+            set { _filter = value; ParseAndPopulateFilters(value); }
         }
 
         private string _filter;
@@ -48,21 +48,19 @@ namespace ThemeForge.Themes.Dialogs
         private int _currentHistoryIndex = -1;
         private List<KeyValuePair<string, string>> _filterList = new List<KeyValuePair<string, string>>();
         private string _selectedFilterExtension = "*.*";
-        private string _filter1;
 
         public CustomOpenFileDialog(string filter = "All files (*.*)|*.*", bool multiselect = false)
         {
             InitializeComponent();
             Style = (Style)Application.Current.Resources["CustomWindowStyle"];
-            _filter = filter;
             Multiselect = multiselect;
             FileListView.SelectionMode = Multiselect ? SelectionMode.Extended : SelectionMode.Single;
 
             // Initial directory will be set in Loaded event
             _currentPath = Directory.GetCurrentDirectory();
 
-            // Parse and populate the filter combo box
-            ParseAndPopulateFilters(filter);
+            // Set filter - will call ParseAndPopulateFilters through the property setter
+            Filter = filter;
 
             // Initial UI setup
             DetailsViewButton.IsChecked = true;
@@ -102,7 +100,9 @@ namespace ThemeForge.Themes.Dialogs
                 {
                     if (i + 1 < filters.Length)
                     {
-                        _filterList.Add(new KeyValuePair<string, string>(filters[i], filters[i + 1]));
+                        string description = filters[i];
+                        string pattern = filters[i + 1];
+                        _filterList.Add(new KeyValuePair<string, string>(description, pattern));
                     }
                 }
 
@@ -120,6 +120,12 @@ namespace ThemeForge.Themes.Dialogs
             if (FileTypeComboBox.SelectedItem is KeyValuePair<string, string> selectedFilter)
             {
                 _selectedFilterExtension = selectedFilter.Value;
+
+                // Refresh file list with new filter if we're already loaded
+                if (IsLoaded && !string.IsNullOrEmpty(_currentPath))
+                {
+                    PopulateFiles(_currentPath);
+                }
             }
             else
             {
@@ -233,13 +239,31 @@ namespace ThemeForge.Themes.Dialogs
                 return true;
 
             // Handle multiple extensions in the filter (e.g., "*.jpg;*.png")
-            var extensions = _selectedFilterExtension.Split(';');
-            foreach (var ext in extensions)
+            var patterns = _selectedFilterExtension.Split(';');
+            foreach (var pattern in patterns)
             {
-                string extension = ext.Trim().TrimStart('*');
-                if (fileName.EndsWith(extension, StringComparison.OrdinalIgnoreCase))
+                string trimmedPattern = pattern.Trim();
+
+                // For patterns like *.jpg
+                if (trimmedPattern.StartsWith("*."))
                 {
-                    return true;
+                    string extension = trimmedPattern.Substring(1); // Get the .jpg part
+                    if (fileName.EndsWith(extension, StringComparison.OrdinalIgnoreCase))
+                    {
+                        return true;
+                    }
+                }
+                // For other patterns (like just .jpg or specific filenames)
+                else
+                {
+                    if (trimmedPattern.StartsWith(".") && fileName.EndsWith(trimmedPattern, StringComparison.OrdinalIgnoreCase))
+                    {
+                        return true;
+                    }
+                    else if (trimmedPattern == fileName)
+                    {
+                        return true;
+                    }
                 }
             }
             return false;

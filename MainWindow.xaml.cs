@@ -3,6 +3,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Media.Imaging;
 using Microsoft.Win32;
 using ThemeForge.Themes;
@@ -190,17 +191,31 @@ public partial class MainWindow : Window
 
     private void Window_PreviewKeyDown(object sender, System.Windows.Input.KeyEventArgs e)
     {
-        if (e.Key == System.Windows.Input.Key.Escape)
+        switch (e.Key)
         {
-            var result = CustomMessageBox.Show("Are you sure you want to quit?", 
-                "Confirm Exit", 
-                MessageBoxButton.YesNo, 
-                MessageBoxImage.Question);
+            case System.Windows.Input.Key.Escape:
+                var result = CustomMessageBox.Show("Are you sure you want to quit?", 
+                    "Confirm Exit", 
+                    MessageBoxButton.YesNo, 
+                    MessageBoxImage.Question);
 
-            if (result == MessageBoxResult.Yes)
-            {
-                Close();
-            }
+                if (result == MessageBoxResult.Yes)
+                {
+                    Close();
+                }
+                break;
+            case Key.O:
+                if (Keyboard.Modifiers == ModifierKeys.Control)
+                {
+                    OpenImage_Click(sender, e);
+                }
+                break;
+            case Key.S:
+                if (Keyboard.Modifiers == ModifierKeys.Control)
+                {
+                    SaveImage_Click(sender, e);
+                }
+                break;
         }
     }
 
@@ -209,17 +224,29 @@ public partial class MainWindow : Window
         var openFileDialog = new CustomOpenFileDialog
         {
             Filter = "Image files (*.png;*.jpeg;*.jpg)|*.png;*.jpeg;*.jpg|All files (*.*)|*.*",
-            InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures)
+            InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures),
+            Title = "Open Image"
         };
 
         if (openFileDialog.ShowDialog() == true)
         {
-            loadedImage = new BitmapImage(new Uri(openFileDialog.FileNameTextBox.Text));
+            try
+            {
+                loadedImage = new BitmapImage();
+                loadedImage.BeginInit();
+                loadedImage.UriSource = new Uri(openFileDialog.SelectedFilePath);
+                loadedImage.CacheOption = BitmapCacheOption.OnLoad;
+                loadedImage.EndInit();
 
-            // Show the image viewer window
-            var imageViewer = new ImageViewerWindow(loadedImage);
-            imageViewer.Owner = this;
-            imageViewer.ShowDialog();
+                // Show the image viewer window
+                var imageViewer = new ImageViewerWindow(loadedImage);
+                imageViewer.Owner = this;
+                imageViewer.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                CustomMessageBox.Show($"Error loading image: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
     }
 
