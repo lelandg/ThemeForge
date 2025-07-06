@@ -94,28 +94,12 @@ public partial class MainWindow : Window
         CurrentThemeText.Text = ThemeManager.Current.CurrentTheme.Name;
     }
 
-    private void ApplyThemeResources(Theme theme)
-    {
-        // WindowTheme
-        Application.Current.Resources["ButtonBackground"] = new System.Windows.Media.SolidColorBrush(((System.Windows.Media.SolidColorBrush)theme.WindowTheme.ButtonBackground).Color);
-        Application.Current.Resources["ButtonForeground"] = new System.Windows.Media.SolidColorBrush(((System.Windows.Media.SolidColorBrush)theme.WindowTheme.ButtonForeground).Color);
-        Application.Current.Resources["ButtonHoverBackground"] = new System.Windows.Media.SolidColorBrush(((System.Windows.Media.SolidColorBrush)theme.WindowTheme.ButtonHoverBackground).Color);
-        Application.Current.Resources["ButtonPressedBackground"] = new System.Windows.Media.SolidColorBrush(((System.Windows.Media.SolidColorBrush)theme.WindowTheme.ButtonPressedBackground).Color);
-        Application.Current.Resources["ControlBorderBrush"] = new System.Windows.Media.SolidColorBrush(((System.Windows.Media.SolidColorBrush)theme.WindowTheme.ControlBorderBrush).Color);
-        // MessageBoxTheme (if you use these keys elsewhere)
-        Application.Current.Resources["MessageBoxButtonBackground"] = new System.Windows.Media.SolidColorBrush(((System.Windows.Media.SolidColorBrush)theme.MessageBoxTheme.ButtonBackground).Color);
-        Application.Current.Resources["MessageBoxButtonForeground"] = new System.Windows.Media.SolidColorBrush(((System.Windows.Media.SolidColorBrush)theme.MessageBoxTheme.ButtonForeground).Color);
-        Application.Current.Resources["MessageBoxButtonHoverBackground"] = new System.Windows.Media.SolidColorBrush(((System.Windows.Media.SolidColorBrush)theme.MessageBoxTheme.ButtonHoverBackground).Color);
-        Application.Current.Resources["MessageBoxButtonPressedBackground"] = new System.Windows.Media.SolidColorBrush(((System.Windows.Media.SolidColorBrush)theme.MessageBoxTheme.ButtonPressedBackground).Color);
-        Application.Current.Resources["MessageBoxButtonOutline"] = new System.Windows.Media.SolidColorBrush(((System.Windows.Media.SolidColorBrush)theme.MessageBoxTheme.ButtonOutline).Color);
-    }
 
     private void ThemeSelector_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
         if (ThemeSelector.SelectedItem is Theme selectedTheme)
         {
             ThemeManager.Current.CurrentTheme = selectedTheme;
-            ApplyThemeResources(selectedTheme);
             UpdateCurrentThemeText();
 
             // Save current theme to settings
@@ -133,7 +117,6 @@ public partial class MainWindow : Window
         ThemeSelector.ItemsSource = null;
         ThemeSelector.ItemsSource = ThemeManager.Current.BuiltInThemes.Concat(ThemeManager.Current.CustomThemes);
         ThemeSelector.SelectedItem = ThemeManager.Current.CurrentTheme;
-        ApplyThemeResources(ThemeManager.Current.CurrentTheme);
         UpdateCurrentThemeText();
 
         // Save current theme to settings
@@ -164,7 +147,6 @@ public partial class MainWindow : Window
                 ThemeSelector.ItemsSource = null;
                 ThemeSelector.ItemsSource = ThemeManager.Current.BuiltInThemes.Concat(ThemeManager.Current.CustomThemes);
                 ThemeSelector.SelectedItem = newTheme;
-                ApplyThemeResources(newTheme);
                 UpdateCurrentThemeText();
 
 
@@ -313,5 +295,81 @@ public partial class MainWindow : Window
             Owner = this
         };
         colorPicker.ShowDialog();
+    }
+
+    private void ShowOpenFileDialog_Click(object sender, RoutedEventArgs e)
+    {
+        var openFileDialog = new CustomOpenFileDialog
+        {
+            Filter = "All files (*.*)|*.*|Text files (*.txt)|*.txt|Image files (*.png;*.jpg;*.jpeg)|*.png;*.jpg;*.jpeg",
+            InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
+            Title = "Demo Open File Dialog"
+        };
+
+        if (openFileDialog.ShowDialog() == true)
+        {
+            CustomMessageBox.Show($"You selected: {openFileDialog.SelectedFilePath}", 
+                "File Selected", MessageBoxButton.OK, MessageBoxImage.Information);
+        }
+        else
+        {
+            CustomMessageBox.Show("Dialog was cancelled.", 
+                "Cancelled", MessageBoxButton.OK, MessageBoxImage.Information);
+        }
+    }
+
+    private void ShowSaveFileDialog_Click(object sender, RoutedEventArgs e)
+    {
+        var saveFileDialog = new CustomSaveFileDialog
+        {
+            Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*",
+            DefaultFileName = "demo.txt",
+            InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
+            Title = "Demo Save File Dialog"
+        };
+
+        if (saveFileDialog.ShowDialog() == true)
+        {
+            CustomMessageBox.Show($"You would save to: {saveFileDialog.FileName}", 
+                "Save Location", MessageBoxButton.OK, MessageBoxImage.Information);
+        }
+        else
+        {
+            CustomMessageBox.Show("Dialog was cancelled.", 
+                "Cancelled", MessageBoxButton.OK, MessageBoxImage.Information);
+        }
+    }
+
+    private void ShowCustomMessageBoxDemo_Click(object sender, RoutedEventArgs e)
+    {
+        var result = CustomMessageBox.Show(
+            "This demonstrates the CustomMessageBox with all button types.\n\n" +
+            "• Information icon and styling\n" +
+            "• Themed colors and fonts\n" +
+            "• Custom buttons with hover effects\n" +
+            "• Proper modal behavior\n\n" +
+            "Would you like to see more dialog types?", 
+            "CustomMessageBox Demo", 
+            MessageBoxButton.YesNoCancel, 
+            MessageBoxImage.Question);
+
+        string resultMessage = result switch
+        {
+            MessageBoxResult.Yes => "You clicked Yes! Here's an Information dialog:",
+            MessageBoxResult.No => "You clicked No! Here's a Warning dialog:",
+            MessageBoxResult.Cancel => "You clicked Cancel! Here's an Error dialog:",
+            _ => "Unknown result"
+        };
+
+        var icon = result switch
+        {
+            MessageBoxResult.Yes => MessageBoxImage.Information,
+            MessageBoxResult.No => MessageBoxImage.Warning,
+            MessageBoxResult.Cancel => MessageBoxImage.Error,
+            _ => MessageBoxImage.None
+        };
+
+        CustomMessageBox.Show(resultMessage + $"\n\nDialog result was: {result}", 
+            $"Result: {result}", MessageBoxButton.OK, icon);
     }
 }

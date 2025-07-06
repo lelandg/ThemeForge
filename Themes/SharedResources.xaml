@@ -1,0 +1,477 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:scm="clr-namespace:System.ComponentModel;assembly=WindowsBase">
+    <!-- Default theme values -->
+    <Color x:Key="MainBackgroundColor">#FFF0F5FA</Color>
+    <SolidColorBrush x:Key="MainBackground" Color="{StaticResource MainBackgroundColor}" />
+
+    <Color x:Key="PanelBackgroundColor">#00FFFFFF</Color>
+    <SolidColorBrush x:Key="PanelBackground" Color="{StaticResource PanelBackgroundColor}" />
+
+    <Color x:Key="ControlBackgroundColor">#FFF0F5FF</Color>
+    <SolidColorBrush x:Key="ControlBackground" Color="{StaticResource ControlBackgroundColor}" />
+
+    <Color x:Key="ControlBorderColor">#FFB0C4DE</Color>
+    <SolidColorBrush x:Key="ControlBorderBrush" Color="{StaticResource ControlBorderColor}" />
+
+    <Color x:Key="TextForegroundColor">#FF333333</Color>
+    <SolidColorBrush x:Key="TextForeground" Color="{StaticResource TextForegroundColor}" />
+
+    <Color x:Key="LabelForegroundColor">#FF1E5A9C</Color>
+    <SolidColorBrush x:Key="LabelForeground" Color="{StaticResource LabelForegroundColor}" />
+
+    <Color x:Key="ButtonBackgroundColor">#FF3E85C6</Color>
+    <SolidColorBrush x:Key="ButtonBackground" Color="{StaticResource ButtonBackgroundColor}" />
+
+    <Color x:Key="ButtonForegroundColor">#FFFFFFFF</Color>
+    <SolidColorBrush x:Key="ButtonForeground" Color="{StaticResource ButtonForegroundColor}" />
+
+    <Color x:Key="ButtonBorderColor">#FF3E85C6</Color>
+    <SolidColorBrush x:Key="ButtonBorderBrush" Color="{StaticResource ButtonBorderColor}" />
+
+    <Color x:Key="ButtonHoverBackgroundColor">#FF5E95D6</Color>
+    <SolidColorBrush x:Key="ButtonHoverBackground" Color="{StaticResource ButtonHoverBackgroundColor}" />
+
+    <Color x:Key="ButtonPressedBackgroundColor">#FF2E75B6</Color>
+    <SolidColorBrush x:Key="ButtonPressedBackground" Color="{StaticResource ButtonPressedBackgroundColor}" />
+
+    <Color x:Key="TitleBarBackgroundColor">#FF3E85C6</Color>
+    <SolidColorBrush x:Key="TitleBarBackground" Color="{StaticResource TitleBarBackgroundColor}" />
+
+    <Color x:Key="TitleBarForegroundColor">#FFFFFFFF</Color>
+    <SolidColorBrush x:Key="TitleBarForeground" Color="{StaticResource TitleBarForegroundColor}" />
+
+    <Color x:Key="CloseButtonHoverBackgroundColor">#FFE81123</Color>
+    <SolidColorBrush x:Key="CloseButtonHoverBackground" Color="{StaticResource CloseButtonHoverBackgroundColor}" />
+
+    <Color x:Key="CloseButtonPressedBackgroundColor">#FFF1707A</Color>
+    <SolidColorBrush x:Key="CloseButtonPressedBackground" Color="{StaticResource CloseButtonPressedBackgroundColor}" />
+
+    <Color x:Key="MenuBackgroundColor">#FF3E85C6</Color>
+    <SolidColorBrush x:Key="MenuBackground" Color="{StaticResource MenuBackgroundColor}" />
+
+    <Color x:Key="MenuForegroundColor">#FFFFFFFF</Color>
+    <SolidColorBrush x:Key="MenuForeground" Color="{StaticResource MenuForegroundColor}" />
+
+    <Color x:Key="MenuSubmenuBorderColor">#FFB0C4DE</Color>
+    <SolidColorBrush x:Key="MenuSubmenuBorderBrush" Color="{StaticResource MenuSubmenuBorderColor}" />
+
+    <Color x:Key="MenuItemHoverBorderColor">#FF3E85C6</Color>
+    <SolidColorBrush x:Key="MenuItemHoverBorderBrush" Color="{StaticResource MenuItemHoverBorderColor}" />
+
+    <Color x:Key="MenuItemFocusedBorderColor">#FF3E85C6</Color>
+    <SolidColorBrush x:Key="MenuItemFocusedBorderBrush" Color="{StaticResource MenuItemFocusedBorderColor}" />
+
+    <Color x:Key="MenuItemDisabledForegroundColor">#FF888888</Color>
+    <SolidColorBrush x:Key="MenuItemDisabledForeground" Color="{StaticResource MenuItemDisabledForegroundColor}" />
+
+    <Color x:Key="SplitterBackgroundColor">#FF3E85C6</Color>
+    <SolidColorBrush x:Key="SplitterBackground" Color="{StaticResource SplitterBackgroundColor}" />
+
+    <Color x:Key="ViewportBackground1Color">#FFF0F5FA</Color>
+    <SolidColorBrush x:Key="ViewportBackground1" Color="{StaticResource ViewportBackground1Color}" />
+
+    <Color x:Key="ViewportBackground2Color">#FFF0F5FA</Color>
+    <SolidColorBrush x:Key="ViewportBackground2" Color="{StaticResource ViewportBackground2Color}" />
+
+    <Color x:Key="ViewportBorderColor">#FFB0C4DE</Color>
+    <SolidColorBrush x:Key="ViewportBorderBrush" Color="{StaticResource ViewportBorderColor}" />
+
+    <Color x:Key="ImageBorderBackgroundColor">#FFF0F5FA</Color>
+    <SolidColorBrush x:Key="ImageBorderBackground" Color="{StaticResource ImageBorderBackgroundColor}" />
+
+    <Color x:Key="ImageBorderColor">#FFB0C4DE</Color>
+    <SolidColorBrush x:Key="ImageBorderBrush" Color="{StaticResource ImageBorderColor}" />
+
+    <Color x:Key="ComboBoxHoverBackgroundColor">#FFE0E5EF</Color>
+    <SolidColorBrush x:Key="ComboBoxHoverBackground" Color="{StaticResource ComboBoxHoverBackgroundColor}" />
+
+    <Color x:Key="ComboBoxItemSelectedBackgroundColor">#FF3E85C6</Color>
+    <SolidColorBrush x:Key="ComboBoxItemSelectedBackground" Color="{StaticResource ComboBoxItemSelectedBackgroundColor}" />
+
+    <Color x:Key="ComboBoxItemSelectedForegroundColor">#FFFFFFFF</Color>
+    <SolidColorBrush x:Key="ComboBoxItemSelectedForeground" Color="{StaticResource ComboBoxItemSelectedForegroundColor}" />
+
+    <Color x:Key="ComboBoxItemDownloadedBackgroundColor">#FF009900</Color>
+    <SolidColorBrush x:Key="ComboBoxItemDownloadedBackground" Color="{StaticResource ComboBoxItemDownloadedBackgroundColor}" />
+
+    <Color x:Key="ComboBoxItemDownloadedForegroundColor">#FFFFFFFF</Color>
+    <SolidColorBrush x:Key="ComboBoxItemDownloadedForeground" Color="{StaticResource ComboBoxItemDownloadedForegroundColor}" />
+
+    <Color x:Key="DeviceSelectorItemBackgroundColor">#FFF0F5FF</Color>
+    <SolidColorBrush x:Key="DeviceSelectorItemBackground" Color="{StaticResource DeviceSelectorItemBackgroundColor}" />
+
+    <Color x:Key="SliderTrackBackgroundColor">#FFB0C4DE</Color>
+    <SolidColorBrush x:Key="SliderTrackBackground" Color="{StaticResource SliderTrackBackgroundColor}" />
+
+    <Color x:Key="SliderTrackForegroundColor">#FF3E85C6</Color>
+    <SolidColorBrush x:Key="SliderTrackForeground" Color="{StaticResource SliderTrackForegroundColor}" />
+
+    <Color x:Key="ListBoxBackgroundColor">#FFF0F5FF</Color>
+    <SolidColorBrush x:Key="ListBoxBackground" Color="{StaticResource ListBoxBackgroundColor}" />
+
+    <Color x:Key="ListBoxBorderColor">#FFB0C4DE</Color>
+    <SolidColorBrush x:Key="ListBoxBorderBrush" Color="{StaticResource ListBoxBorderColor}" />
+
+    <Color x:Key="ListBoxItemHoverBackgroundColor">#FFE0E5EF</Color>
+    <SolidColorBrush x:Key="ListBoxItemHoverBackground" Color="{StaticResource ListBoxItemHoverBackgroundColor}" />
+
+    <Color x:Key="ListBoxItemSelectedBackgroundColor">#FF3E85C6</Color>
+    <SolidColorBrush x:Key="ListBoxItemSelectedBackground" Color="{StaticResource ListBoxItemSelectedBackgroundColor}" />
+
+    <Color x:Key="StatusBarBackgroundColor">#FF2D2D30</Color>
+    <SolidColorBrush x:Key="StatusBarBackground" Color="{StaticResource StatusBarBackgroundColor}" />
+
+    <Color x:Key="StatusBarBorderColor">#FFB0C4DE</Color>
+    <SolidColorBrush x:Key="StatusBarBorderBrush" Color="{StaticResource StatusBarBorderColor}" />
+
+    <Color x:Key="StatusBarForegroundColor">#FFF1F1F1</Color>
+    
+    <SolidColorBrush x:Key="StatusBarForeground" Color="{StaticResource StatusBarForegroundColor}" />
+
+    <Color x:Key="ScrollBarBackgroundColor">#FFF0F5FF</Color>
+    <SolidColorBrush x:Key="ScrollBarBackground" Color="{StaticResource ScrollBarBackgroundColor}" />
+
+    <Color x:Key="ScrollBarBorderColor">#FFB0C4DE</Color>
+    <SolidColorBrush x:Key="ScrollBarBorderBrush" Color="{StaticResource ScrollBarBorderColor}" />
+
+    <Color x:Key="GroupBoxBorderColor">#FFB0C4DE</Color>
+    <SolidColorBrush x:Key="GroupBoxBorder" Color="{StaticResource GroupBoxBorderColor}" />
+
+
+    <!-- Button Style similar to CustomMessageBox -->
+    <Style x:Key="CustomButton" TargetType="Button">
+        <Setter Property="Margin" Value="2" />
+        <Setter Property="Padding" Value="8,0" />
+        <Setter Property="Background" Value="{DynamicResource ButtonBackground}" />
+        <Setter Property="Foreground" Value="{DynamicResource ButtonForeground}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource ButtonBorderBrush}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}" 
+                            BorderBrush="{TemplateBinding BorderBrush}" 
+                            BorderThickness="{TemplateBinding BorderThickness}" 
+                            CornerRadius="4">
+                        <ContentPresenter HorizontalAlignment="Center" 
+                                          VerticalAlignment="Center" 
+                                          RecognizesAccessKey="True" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="{DynamicResource ButtonHoverBackground}" />
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Background" Value="{DynamicResource ButtonPressedBackground}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- GroupBox Style for dark theme -->
+    <Style x:Key="CustomGroupBox" TargetType="GroupBox">
+        <Setter Property="BorderBrush" Value="{DynamicResource GroupBoxBorder}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Margin" Value="10,0" />
+        <Setter Property="Padding" Value="5" />
+        <Setter Property="Background" Value="{DynamicResource PanelBackground}" />
+        <Setter Property="Foreground" Value="{DynamicResource TextForeground}" />
+        <Setter Property="HeaderTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <TextBlock Text="{Binding}" Foreground="{DynamicResource LabelForeground}" FontWeight="SemiBold" />
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="GroupBox">
+                    <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="4">
+                        <DockPanel>
+                            <ContentPresenter DockPanel.Dock="Top" ContentSource="Header" RecognizesAccessKey="True" Margin="5,2,5,2" />
+                            <ContentPresenter Margin="{TemplateBinding Padding}" />
+                        </DockPanel>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- TextBlock Style -->
+    <Style TargetType="TextBlock">
+        <Setter Property="Foreground" Value="{DynamicResource TextForeground}" />
+    </Style>
+
+    <!-- Label Style -->
+    <Style TargetType="Label">
+        <Setter Property="Foreground" Value="{DynamicResource TextForeground}" />
+    </Style>
+
+    <!-- TextBox Style -->
+    <Style TargetType="TextBox">
+        <Setter Property="Background" Value="{DynamicResource ControlBackground}" />
+        <Setter Property="Foreground" Value="{DynamicResource TextForeground}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource ControlBorderBrush}" />
+        <Setter Property="BorderThickness" Value="1" />
+    </Style>
+
+    <!-- ComboBox Style -->
+    <Style TargetType="ComboBox">
+        <Setter Property="Background" Value="{DynamicResource ControlBackground}" />
+        <Setter Property="Foreground" Value="{DynamicResource TextForeground}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource ControlBorderBrush}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ComboBox">
+                    <Grid>
+                        <Border x:Name="Border" 
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="4">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <ContentPresenter Grid.Column="0"
+                                                Content="{TemplateBinding SelectionBoxItem}"
+                                                ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
+                                                Margin="8,0,0,0"
+                                                VerticalAlignment="Center"/>
+                                <ToggleButton Grid.Column="1" 
+                                            IsChecked="{Binding Path=IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
+                                            Width="20" Height="20" Margin="0,0,4,0">
+                                    <ToggleButton.Template>
+                                        <ControlTemplate TargetType="ToggleButton">
+                                            <Border Background="{DynamicResource ControlBackground}">
+                                                <Path Data="M0,0 L4,4 L8,0" 
+                                                      Stroke="{DynamicResource TextForeground}"
+                                                      StrokeThickness="2"
+                                                      HorizontalAlignment="Center"
+                                                      VerticalAlignment="Center"/>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </ToggleButton.Template>
+                                </ToggleButton>
+                            </Grid>
+                        </Border>
+                        <Popup IsOpen="{TemplateBinding IsDropDownOpen}"
+                               Placement="Bottom"
+                               AllowsTransparency="True"
+                               Focusable="False"
+                               PopupAnimation="Slide">
+                            <Border Background="{TemplateBinding Background}"
+                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                    BorderThickness="1"
+                                    CornerRadius="4"
+                                    Margin="0,2,0,0">
+                                <ScrollViewer MaxHeight="{TemplateBinding MaxDropDownHeight}" 
+                                            VerticalScrollBarVisibility="Auto">
+                                    <ItemsPresenter/>
+                                </ScrollViewer>
+                            </Border>
+                        </Popup>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="{DynamicResource ComboBoxHoverBackground}"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" Value="0.5"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Resources>
+            <Style TargetType="ComboBoxItem">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="ComboBoxItem">
+                            <Border Padding="8,4" Background="{DynamicResource PanelBackground}">
+                                <ContentPresenter/>
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="{DynamicResource ComboBoxHoverBackground}"/>
+                                </Trigger>
+                                <Trigger Property="IsSelected" Value="True">
+                                    <Setter Property="Background" Value="{DynamicResource ButtonBackground}"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+        </Style.Resources>
+    </Style>
+
+    <!-- CheckBox Style -->
+    <Style TargetType="CheckBox">
+        <Setter Property="Foreground" Value="{DynamicResource TextForeground}" />
+        <Setter Property="Background" Value="{DynamicResource MainBackground}" />
+    </Style>
+
+    <!-- Slider Style -->
+    <Style TargetType="Slider">
+        <Setter Property="Background" Value="{DynamicResource ControlBackground}" />
+        <Setter Property="Foreground" Value="{DynamicResource ButtonBackground}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Slider">
+                    <Grid>
+                        <Border x:Name="TrackBackground" Height="4" CornerRadius="2" Background="{TemplateBinding Background}" />
+                        <Track x:Name="PART_Track">
+                            <Track.DecreaseRepeatButton>
+                                <RepeatButton Command="{x:Static Slider.DecreaseLarge}" Background="{DynamicResource ButtonBackground}" BorderThickness="0">
+                                    <RepeatButton.Template>
+                                        <ControlTemplate TargetType="{x:Type RepeatButton}">
+                                            <Border Background="{DynamicResource ButtonBackground}" Height="4" CornerRadius="2" />
+                                        </ControlTemplate>
+                                    </RepeatButton.Template>
+                                </RepeatButton>
+                            </Track.DecreaseRepeatButton>
+                            <Track.IncreaseRepeatButton>
+                                <RepeatButton Command="{x:Static Slider.IncreaseLarge}">
+                                    <RepeatButton.Template>
+                                        <ControlTemplate TargetType="{x:Type RepeatButton}">
+                                            <Border Background="{TemplateBinding Background}" Height="4" CornerRadius="2" />
+                                        </ControlTemplate>
+                                    </RepeatButton.Template>
+                                </RepeatButton>
+                            </Track.IncreaseRepeatButton>
+                            <Track.Thumb>
+                                <Thumb>
+                                    <Thumb.Template>
+                                        <ControlTemplate TargetType="{x:Type Thumb}">
+                                            <Border Background="{DynamicResource ButtonBackground}" Width="12" Height="12" CornerRadius="6" />
+                                        </ControlTemplate>
+                                    </Thumb.Template>
+                                </Thumb>
+                            </Track.Thumb>
+                        </Track>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="PART_Track" Property="Thumb.Background" Value="{DynamicResource ButtonHoverBackground}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- ScrollViewer Style to fix corner white rectangle -->
+    <Style TargetType="ScrollViewer">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ScrollViewer">
+                    <Grid Background="{TemplateBinding Background}">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <ScrollContentPresenter Grid.Column="0" Grid.Row="0"/>
+
+                        <ScrollBar x:Name="PART_VerticalScrollBar" 
+                                 Grid.Column="1" Grid.Row="0"
+                                 Value="{TemplateBinding VerticalOffset}"
+                                 Maximum="{TemplateBinding ScrollableHeight}"
+                                 ViewportSize="{TemplateBinding ViewportHeight}"
+                                 Visibility="{TemplateBinding ComputedVerticalScrollBarVisibility}"/>
+
+                        <ScrollBar x:Name="PART_HorizontalScrollBar" 
+                                 Orientation="Horizontal"
+                                 Grid.Column="0" Grid.Row="1"
+                                 Value="{TemplateBinding HorizontalOffset}"
+                                 Maximum="{TemplateBinding ScrollableWidth}"
+                                 ViewportSize="{TemplateBinding ViewportWidth}"
+                                 Visibility="{TemplateBinding ComputedHorizontalScrollBarVisibility}"/>
+
+                        <!-- This is the corner rectangle that should match the theme -->
+                        <Rectangle Grid.Column="1" Grid.Row="1" 
+                                  Fill="{DynamicResource PanelBackground}"
+                                  Visibility="{TemplateBinding ComputedVerticalScrollBarVisibility}"/>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- ListBox Style -->
+    <Style TargetType="ListBox">
+        <Setter Property="Background" Value="{DynamicResource ControlBackground}" />
+        <Setter Property="Foreground" Value="{DynamicResource TextForeground}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource ControlBorderBrush}" />
+    </Style>
+
+    <!-- ScrollBar Style -->
+    <Style TargetType="ScrollBar">
+        <Setter Property="Background" Value="{DynamicResource ScrollBarBackground}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource ScrollBarBorderBrush}" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ScrollBar}">
+                    <Grid x:Name="GridRoot" Width="{TemplateBinding Width}" Background="{TemplateBinding Background}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Track x:Name="PART_Track" IsDirectionReversed="true" Grid.Row="0">
+                            <Track.DecreaseRepeatButton>
+                                <RepeatButton Command="ScrollBar.PageUpCommand" Opacity="0" Focusable="False"/>
+                            </Track.DecreaseRepeatButton>
+                            <Track.Thumb>
+                                <Thumb Style="{DynamicResource ScrollBarThumbStyle}" Background="{DynamicResource ButtonBackground}" BorderBrush="{TemplateBinding BorderBrush}"/>
+                            </Track.Thumb>
+                            <Track.IncreaseRepeatButton>
+                                <RepeatButton Command="ScrollBar.PageDownCommand" Opacity="0" Focusable="False"/>
+                            </Track.IncreaseRepeatButton>
+                        </Track>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- ScrollBar Thumb Style -->
+    <Style x:Key="ScrollBarThumbStyle" TargetType="{x:Type Thumb}">
+        <Setter Property="OverridesDefaultStyle" Value="true"/>
+        <Setter Property="IsTabStop" Value="false"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Thumb}">
+                    <Border CornerRadius="3" Background="{DynamicResource ButtonBackground}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="0" Width="Auto" Height="Auto">
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Setter Property="Background" Value="{DynamicResource ButtonHoverBackground}"/>
+                        </Trigger>
+                        <Trigger Property="IsDragging" Value="true">
+                            <Setter Property="Background" Value="{DynamicResource ButtonPressedBackground}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+
+    <CollectionViewSource x:Key="SortedDepthMethods"
+                          Source="{Binding}">
+        <CollectionViewSource.SortDescriptions>
+            <scm:SortDescription PropertyName="Name"/>
+        </CollectionViewSource.SortDescriptions>
+    </CollectionViewSource>
+</ResourceDictionary>

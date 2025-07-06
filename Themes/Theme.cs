@@ -64,7 +64,9 @@ namespace ThemeForge.Themes
                     LabelForeground = ((SolidColorBrush)WindowTheme.LabelForeground).Color.ToString(),
                     ComboBoxItemBackground = ((SolidColorBrush)WindowTheme.ComboBoxItemBackground).Color.ToString(),
                     ComboBoxItemHoverBackground = ((SolidColorBrush)WindowTheme.ComboBoxItemHoverBackground).Color.ToString(),
-                    ComboBoxItemSelectedBackground = ((SolidColorBrush)WindowTheme.ComboBoxItemSelectedBackground).Color.ToString()
+                    ComboBoxItemSelectedBackground = ((SolidColorBrush)WindowTheme.ComboBoxItemSelectedBackground).Color.ToString(),
+                    StatusBarBackground = ((SolidColorBrush)WindowTheme.StatusBarBackground).Color.ToString(),
+                    StatusBarForeground = ((SolidColorBrush)WindowTheme.StatusBarForeground).Color.ToString()
                 };
             }
 
@@ -128,7 +130,9 @@ namespace ThemeForge.Themes
                     LabelForeground = new SolidColorBrush((Color)ColorConverter.ConvertFromString(data.WindowTheme.LabelForeground)),
                     ComboBoxItemBackground = new SolidColorBrush((Color)ColorConverter.ConvertFromString(data.WindowTheme.ComboBoxItemBackground)),
                     ComboBoxItemHoverBackground = new SolidColorBrush((Color)ColorConverter.ConvertFromString(data.WindowTheme.ComboBoxItemHoverBackground)),
-                    ComboBoxItemSelectedBackground = new SolidColorBrush((Color)ColorConverter.ConvertFromString(data.WindowTheme.ComboBoxItemSelectedBackground))
+                    ComboBoxItemSelectedBackground = new SolidColorBrush((Color)ColorConverter.ConvertFromString(data.WindowTheme.ComboBoxItemSelectedBackground)),
+                    StatusBarBackground = new SolidColorBrush((Color)ColorConverter.ConvertFromString(data.WindowTheme.StatusBarBackground)),
+                    StatusBarForeground = new SolidColorBrush((Color)ColorConverter.ConvertFromString(data.WindowTheme.StatusBarForeground))
                 };
             }
 
@@ -228,6 +232,12 @@ namespace ThemeForge.Themes
 
         private Brush _comboBoxItemSelectedBackground = new SolidColorBrush(Color.FromRgb(0x3E, 0x85, 0xC6));
         public Brush ComboBoxItemSelectedBackground { get => _comboBoxItemSelectedBackground; set { if (_comboBoxItemSelectedBackground != value) { _comboBoxItemSelectedBackground = value; OnPropertyChanged(nameof(ComboBoxItemSelectedBackground)); } } }
+
+        private Brush _statusBarBackground = new SolidColorBrush(Color.FromRgb(0x1E, 0x1E, 0x1E));
+        public Brush StatusBarBackground { get => _statusBarBackground; set { if (_statusBarBackground != value) { _statusBarBackground = value; OnPropertyChanged(nameof(StatusBarBackground)); } } }
+
+        private Brush _statusBarForeground = new SolidColorBrush(Color.FromRgb(0xB0, 0xE0, 0xFF));
+        public Brush StatusBarForeground { get => _statusBarForeground; set { if (_statusBarForeground != value) { _statusBarForeground = value; OnPropertyChanged(nameof(StatusBarForeground)); } } }
     }
 
     /// <summary>

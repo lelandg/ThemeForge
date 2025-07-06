@@ -7,6 +7,7 @@ using System.Text.Json;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using ThemeForge.Themes.Dialogs;
 using Application = System.Windows.Application;
 using Brush = System.Windows.Media.Brush;
 using Button = System.Windows.Controls.Button;
@@ -62,7 +63,7 @@ public class ThemeManager : INotifyPropertyChanged
     /// <returns>The selected color, or null if canceled</returns>
     public System.Windows.Media.Color? ShowColorPicker(System.Windows.Media.Color initialColor)
     {
-        var dialog = new Dialogs.ColorPickerDialog(initialColor);
+        var dialog = new ColorPickerDialog(initialColor);
         if (dialog.ShowDialog() == true)
         {
             return dialog.SelectedColor;
@@ -156,7 +157,9 @@ public class ThemeManager : INotifyPropertyChanged
                 LabelForeground = new SolidColorBrush(Color.FromRgb(0x1E, 0x5A, 0x9C)),
                 ComboBoxItemBackground = new SolidColorBrush(Color.FromRgb(0xF0, 0xF5, 0xFF)),
                 ComboBoxItemHoverBackground = new SolidColorBrush(Color.FromRgb(0xE0, 0xE5, 0xEF)),
-                ComboBoxItemSelectedBackground = new SolidColorBrush(Color.FromRgb(0x3E, 0x85, 0xC6))
+                ComboBoxItemSelectedBackground = new SolidColorBrush(Color.FromRgb(0x3E, 0x85, 0xC6)),
+                StatusBarBackground = new SolidColorBrush(Color.FromRgb(0x2D, 0x2D, 0x30)),
+                StatusBarForeground = new SolidColorBrush(Color.FromRgb(0xF1, 0xF1, 0xF1))
             },
             MessageBoxTheme = new MessageBoxTheme
             {
@@ -205,7 +208,9 @@ public class ThemeManager : INotifyPropertyChanged
                 LabelForeground = new SolidColorBrush(Color.FromRgb(0x7F, 0xA9, 0xD8)),
                 ComboBoxItemBackground = new SolidColorBrush(Color.FromRgb(0x20, 0x20, 0x38)),
                 ComboBoxItemHoverBackground = new SolidColorBrush(Color.FromRgb(0x30, 0x30, 0x48)),
-                ComboBoxItemSelectedBackground = new SolidColorBrush(Color.FromRgb(0x0D, 0x2B, 0x45))
+                ComboBoxItemSelectedBackground = new SolidColorBrush(Color.FromRgb(0x0D, 0x2B, 0x45)),
+                StatusBarBackground = new SolidColorBrush(Color.FromRgb(0x0D, 0x2B, 0x45)),
+                StatusBarForeground = new SolidColorBrush(Color.FromRgb(0xE0, 0xE0, 0xE0))
             },
             MessageBoxTheme = new MessageBoxTheme
             {
@@ -254,7 +259,9 @@ public class ThemeManager : INotifyPropertyChanged
                 LabelForeground = new SolidColorBrush(Color.FromRgb(0xC4, 0x9D, 0xE3)),
                 ComboBoxItemBackground = new SolidColorBrush(Color.FromRgb(0x33, 0x24, 0x44)),
                 ComboBoxItemHoverBackground = new SolidColorBrush(Color.FromRgb(0x43, 0x34, 0x54)),
-                ComboBoxItemSelectedBackground = new SolidColorBrush(Color.FromRgb(0x42, 0x25, 0x6F))
+                ComboBoxItemSelectedBackground = new SolidColorBrush(Color.FromRgb(0x42, 0x25, 0x6F)),
+                StatusBarBackground = new SolidColorBrush(Color.FromRgb(0x42, 0x25, 0x6F)),
+                StatusBarForeground = new SolidColorBrush(Color.FromRgb(0xE0, 0xE0, 0xE0))
             },
             MessageBoxTheme = new MessageBoxTheme
             {
@@ -303,7 +310,9 @@ public class ThemeManager : INotifyPropertyChanged
                 LabelForeground = new SolidColorBrush(Color.FromRgb(0x9D, 0xE3, 0xC4)),
                 ComboBoxItemBackground = new SolidColorBrush(Color.FromRgb(0x24, 0x44, 0x33)),
                 ComboBoxItemHoverBackground = new SolidColorBrush(Color.FromRgb(0x34, 0x54, 0x43)),
-                ComboBoxItemSelectedBackground = new SolidColorBrush(Color.FromRgb(0x25, 0x6F, 0x42))
+                ComboBoxItemSelectedBackground = new SolidColorBrush(Color.FromRgb(0x25, 0x6F, 0x42)),
+                StatusBarBackground = new SolidColorBrush(Color.FromRgb(0x25, 0x6F, 0x42)),
+                StatusBarForeground = new SolidColorBrush(Color.FromRgb(0xE0, 0xE0, 0xE0))
             },
             MessageBoxTheme = new MessageBoxTheme
             {
@@ -352,7 +361,9 @@ public class ThemeManager : INotifyPropertyChanged
                 LabelForeground = new SolidColorBrush(Color.FromRgb(0x1E, 0x5A, 0x9C)),
                 ComboBoxItemBackground = new SolidColorBrush(Color.FromRgb(0xF0, 0xF5, 0xFF)),
                 ComboBoxItemHoverBackground = new SolidColorBrush(Color.FromRgb(0xE0, 0xE5, 0xEF)),
-                ComboBoxItemSelectedBackground = new SolidColorBrush(Color.FromRgb(0x1E, 0x5A, 0x9C))
+                ComboBoxItemSelectedBackground = new SolidColorBrush(Color.FromRgb(0x1E, 0x5A, 0x9C)),
+                StatusBarBackground = new SolidColorBrush(Color.FromRgb(0x1E, 0x5A, 0x9C)),
+                StatusBarForeground = new SolidColorBrush(Color.FromRgb(0xF0, 0xF0, 0xF0))
             },
             MessageBoxTheme = new MessageBoxTheme
             {
@@ -401,7 +412,9 @@ public class ThemeManager : INotifyPropertyChanged
                 LabelForeground = new SolidColorBrush(Color.FromRgb(0x15, 0x6B, 0x40)),
                 ComboBoxItemBackground = new SolidColorBrush(Color.FromRgb(0xF0, 0xFF, 0xF5)),
                 ComboBoxItemHoverBackground = new SolidColorBrush(Color.FromRgb(0xE0, 0xEF, 0xE5)),
-                ComboBoxItemSelectedBackground = new SolidColorBrush(Color.FromRgb(0x3E, 0xC6, 0x85))
+                ComboBoxItemSelectedBackground = new SolidColorBrush(Color.FromRgb(0x3E, 0xC6, 0x85)),
+                StatusBarBackground = new SolidColorBrush(Color.FromRgb(0x3E, 0xC6, 0x85)),
+                StatusBarForeground = new SolidColorBrush(Color.FromRgb(0xF0, 0xF0, 0xF0))
             },
             MessageBoxTheme = new MessageBoxTheme
             {
@@ -450,7 +463,9 @@ public class ThemeManager : INotifyPropertyChanged
                 LabelForeground = new SolidColorBrush(Color.FromRgb(0xC4, 0x65, 0x1E)),
                 ComboBoxItemBackground = new SolidColorBrush(Color.FromRgb(0xFF, 0xF5, 0xE6)),
                 ComboBoxItemHoverBackground = new SolidColorBrush(Color.FromRgb(0xEF, 0xE5, 0xD6)),
-                ComboBoxItemSelectedBackground = new SolidColorBrush(Color.FromRgb(0xE6, 0x85, 0x3E))
+                ComboBoxItemSelectedBackground = new SolidColorBrush(Color.FromRgb(0xE6, 0x85, 0x3E)),
+                StatusBarBackground = new SolidColorBrush(Color.FromRgb(0xE6, 0x85, 0x3E)),
+                StatusBarForeground = new SolidColorBrush(Color.FromRgb(0xF0, 0xF0, 0xF0))
             },
             MessageBoxTheme = new MessageBoxTheme
             {
@@ -470,14 +485,55 @@ public class ThemeManager : INotifyPropertyChanged
     }
 
     /// <summary>
+    /// Applies design-time resources for use in the XAML designer
+    /// </summary>
+    public static void SetDesignTimeResources()
+    {
+        if (System.ComponentModel.DesignerProperties.GetIsInDesignMode(new System.Windows.DependencyObject()))
+        {
+            var theme = Current.CreateDefaultTheme();
+            var resourceDictionary = new System.Windows.ResourceDictionary();
+
+            // Add window theme resources
+            foreach (var property in typeof(WindowTheme).GetProperties())
+            {
+                if (property.PropertyType == typeof(System.Windows.Media.Brush))
+                {
+                    var brush = property.GetValue(theme.WindowTheme) as System.Windows.Media.Brush;
+                    if (brush != null)
+                    {
+                        resourceDictionary.Add($"{property.Name}", brush);
+                    }
+                }
+            }
+
+            // Add message box theme resources
+            foreach (var property in typeof(MessageBoxTheme).GetProperties())
+            {
+                if (property.PropertyType == typeof(System.Windows.Media.Brush))
+                {
+                    var brush = property.GetValue(theme.MessageBoxTheme) as System.Windows.Media.Brush;
+                    if (brush != null)
+                    {
+                        resourceDictionary.Add($"{property.Name}", brush);
+                    }
+                }
+            }
+
+            // Add all resources to the application
+            System.Windows.Application.Current.Resources.MergedDictionaries.Add(resourceDictionary);
+        }
+    }
+
+    /// <summary>
     /// Applies the current theme to the application
     /// </summary>
     public void ApplyTheme()
     {
         if (_currentTheme == null) return;
 
-        // Apply to application resources
-        Application.Current.Resources.Clear();
+        // Apply theme colors to application resources (don't clear existing styles)
+        // This preserves all the styles defined in App.xaml while updating color resources
 
         // Apply window theme
         var windowTheme = _currentTheme.WindowTheme;
@@ -503,6 +559,13 @@ public class ThemeManager : INotifyPropertyChanged
             Application.Current.Resources["ComboBoxItemBackground"] = windowTheme.ComboBoxItemBackground;
             Application.Current.Resources["ComboBoxItemHoverBackground"] = windowTheme.ComboBoxItemHoverBackground;
             Application.Current.Resources["ComboBoxItemSelectedBackground"] = windowTheme.ComboBoxItemSelectedBackground;
+            Application.Current.Resources["StatusBarBackground"] = windowTheme.StatusBarBackground;
+            Application.Current.Resources["StatusBarForeground"] = windowTheme.StatusBarForeground;
+            
+            // Add missing resources for help system
+            Application.Current.Resources["TitleBarForeground"] = windowTheme.MenuForeground;
+            Application.Current.Resources["CloseButtonHoverBackground"] = new SolidColorBrush(Color.FromRgb(232, 17, 35));
+            Application.Current.Resources["CloseButtonPressedBackground"] = new SolidColorBrush(Color.FromRgb(241, 112, 122));
         }
 
         // Apply to message box style generator
@@ -713,7 +776,9 @@ public class ThemeManager : INotifyPropertyChanged
                 ComboBoxItemHoverBackground = CloneBrush(_currentTheme.WindowTheme.ComboBoxItemHoverBackground),
                 ComboBoxItemSelectedBackground = CloneBrush(_currentTheme.WindowTheme.ComboBoxItemSelectedBackground),
                 AlternateTextForeground = CloneBrush(_currentTheme.WindowTheme.AlternateTextForeground),
-                MainAccent = CloneBrush(_currentTheme.WindowTheme.MainAccent)
+                MainAccent = CloneBrush(_currentTheme.WindowTheme.MainAccent),
+                StatusBarBackground = CloneBrush(_currentTheme.WindowTheme.StatusBarBackground),
+                StatusBarForeground = CloneBrush(_currentTheme.WindowTheme.StatusBarForeground)
             },
             MessageBoxTheme = new MessageBoxTheme
             {
@@ -855,7 +920,7 @@ public class ThemeManager : INotifyPropertyChanged
     /// <returns>True if the export was successful, false otherwise</returns>
     public bool ShowThemeExportDialog(Theme theme, string filePath)
     {
-        var dialog = new Dialogs.ThemeExportDialog();
+        var dialog = new ThemeExportDialog();
         if (dialog.ShowDialog() == true)
         {
             ExportTheme(theme, filePath, dialog.ExportType);

@@ -29,7 +29,6 @@ namespace ThemeForge.Themes.Dialogs
         private Window _eyeDropperWindow = null;
         private bool _isEyeDropperActive = false;
         private DispatcherTimer _eyeDropperTimer;
-        private bool isDragging;
 
         // For the eyedropper functionality
         [DllImport("user32.dll")]

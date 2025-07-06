@@ -88,6 +88,12 @@ namespace ThemeForge.Themes
 
         /// <summary>Background color for combo box items when selected</summary>
         public string ComboBoxItemSelectedBackground { get; set; } = "#3E85C6";
+
+        /// <summary>Background color for status bar</summary>
+        public string StatusBarBackground { get; set; } = "#1E1E1E";
+
+        /// <summary>Foreground color for status bar text</summary>
+        public string StatusBarForeground { get; set; } = "#B0E0FF";
     }
 
     /// <summary>

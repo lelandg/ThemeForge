@@ -1,0 +1,87 @@
+<UserControl x:Class="ThemeForge.Themes.Dialogs.BreadcrumbNavigation"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d" 
+             d:DesignHeight="30" d:DesignWidth="800">
+    
+    <UserControl.Resources>
+        <Style x:Key="BreadcrumbButtonStyle" TargetType="Button">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="border" 
+                                Background="Transparent" 
+                                BorderBrush="Transparent" 
+                                BorderThickness="1" 
+                                CornerRadius="2"
+                                Padding="5,2">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="{DynamicResource ListBoxItemHoverBackground}"/>
+                                <Setter TargetName="border" Property="BorderBrush" Value="{DynamicResource ControlBorderBrush}"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="{DynamicResource ListBoxItemSelectedBackground}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Foreground" Value="{DynamicResource TextForeground}"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="FontSize" Value="11"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+        
+        <Style x:Key="BreadcrumbSeparatorStyle" TargetType="TextBlock">
+            <Setter Property="Text" Value="►"/>
+            <Setter Property="Foreground" Value="{DynamicResource TextForeground}"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="2,0"/>
+            <Setter Property="FontSize" Value="10"/>
+            <Setter Property="Opacity" Value="0.7"/>
+        </Style>
+    </UserControl.Resources>
+    
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        
+        <!-- Home button -->
+        <Button x:Name="HomeButton" Grid.Column="0" Content="🏠" Style="{StaticResource BreadcrumbButtonStyle}" 
+                Click="HomeButton_Click" ToolTip="Go to home directory" Width="25" Height="25"/>
+        
+        <!-- Breadcrumb path -->
+        <ScrollViewer Grid.Column="1" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Hidden"
+                      Margin="5,0">
+            <StackPanel x:Name="BreadcrumbPanel" Orientation="Horizontal" VerticalAlignment="Center">
+                <!-- Breadcrumb items will be added here dynamically -->
+            </StackPanel>
+        </ScrollViewer>
+        
+        <!-- Dropdown for long paths -->
+        <ComboBox x:Name="PathDropdown" Grid.Column="2" Width="150" Height="25" 
+                  Background="{DynamicResource ControlBackground}" 
+                  Foreground="{DynamicResource TextForeground}"
+                  BorderBrush="{DynamicResource ControlBorderBrush}"
+                  SelectionChanged="PathDropdown_SelectionChanged"
+                  ToolTip="Recent and frequent folders"
+                  Visibility="Collapsed">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Text="{Binding Name}" FontWeight="Bold" TextTrimming="CharacterEllipsis"/>
+                        <TextBlock Text="{Binding Path}" FontSize="10" Opacity="0.7" TextTrimming="CharacterEllipsis"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+    </Grid>
+</UserControl>

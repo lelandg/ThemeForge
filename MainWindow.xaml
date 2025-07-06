@@ -121,6 +121,21 @@
                             Style="{DynamicResource CustomButton}" 
                             Height="30" Margin="0,0,0,10"
                             Click="ChooseColor_Click"/>
+
+                    <Button Content="Open File Dialog"
+                            Style="{DynamicResource CustomButton}" 
+                            Height="30" Margin="0,0,0,10"
+                            Click="ShowOpenFileDialog_Click"/>
+
+                    <Button Content="Save File Dialog"
+                            Style="{DynamicResource CustomButton}" 
+                            Height="30" Margin="0,0,0,10"
+                            Click="ShowSaveFileDialog_Click"/>
+
+                    <Button Content="CustomMessageBox Demo"
+                            Style="{DynamicResource CustomButton}" 
+                            Height="30" Margin="0,0,0,10"
+                            Click="ShowCustomMessageBoxDemo_Click"/>
                 </StackPanel>
             </GroupBox>
 

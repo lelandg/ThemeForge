@@ -1,0 +1,76 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- General -->
+    <SolidColorBrush x:Key="MainBackground" Color="#F0F0F0"/>
+    <SolidColorBrush x:Key="PanelBackground" Color="#FFFFFF"/>
+    <SolidColorBrush x:Key="TextForeground" Color="#000000"/>
+    <SolidColorBrush x:Key="LabelForeground" Color="#333333"/>
+    <SolidColorBrush x:Key="ControlBackground" Color="#FFFFFF"/>
+    <SolidColorBrush x:Key="ControlBorderBrush" Color="#ABADB3"/>
+    <SolidColorBrush x:Key="WindowBackground" Color="#F0F0F0"/>
+
+    <!-- Buttons -->
+    <SolidColorBrush x:Key="ButtonBackground" Color="#DDDDDD"/>
+    <SolidColorBrush x:Key="ButtonForeground" Color="#000000"/>
+    <SolidColorBrush x:Key="ButtonBorderBrush" Color="#707070"/>
+    <SolidColorBrush x:Key="ButtonHoverBackground" Color="#BEE6FD"/>
+    <SolidColorBrush x:Key="ButtonPressedBackground" Color="#A4D8F9"/>
+
+    <!-- Title Bar -->
+    <SolidColorBrush x:Key="TitleBarBackground" Color="#DEDEDE"/>
+    <SolidColorBrush x:Key="TitleBarForeground" Color="#000000"/>
+    <SolidColorBrush x:Key="CloseButtonHoverBackground" Color="#E81123"/>
+    <SolidColorBrush x:Key="CloseButtonPressedBackground" Color="#B50D19"/>
+
+    <!-- Menu -->
+    <SolidColorBrush x:Key="MenuBackground" Color="#F0F0F0"/>
+    <SolidColorBrush x:Key="MenuForeground" Color="#000000"/>
+    <SolidColorBrush x:Key="MenuSubmenuBorderBrush" Color="#D0D0D0"/>
+    <SolidColorBrush x:Key="MenuItemHoverBorderBrush" Color="#888888"/>
+    <SolidColorBrush x:Key="MenuItemFocusedBorderBrush" Color="#000000"/>
+    <SolidColorBrush x:Key="MenuItemDisabledForeground" Color="#888888"/>
+
+    <!-- GroupBox -->
+    <SolidColorBrush x:Key="GroupBoxBorder" Color="#888888"/>
+
+    <!-- ComboBox -->
+    <SolidColorBrush x:Key="ComboBoxHoverBackground" Color="#BEE6FD"/>
+    <SolidColorBrush x:Key="ComboBoxItemSelectedBackground" Color="#0078D7"/>
+    <SolidColorBrush x:Key="ComboBoxItemSelectedForeground" Color="#FFFFFF"/>
+    <SolidColorBrush x:Key="ComboBoxItemDownloadedBackground" Color="#90EE90"/>
+    <SolidColorBrush x:Key="ComboBoxItemDownloadedForeground" Color="#000000"/>
+    <SolidColorBrush x:Key="DeviceSelectorItemBackground" Color="#E5E5E5"/>
+
+    <!-- Slider -->
+    <SolidColorBrush x:Key="SliderTrackBackground" Color="#E0E0E0"/>
+    <SolidColorBrush x:Key="SliderTrackForeground" Color="#0078D7"/>
+
+    <!-- Viewport -->
+    <SolidColorBrush x:Key="ViewportBackground1" Color="#E0E0E0"/>
+    <SolidColorBrush x:Key="ViewportBackground2" Color="#F0F0F0"/>
+    <SolidColorBrush x:Key="ViewportBorderBrush" Color="#C0C0C0"/>
+
+    <!-- Image -->
+    <SolidColorBrush x:Key="ImageBorderBackground" Color="#F0F0F0"/>
+    <SolidColorBrush x:Key="ImageBorderBrush" Color="#C0C0C0"/>
+
+    <!-- ListBox -->
+    <SolidColorBrush x:Key="ListBoxBackground" Color="#FFFFFF"/>
+    <SolidColorBrush x:Key="ListBoxBorderBrush" Color="#ABADB3"/>
+    <SolidColorBrush x:Key="ListBoxItemBackground" Color="#FFFFFF"/>
+    <SolidColorBrush x:Key="ListBoxItemHoverBackground" Color="#BEE6FD"/>
+    <SolidColorBrush x:Key="ListBoxItemSelectedBackground" Color="#0078D7"/>
+
+    <!-- ScrollBar -->
+    <SolidColorBrush x:Key="ScrollBarBackground" Color="#E0E0E0"/>
+
+    <!-- StatusBar -->
+    <SolidColorBrush x:Key="StatusBarBackground" Color="#2D2D30"/>
+    <SolidColorBrush x:Key="StatusBarBorderBrush" Color="#555555"/>
+    <SolidColorBrush x:Key="StatusBarForeground" Color="#F1F1F1"/>
+
+    <!-- Splitter -->
+    <SolidColorBrush x:Key="SplitterBackground" Color="#D0D0D0"/>
+
+</ResourceDictionary>
