@@ -52,7 +52,32 @@ namespace ThemeForge.Themes
             messageBox.SetMessageIcon(icon);
 
             // Configure buttons based on MessageBoxButton enum
-            messageBox.ConfigureButtons(button);
+            messageBox.ConfigureButtons(button, MessageBoxResult.None);
+
+            // Show the dialog
+            messageBox.ShowDialog();
+
+            return messageBox._result;
+        }
+
+        /// <summary>
+        /// Shows a message box with the specified message, caption, buttons, icon, and default result
+        /// </summary>
+        public static MessageBoxResult Show(string messageText, string caption, MessageBoxButton button, MessageBoxImage icon, MessageBoxResult defaultResult)
+        {
+            var messageBox = new CustomMessageBox
+            {
+                Title = caption,
+                MessageTitle = { Text = caption },
+                MessageText = { Text = messageText },
+                Owner = Application.Current.MainWindow
+            };
+
+            // Set up message icon
+            messageBox.SetMessageIcon(icon);
+
+            // Configure buttons based on MessageBoxButton enum
+            messageBox.ConfigureButtons(button, defaultResult);
 
             // Show the dialog
             messageBox.ShowDialog();
@@ -65,26 +90,53 @@ namespace ThemeForge.Themes
         /// </summary>
         private void ConfigureButtons(MessageBoxButton button)
         {
+            ConfigureButtons(button, MessageBoxResult.None);
+        }
+
+        private void ConfigureButtons(MessageBoxButton button, MessageBoxResult defaultResult)
+        {
             switch (button)
             {
                 case MessageBoxButton.OK:
                     OkButton.Visibility = Visibility.Visible;
+                    if (defaultResult == MessageBoxResult.OK || defaultResult == MessageBoxResult.None)
+                        OkButton.IsDefault = true;
                     break;
 
                 case MessageBoxButton.OKCancel:
                     OkButton.Visibility = Visibility.Visible;
                     CancelButton.Visibility = Visibility.Visible;
+                    if (defaultResult == MessageBoxResult.OK)
+                        OkButton.IsDefault = true;
+                    else if (defaultResult == MessageBoxResult.Cancel)
+                        CancelButton.IsDefault = true;
+                    else
+                        OkButton.IsDefault = true; // Default to OK
                     break;
 
                 case MessageBoxButton.YesNo:
                     YesButton.Visibility = Visibility.Visible;
                     NoButton.Visibility = Visibility.Visible;
+                    if (defaultResult == MessageBoxResult.Yes)
+                        YesButton.IsDefault = true;
+                    else if (defaultResult == MessageBoxResult.No)
+                        NoButton.IsDefault = true;
+                    else
+                        YesButton.IsDefault = true; // Default to Yes
                     break;
 
                 case MessageBoxButton.YesNoCancel:
                     YesButton.Visibility = Visibility.Visible;
                     NoButton.Visibility = Visibility.Visible;
                     CancelButton.Visibility = Visibility.Visible;
+                    if (defaultResult == MessageBoxResult.Yes)
+                        YesButton.IsDefault = true;
+                    else if (defaultResult == MessageBoxResult.No)
+                        NoButton.IsDefault = true;
+                    else if (defaultResult == MessageBoxResult.Cancel)
+                        CancelButton.IsDefault = true;
+                    else
+                        YesButton.IsDefault = true; // Default to Yes
                     break;
             }
         }

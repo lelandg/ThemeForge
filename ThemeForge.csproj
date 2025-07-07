@@ -7,6 +7,7 @@
     <UseWindowsForms>true</UseWindowsForms> <!-- Add this line -->
   </PropertyGroup>
   <ItemGroup>
+    <Folder Include="temp\" />
     <Folder Include="Utilities\" />
   </ItemGroup>
   <ItemGroup>
@@ -30,5 +31,27 @@
     <Resource Include="Resources\Warning.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+    <Compile Remove="temp\CustomMessageBox\UiSettings\WindowSettingsManager.cs" />
+    <None Include="temp\CustomMessageBox\UiSettings\WindowSettingsManager.cs" />
+    <Compile Remove="temp\CustomMessageBox\ViewModels\UISettingsViewModel.cs" />
+    <None Include="temp\CustomMessageBox\ViewModels\UISettingsViewModel.cs" />
+    <Compile Remove="temp\CustomMessageBox\Views\CustomMessageBox.xaml.cs" />
+    <None Include="temp\CustomMessageBox\Views\CustomMessageBox.xaml.cs" />
+    <Compile Remove="temp\CustomMessageBox\Views\CustomMessageBoxStyle.cs" />
+    <None Include="temp\CustomMessageBox\Views\CustomMessageBoxStyle.cs" />
+    <Compile Remove="temp\CustomMessageBox\Views\MessageBoxStyleGenerator.cs" />
+    <None Include="temp\CustomMessageBox\Views\MessageBoxStyleGenerator.cs" />
+    <Page Remove="temp\CustomMessageBox\Views\CustomMessageBox.xaml" />
+    <None Include="temp\CustomMessageBox\Views\CustomMessageBox.xaml" />
+    <Compile Remove="temp\CustomMessageBox\App.xaml.cs" />
+    <None Include="temp\CustomMessageBox\App.xaml.cs" />
+    <Page Remove="temp\CustomMessageBox\App.xaml" />
+    <None Include="temp\CustomMessageBox\App.xaml" />
+    <Compile Remove="temp\CustomMessageBox\MainWindow.xaml.cs" />
+    <None Include="temp\CustomMessageBox\MainWindow.xaml.cs" />
+    <Page Remove="temp\CustomMessageBox\MainWindow.xaml" />
+    <None Include="temp\CustomMessageBox\MainWindow.xaml" />
+    <Compile Remove="temp\CustomMessageBox\Views\MessageBoxDemo.cs" />
+    <None Include="temp\CustomMessageBox\Views\MessageBoxDemo.cs" />
   </ItemGroup>
 </Project>

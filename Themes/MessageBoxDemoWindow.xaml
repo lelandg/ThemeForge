@@ -1,0 +1,207 @@
+<Window x:Class="ThemeForge.Themes.MessageBoxDemoWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterOwner"
+        Title="CustomMessageBox Demo" Height="900" Width="700"
+        Background="{DynamicResource MainBackground}"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        ResizeMode="CanResizeWithGrip"
+        BorderBrush="{DynamicResource TitleBarBackground}" BorderThickness="1">
+
+    <Window.Resources>
+        <Style x:Key="SectionTitle" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+            <Setter Property="Margin" Value="8,16,8,8" />
+            <Setter Property="Foreground" Value="{DynamicResource LabelForeground}" />
+        </Style>
+
+        <Style x:Key="DescriptionText" TargetType="TextBlock">
+            <Setter Property="Margin" Value="8,0,8,8" />
+            <Setter Property="TextWrapping" Value="Wrap" />
+            <Setter Property="Foreground" Value="{DynamicResource TextForeground}" />
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="32"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Custom Title Bar -->
+        <Grid Grid.Row="0" Background="{DynamicResource TitleBarBackground}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Text="CustomMessageBox Demo" VerticalAlignment="Center" Margin="15,0,0,0"
+                       Foreground="{DynamicResource MenuForeground}" FontWeight="SemiBold"/>
+
+            <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button Content="_" Width="45" Height="32" BorderThickness="0"
+                        Background="Transparent" Foreground="{DynamicResource MenuForeground}" Click="Minimize_Click"/>
+                <Button Content="□" Width="45" Height="32" BorderThickness="0"
+                        Background="Transparent" Foreground="{DynamicResource MenuForeground}" Click="Maximize_Click"/>
+                <Button Content="✕" Width="45" Height="32" BorderThickness="0"
+                        Background="Transparent" Foreground="{DynamicResource MenuForeground}" Click="Close_Click"/>
+            </StackPanel>
+        </Grid>
+
+        <!-- Main Content -->
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" Margin="20">
+            <StackPanel>
+                <TextBlock Text="CustomMessageBox Demo" 
+                           FontSize="24" 
+                           FontWeight="Bold" 
+                           Margin="0,0,0,16" 
+                           HorizontalAlignment="Center"
+                           Foreground="{DynamicResource LabelForeground}"/>
+
+                <TextBlock Text="This window demonstrates all the possible dialogs using CustomMessageBox with the current theme." 
+                           TextWrapping="Wrap" 
+                           Margin="0,0,0,20" 
+                           HorizontalAlignment="Center"
+                           Foreground="{DynamicResource TextForeground}"/>
+
+                <!-- Button Types Section -->
+                <TextBlock Text="Button Combinations" Style="{StaticResource SectionTitle}"/>
+                <TextBlock Text="Different combinations of buttons available in the CustomMessageBox" 
+                           Style="{StaticResource DescriptionText}"/>
+
+                <WrapPanel>
+                    <Button x:Name="btnOK" 
+                            Content="OK Button" 
+                            Style="{DynamicResource CustomButton}" 
+                            Margin="8" MinWidth="150" Height="35"
+                            Click="BtnOK_Click"/>
+
+                    <Button x:Name="btnOKCancel" 
+                            Content="OK/Cancel Buttons" 
+                            Style="{DynamicResource CustomButton}" 
+                            Margin="8" MinWidth="150" Height="35"
+                            Click="BtnOKCancel_Click"/>
+
+                    <Button x:Name="btnYesNo" 
+                            Content="Yes/No Buttons" 
+                            Style="{DynamicResource CustomButton}" 
+                            Margin="8" MinWidth="150" Height="35"
+                            Click="BtnYesNo_Click"/>
+
+                    <Button x:Name="btnYesNoCancel" 
+                            Content="Yes/No/Cancel Buttons" 
+                            Style="{DynamicResource CustomButton}" 
+                            Margin="8" MinWidth="150" Height="35"
+                            Click="BtnYesNoCancel_Click"/>
+                </WrapPanel>
+
+                <!-- Icon Types Section -->
+                <TextBlock Text="Message Box Icons" Style="{StaticResource SectionTitle}"/>
+                <TextBlock Text="Different icons that can be displayed in the CustomMessageBox" 
+                           Style="{StaticResource DescriptionText}"/>
+
+                <WrapPanel>
+                    <Button x:Name="btnInformation" 
+                            Content="Information Icon" 
+                            Style="{DynamicResource CustomButton}" 
+                            Margin="8" MinWidth="150" Height="35"
+                            Click="BtnInformation_Click"/>
+
+                    <Button x:Name="btnWarning" 
+                            Content="Warning Icon" 
+                            Style="{DynamicResource CustomButton}" 
+                            Margin="8" MinWidth="150" Height="35"
+                            Click="BtnWarning_Click"/>
+
+                    <Button x:Name="btnError" 
+                            Content="Error Icon" 
+                            Style="{DynamicResource CustomButton}" 
+                            Margin="8" MinWidth="150" Height="35"
+                            Click="BtnError_Click"/>
+
+                    <Button x:Name="btnQuestion" 
+                            Content="Question Icon" 
+                            Style="{DynamicResource CustomButton}" 
+                            Margin="8" MinWidth="150" Height="35"
+                            Click="BtnQuestion_Click"/>
+
+                    <Button x:Name="btnNoIcon" 
+                            Content="No Icon" 
+                            Style="{DynamicResource CustomButton}" 
+                            Margin="8" MinWidth="150" Height="35"
+                            Click="BtnNoIcon_Click"/>
+                </WrapPanel>
+
+                <!-- Default Result Section -->
+                <TextBlock Text="Default Results" Style="{StaticResource SectionTitle}"/>
+                <TextBlock Text="Demonstration of setting different default results" 
+                           Style="{StaticResource DescriptionText}"/>
+
+                <WrapPanel>
+                    <Button x:Name="btnDefaultYes" 
+                            Content="Default Yes" 
+                            Style="{DynamicResource CustomButton}" 
+                            Margin="8" MinWidth="150" Height="35"
+                            Click="BtnDefaultYes_Click"/>
+
+                    <Button x:Name="btnDefaultNo" 
+                            Content="Default No" 
+                            Style="{DynamicResource CustomButton}" 
+                            Margin="8" MinWidth="150" Height="35"
+                            Click="BtnDefaultNo_Click"/>
+
+                    <Button x:Name="btnDefaultCancel" 
+                            Content="Default Cancel" 
+                            Style="{DynamicResource CustomButton}" 
+                            Margin="8" MinWidth="150" Height="35"
+                            Click="BtnDefaultCancel_Click"/>
+                </WrapPanel>
+
+                <!-- Theme Integration Section -->
+                <TextBlock Text="Theme Integration" Style="{StaticResource SectionTitle}"/>
+                <TextBlock Text="Demonstrations showing how the CustomMessageBox integrates with the current theme" 
+                           Style="{StaticResource DescriptionText}"/>
+
+                <WrapPanel>
+                    <Button x:Name="btnCurrentTheme" 
+                            Content="Current Theme Demo" 
+                            Style="{DynamicResource CustomButton}" 
+                            Margin="8" MinWidth="150" Height="35"
+                            Click="BtnCurrentTheme_Click"/>
+
+                    <Button x:Name="btnCustomStyle" 
+                            Content="Custom Style Demo" 
+                            Style="{DynamicResource CustomButton}" 
+                            Margin="8" MinWidth="150" Height="35"
+                            Click="BtnCustomStyle_Click"/>
+
+                    <Button x:Name="btnSequenceDemo" 
+                            Content="Sequence Demo" 
+                            Style="{DynamicResource CustomButton}" 
+                            Margin="8" MinWidth="150" Height="35"
+                            Click="BtnSequenceDemo_Click"/>
+                </WrapPanel>
+
+                <!-- Result Display Section -->
+                <TextBlock Text="Dialog Result" Style="{StaticResource SectionTitle}"/>
+
+                <Border Background="{DynamicResource ControlBackground}" 
+                        BorderBrush="{DynamicResource ControlBorderBrush}" 
+                        BorderThickness="1" 
+                        CornerRadius="4" 
+                        Padding="12" 
+                        Margin="8">
+                    <TextBlock x:Name="txtResult" 
+                               Text="Click any button above to see the dialog result here" 
+                               TextWrapping="Wrap"
+                               Foreground="{DynamicResource TextForeground}"/>
+                </Border>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Window>

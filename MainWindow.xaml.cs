@@ -1,16 +1,11 @@
-using System;
 using System.Collections.ObjectModel;
-using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using Microsoft.Win32;
 using ThemeForge.Themes;
 using ThemeForge.Themes.Dialogs;
-using Application = System.Windows.Application;
-using Color = System.Windows.Media.Color;
 
 namespace ThemeForge;
 
@@ -229,7 +224,7 @@ public partial class MainWindow : Window
             }
             catch (Exception ex)
             {
-                CustomMessageBox.Show($"Error loading image: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                CustomMessageBox.Show($"Error loading image: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error, MessageBoxResult.OK);
             }
         }
     }
@@ -238,7 +233,7 @@ public partial class MainWindow : Window
     {
         if (loadedImage == null)
         {
-            CustomMessageBox.Show("No image is currently loaded.", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
+            CustomMessageBox.Show("No image is currently loaded.", "Information", MessageBoxButton.OK, MessageBoxImage.Information, MessageBoxResult.OK);
             return;
         }
 
@@ -342,34 +337,10 @@ public partial class MainWindow : Window
 
     private void ShowCustomMessageBoxDemo_Click(object sender, RoutedEventArgs e)
     {
-        var result = CustomMessageBox.Show(
-            "This demonstrates the CustomMessageBox with all button types.\n\n" +
-            "• Information icon and styling\n" +
-            "• Themed colors and fonts\n" +
-            "• Custom buttons with hover effects\n" +
-            "• Proper modal behavior\n\n" +
-            "Would you like to see more dialog types?", 
-            "CustomMessageBox Demo", 
-            MessageBoxButton.YesNoCancel, 
-            MessageBoxImage.Question);
-
-        string resultMessage = result switch
+        var demoWindow = new MessageBoxDemoWindow
         {
-            MessageBoxResult.Yes => "You clicked Yes! Here's an Information dialog:",
-            MessageBoxResult.No => "You clicked No! Here's a Warning dialog:",
-            MessageBoxResult.Cancel => "You clicked Cancel! Here's an Error dialog:",
-            _ => "Unknown result"
+            Owner = this
         };
-
-        var icon = result switch
-        {
-            MessageBoxResult.Yes => MessageBoxImage.Information,
-            MessageBoxResult.No => MessageBoxImage.Warning,
-            MessageBoxResult.Cancel => MessageBoxImage.Error,
-            _ => MessageBoxImage.None
-        };
-
-        CustomMessageBox.Show(resultMessage + $"\n\nDialog result was: {result}", 
-            $"Result: {result}", MessageBoxButton.OK, icon);
+        demoWindow.ShowDialog();
     }
 }
