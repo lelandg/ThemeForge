@@ -24,6 +24,27 @@ None beyond the global house rules.
 
 - No test project exists. Add one with xUnit or NUnit if you need tests.
 
+## Scanning & review
+
+Policy lives in `~/.config/agents/AGENTS.md` -> "Dependency, code, and secret
+scanning" and "Model delegation & cross-provider review". It is not restated
+here; read it there. What is specific to this repo:
+
+- CI runs `gitleaks` and `osv-scanner` on every PR, every push to `main`, and
+  weekly (`.github/workflows/security.yml`). osv-scanner reads
+  `ThemeForge.csproj` directly; a committed `packages.lock.json` is NOT required
+  for NuGet (verified locally with osv-scanner 2.7.0: 2 packages scanned,
+  exit 0). No npm jobs: there is no `package-lock.json`.
+- Dependabot: `nuget` plus `github-actions` (`.github/dependabot.yml`). Alerts
+  are a separate repo setting and must be switched on for the config to matter.
+- PR reviewers: **Codex** (GPT-6 Astra, run locally against the committed branch
+  before opening the PR) and **CodeRabbit** (`coderabbitai[bot]`, re-reviews
+  every push — the one to wait on for the head being merged). A green CodeRabbit
+  check does not mean a review ran: read the check run's output title, where only
+  `Finished` means reviewed. Silence means clean; findings arrive as inline
+  comments. `no-ai-review` at PR creation skips the bots.
+- The global pre-commit hook runs `gitleaks` and fails closed.
+
 ## Pointers
 
 - `README.md` — feature overview and theme model.
