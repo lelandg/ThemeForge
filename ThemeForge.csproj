@@ -11,7 +11,7 @@
     <Folder Include="Utilities\" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
     <PackageReference Include="Newtonsoft.Json.Bson" Version="1.0.3" />
   </ItemGroup>
   <ItemGroup>
