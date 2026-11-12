@@ -53,8 +53,11 @@ here; read it there. What is specific to this repo:
   release tag and fails on a known-vulnerable, impostor or unpinned action.
   osv-scanner's `github/actions` plugin only lists the pinned actions: with
   osv-scanner 2.7.0 it did not flag `tj-actions/changed-files`
-  (GHSA-mrrh-fwg8-r2c3) at a vulnerable SHA or tag. A SHA that no release
-  tag points at cannot be matched to an advisory, so pin released versions.
+  (GHSA-mrrh-fwg8-r2c3) at a vulnerable SHA or tag. zizmor looks up a SHA
+  pin by the longest tag on that commit, so the job also fails unless that
+  tag is a plain release version (v1, v1.2.3): an untagged commit, a
+  non-version tag or a path-prefixed tag would match no advisory. Pin
+  released versions.
 - Alerts and automatic security **updates** are two switches, not one. Alerts
   only report; the half that opens PRs is `automated-security-fixes`. It is
   deliberately OFF: this repo took its first scan with a pre-existing advisory
