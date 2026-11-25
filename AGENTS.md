@@ -8,7 +8,7 @@ None beyond the global house rules.
 
 ## Gotchas
 
-- The target is `net8.0-windows` with `UseWindowsForms` on. Build and run from native Windows (`dotnet build`, `dotnet run`); WSL cannot build WPF.
+- The target is `net8.0-windows` with `UseWindowsForms` on (.NET 8 is past end of support as of 2026-11-10; the retarget is pending and is a change to `ThemeForge.csproj`, not to this file). Build and run from native Windows (`dotnet build`, `dotnet run`); WSL cannot build WPF.
 - WPF and Windows Forms share control names (`Button`, `MessageBox`, `Application`). Qualify the namespace or you get ambiguity errors and warnings.
 - Themed controls bind with `DynamicResource`. A `StaticResource` does not update on theme switch.
 - User settings and saved themes live in `%APPDATA%\ThemeForge\` (`Themes\` subfolder for theme files). Delete that folder to reset state.
@@ -26,23 +26,26 @@ None beyond the global house rules.
 
 ## Scanning & review
 
-Policy lives in `~/.config/agents/AGENTS.md` -> "Dependency, code, and secret
-scanning" and "Model delegation & cross-provider review". It is not restated
-here; read it there. What is specific to this repo:
+Policy lives in `~/.config/agents/AGENTS.md` -> "Dependencies, advisories, and
+scanning" (full text: `~/.claude/instructions/security-scanning.md`) and "Model
+delegation & cross-provider review". It is not restated here; read it there.
+What is specific to this repo:
 
 - CI runs `gitleaks`, `osv-scanner` and `zizmor` on every PR, every push to `main`, and
   weekly (`.github/workflows/security.yml`). osv-scanner reads
   `ThemeForge.csproj` directly; a committed `packages.lock.json` is NOT required
   for NuGet (verified locally with osv-scanner 2.7.0: 2 packages scanned,
   exit 0). No npm jobs: there is no `package-lock.json`.
-- Dependabot: `nuget` plus `github-actions` (`.github/dependabot.yml`). Alerts
-  are a separate repo setting and must be switched on for the config to matter;
-  Check it by HTTP STATUS, not by exit code. `gh api` exits 0 on success and 1
+- Dependabot: `nuget` plus `github-actions` (`.github/dependabot.yml`). Version
+  updates run from the config alone. Security updates also need Dependabot
+  alerts, a separate repo setting. Check it by HTTP STATUS, not by exit code. `gh api` exits 0 on success and 1
   on any failure; it never exits 404 or 403. `<owner>/<repo>` is also shell
   redirection, so the placeholder form cannot be pasted at all -- substitute
   the real slug and read the status line:
   `gh api -i -X GET repos/OWNER/REPO/vulnerability-alerts | head -1`
-  204 = on, 404 = off, 403 = the token has no admin here (which is not "off").
+  204 = on, 403 = the token has no admin here (which is not "off"), 404 = off
+  only when an admin token gets it: GitHub also answers 404 to a token without
+  the permission, so confirm with an admin token first.
 - SHA-pinned actions get **no Dependabot alerts**: GitHub generates them only
   for actions on semantic versions (docs: "About Dependabot alerts"). So no
   security-update PR can ever fire for a pinned action, an
@@ -64,12 +67,21 @@ here; read it there. What is specific to this repo:
   only report; the half that opens PRs is `automated-security-fixes`. It is
   deliberately OFF: this repo took its first scan with a pre-existing advisory
   backlog, and enabling it would open that backlog as PRs at once.
-- PR reviewers configured for this repo: **Codex** (run locally against the
-  committed branch before opening the PR) and **CodeRabbit**
-  (`coderabbitai[bot]`). How to read their checks -- which one re-reviews a
-  push, why a green check does not mean "no findings", and which label skips
-  which bot -- is in the global policy cited above and is deliberately not
-  repeated here.
+- **PR reviewers.** The review council in the global rules applies here; its
+  members are whatever `~/.config/agents/council.toml` seats, and the runner
+  and commands are in `~/.claude/instructions/model-delegation.md`. This repo
+  adds **CodeRabbit** (`coderabbitai[bot]`, config `.coderabbit.yaml`): it
+  reviews automatically and re-reviews every push, skips drafts and Dependabot
+  or Renovate PRs, and is skipped by the `no-ai-review` label, which must
+  exist in the repo and be on the PR when it opens. A green `CodeRabbit` check
+  does not mean a review ran or that it found nothing: read the check run's
+  output title (`Finished` = reviewed) on the PR's head and the inline
+  comments. The commands for that, and for recovering an unreviewed head, are
+  in the comments of `.coderabbit.yaml` and in
+  `~/.claude/instructions/pr-review-automation.md`. There is no GrepTile
+  config here. The list is additive, not closed: nothing named here replaces
+  a council member.
+
 ## Pointers
 
 - `README.md` — feature overview and theme model.
